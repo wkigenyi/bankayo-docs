@@ -1,6 +1,10 @@
 # Bankayo docs
 
-Public, open-source documentation for **Bankayo** (custom banking on Apache Fineract).
+Public, open-source documentation for **Bankayo** — a custom **Fineract UI** on
+Apache Fineract. The site is written so people searching for **Fineract help**,
+**Fineract UI**, and **Fineract customization** can land here, then follow the
+operator path (not a replacement for [Apache Fineract](https://fineract.apache.org/)
+platform docs).
 
 This site is the canonical operator and feature guide. The Bankayo UI is closed-source; its **?** button opens the matching page here.
 

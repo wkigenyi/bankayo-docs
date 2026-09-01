@@ -1,0 +1,53 @@
+---
+title: Fineract help, Fineract UI, and Fineract customization
+description: Operator help for Apache Fineract through Bankayo — a custom Fineract UI. How Fineract resources work, where they live on screen, and how institutions customize Fineract without replacing the Apache API.
+---
+
+This site is **Fineract help** for people who run a core-banking tenant: officers, checkers, and administrators. The product you click is **Bankayo**, a **custom Fineract UI**. The engine underneath is [Apache Fineract](https://fineract.apache.org/).
+
+Apache already publishes platform and API documentation. Use that when you are changing Fineract itself or calling the REST API from your own code. Use **this** site when you need the operator path: which permission, which template `*Options`, and which Bankayo screen.
+
+Apache Fineract is a trademark of the Apache Software Foundation. Bankayo is not an Apache project.
+
+## Fineract help
+
+Fineract help here means the **resources Fineract actually persists** — clients, loans, savings, products, journals, reports, jobs — and the rules the API enforces (permissions, validators, template option lists).
+
+Each article is written in two layers:
+
+1. **What Fineract is doing** — the resource, the permission codes, and the catalog or template the form is bound to. That layer is useful even if you never buy Bankayo.
+2. **Where it lives in Bankayo** — sidebar group, docked sheet, wizard, or report screen, then a short next step.
+
+Start from the [topic list](/help), [sign in](/help/signing-in), or [finding your way around](/help/navigation). The Bankayo **?** button opens the matching page for the screen you are on.
+
+## Fineract UI
+
+A **Fineract UI** is any application that talks to Fineract’s API instead of embedding banking logic in the browser. Bankayo is one of those: a closed-source workspace on Apache Fineract. The server holds the session; the browser never calls Fineract directly.
+
+That is the customization visitors usually mean by “a nicer Mifos / Fineract front end”: same tenant, same permissions, a different operator surface (search, tables, wizards, help).
+
+If you are comparing UIs:
+
+- **This docs site** — how Bankayo maps each live screen onto Fineract.
+- **Apache Fineract docs** — the API and platform, independent of any UI.
+- **Other UIs** (including community Mifos apps) — their own chrome and workflows; they are not documented here.
+
+## Fineract customization
+
+**Fineract customization** on this site is what you can change **in the tenant** without forking the Apache codebase:
+
+- **Products and charges** — loan, savings, share, and deposit products; [charges](/help/products/charges); [product mix](/help/products/mix).
+- **Organization** — offices, currencies, funds, tellers, payment types, [SMS campaigns](/help/organization/sms-campaigns).
+- **Accounting** — [chart of accounts](/help/accounting/chart-of-accounts), [journal entries](/help/accounting/journal-entries), closures, provisioning.
+- **System configuration** — [global configurations](/help/system/configurations), [codes](/help/system/codes), [data tables](/help/system/datatables), [hooks](/help/system/hooks), [external services](/help/system/external-services), [account number preferences](/help/system/account-number-preferences).
+- **Access** — [users](/help/users) and [roles](/help/roles) (Fineract permission sets).
+- **Documents and messaging** — [templates](/help/templates) (Mustache) and SMS campaigns.
+
+That is tenant configuration through Fineract APIs, shown in Bankayo. It is **not** a guide to patching Fineract Java modules, writing a new SPI, or replacing the API. For platform-level customization, start at [Apache Fineract](https://fineract.apache.org/).
+
+## Related Apache documentation
+
+- [Apache Fineract](https://fineract.apache.org/) — project home.
+- Fineract REST and platform docs from that site when you need request payloads, release notes, or contributor setup.
+
+Then come back here for the operator UI on the same engine.

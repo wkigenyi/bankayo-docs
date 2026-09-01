@@ -1,6 +1,7 @@
 {
     "pages": [
     "index",
+    "fineract",
     "signing-in",
     "navigation",
     "users",

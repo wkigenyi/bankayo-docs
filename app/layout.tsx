@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Inter, Geist_Mono } from 'next/font/google';
 
+import { DocsRoot } from '@/components/docs-root';
+import { WebsiteJsonLd } from '@/components/website-json-ld';
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from '@/lib/seo';
 import { docsSiteUrl } from '@/lib/site';
 import './globals.css';
 
@@ -18,15 +21,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(docsSiteUrl()),
   title: {
-    default: 'Bankayo docs',
+    default: SITE_TITLE,
     template: '%s · Bankayo docs',
   },
-  description:
-    'Operator and feature documentation for Bankayo, custom banking on Apache Fineract.',
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
   openGraph: {
     type: 'website',
     siteName: 'Bankayo docs',
     locale: 'en',
+    description: SITE_DESCRIPTION,
   },
   robots: { index: true, follow: true },
 };
@@ -36,9 +40,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${inter.className} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <WebsiteJsonLd />
+        <DocsRoot>{children}</DocsRoot>
+      </body>
     </html>
   );
 }

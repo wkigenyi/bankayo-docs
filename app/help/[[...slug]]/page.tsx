@@ -4,6 +4,7 @@ import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page
 import { YouTubeEmbed } from '@/components/youtube-embed';
 import { isYouTubeId } from '@/lib/youtube';
 import { helpSource } from '@/lib/source';
+import { SITE_KEYWORDS } from '@/lib/seo';
 import { docsSiteUrl } from '@/lib/site';
 import { getMDXComponents } from '@/mdx-components';
 
@@ -46,9 +47,14 @@ export async function generateMetadata(props: HelpPageProps) {
   const page = helpSource.getPage(params.slug);
   if (!page) notFound();
   const url = `${docsSiteUrl()}${page.url}`;
+  const discovery =
+    page.url === '/help' || page.url === '/help/fineract'
+      ? { keywords: SITE_KEYWORDS }
+      : {};
   return {
     title: page.data.title,
     description: page.data.description,
+    ...discovery,
     alternates: { canonical: url },
     openGraph: {
       title: page.data.title,
