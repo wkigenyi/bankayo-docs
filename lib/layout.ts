@@ -1,4 +1,4 @@
-import { appSiteUrl } from '@/lib/site';
+import { wwwSiteUrl } from '@/lib/site';
 
 export const docsNav = {
   title: 'Bankayo docs',
@@ -9,7 +9,7 @@ export function docsCtaLinks() {
     {
       type: 'button' as const,
       text: 'Use Bankayo',
-      url: appSiteUrl(),
+      url: wwwSiteUrl(),
       external: true,
     },
   ];

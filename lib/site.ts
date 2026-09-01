@@ -7,7 +7,7 @@ export function docsSiteUrl(): string {
   return trimSlash(process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'http://localhost:3001');
 }
 
-/** Closed Bankayo UI — conversion CTA only, not a Fineract URL. */
-export function appSiteUrl(): string {
-  return trimSlash(process.env.NEXT_PUBLIC_APP_URL?.trim() || 'http://localhost:3000');
+/** Marketing site — "Use Bankayo" CTA. Not the closed UI and not Fineract. */
+export function wwwSiteUrl(): string {
+  return trimSlash(process.env.NEXT_PUBLIC_WWW_URL?.trim() || 'https://www.bankayo.io');
 }
