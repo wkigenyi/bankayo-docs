@@ -1,0 +1,54 @@
+---
+title: Templates
+description: Mustache documents and SMS assigned to clients or loans.
+---
+
+Open **Templates** from **Admin** (or press **Ctrl+K** and type
+"templates"). You need template-reading permission to see the list, create
+permission to add one, update permission to edit one, and delete permission
+to remove one.
+
+A template is a **user-generated document or SMS**. The banking service fills
+Mustache placeholders (for example `{{client.displayName}}`) from a client or
+a loan when the template is used. It is not a [charge](/help/products/charges)
+template and not a report.
+
+## The list
+
+- **Search** by name, entity, or type.
+- **Sort** by clicking a column heading.
+- **Export** downloads the catalog as CSV or Excel.
+- **New template** opens the wizard when you have create permission.
+- **Click a row** to edit that template when you have update permission.
+- The row menu can **edit** or **delete**.
+
+The address bar is **Admin › Templates**.
+
+## The wizard
+
+Create and edit use the same four steps. **Next** checks the current step.
+**Close** (X) returns to the list without saving. After you create a
+template, the wizard stays open on the saved copy so you can keep editing.
+
+1. **Details** — **Name** is required (up to 200 characters). **Entity** is
+   client or loan — whichever record the text is about. **Type** is document
+   or SMS. Both lists come from the banking service.
+2. **Mappers** — each row is a **key** and a **path**. The key is the Mustache
+   root (`client` for `{{client.displayName}}`). The path is a banking-service
+   URL that loads that JSON, including the tenant. The first row is filled
+   from the entity you picked (client or loan). Extra rows are optional.
+   Changing the entity replaces that first row only if you have not edited it.
+3. **Text** — the Mustache body. Required. Documents may include HTML. SMS
+   should stay short. Parameter chips insert a token at the cursor. Loan
+   templates also list repayment-schedule fields.
+4. **Review** — confirm, then **Save**. Delete is on this step when you have
+   delete permission.
+
+If **New template** is missing, you do not have create permission.
+
+## When to use which entity
+
+Pick **Client** when the letter or SMS is about the person or organisation
+(name, office, account number, groups). Pick **Loan** when it is about a
+loan (product, status, repayment totals). The chips on the text step follow
+that choice.

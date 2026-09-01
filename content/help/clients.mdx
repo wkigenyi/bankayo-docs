@@ -1,0 +1,230 @@
+---
+
+title: Clients
+description: Browse, search, and export your institution's clients.
+youtubeId: dWCDxNUqeEo
+---
+
+
+Open **Institution → Clients** in the sidebar (or press **Ctrl+K** and type "clients").
+You need client-viewing permission — if the menu item is missing, ask your administrator.
+
+## The client list
+
+Clients appear in a table showing account number, name, mobile number, external ID, status, and office.
+
+- **Search** by name, account number, mobile, external ID, or ID document — results
+  update as you type (same matching as client pickers elsewhere).
+- **Sort** by clicking the Account No, Name, or External ID column headers.
+- **Pages** — use the controls under the table; you can show 10, 25, 50, or 100 rows.
+- **Open a client** by clicking anywhere on their row.
+- The address bar always reflects your current view — **bookmark or share the URL** and
+  it reopens exactly this filtered, sorted page.
+
+## Exporting
+
+The **Export** button downloads the *entire* filtered list (not just the visible page)
+as a CSV or Excel file. Searching first narrows what's exported. Exports are recorded
+for auditing.
+
+## Creating a client
+
+Press **New client** at the top of the client list (you need client-creation
+permission to see it). That opens the same full-page layout as product wizards:
+close in the header, steps in a left rail on a large screen (across the top on a
+tablet or phone), and **Previous** / **Next** (then **Create client**) in the
+footer.
+
+Registration takes four steps:
+
+1. **Basic details** — pick the office, choose whether the client is a **person**
+   (first and last name, optional gender, and whether they are a staff member) or
+   an **entity** (business name, optional constitution, business line, and
+   incorporation details), and decide whether to activate immediately. Active
+   clients can open accounts right away; you can also leave them pending and
+   activate later. You can also choose a **default savings product**: if the
+   client is activated now, Fineract opens an active savings account on that
+   product immediately; if they stay pending, the product is stored as their
+   default and the account opens when you activate them.
+2. **Contact & identifiers** — all optional: an account number (leave blank for
+   Fineract to assign one), submitted-on date, an external reference ID (e.g. a
+   national ID or legacy system number), mobile number, email, date of birth
+   (incorporation date for an entity), assigned staff, client type, and
+   classification.
+3. **Family** — optional: add spouse, children, or other family members (name,
+   relationship, gender, marital status, profession, date of birth, dependent
+   status). You can also skip this and add family later from the client's page.
+4. **Review** — check everything, then **Create client**. You'll land on the new
+   client's page.
+
+Required fields are marked with an asterisk (*). Each step checks your entries
+before letting you continue, so mistakes surface immediately, not at the end.
+You can jump back to an earlier step without losing what you typed.
+
+## Client details
+
+Open a client from the list. The page keeps their name, photo, account number,
+status, office, external ID, mobile number, and email at the top, then splits
+into sections so the associated lists stay usable on a laptop or tablet:
+
+- **Overview** — performance (loan cycles, active loans, last loan amount, total
+  savings, shares, outstanding loans, overdue loans), then identity (including
+  name parts, gender, date of birth, and age when a date of birth is on file,
+  and entity details), office, staff, classification, and important dates. Age
+  also appears under the name in the client header. Amounts show the currency
+  **code** (for example `KES 1,200.00`),
+  not a symbol. When a total mixes accounts or has no currency of its own, the
+  first currency enabled for the institution is used.
+- **Loans**, **Savings**, **Fixed deposits**, **Recurring deposits**, **Shares** —
+  one section per product. Loan rows show the account number, product, status,
+  and submitted date, with requested amount at the end. Outstanding balance and
+  disbursement date (actual when disbursed, otherwise expected) are available
+  from a column header under **Columns** — outstanding is on by default,
+  disbursement is hidden. A loan in arrears keeps its usual status and adds an
+  **In arrears** badge; outstanding is also emphasized when that column is
+  visible. Click a **loan** row to open that loan’s own workspace (not this
+  client page). Click a **savings** row to open that savings account’s own
+  workspace. Click a **share** row to open that share account’s own workspace.
+  Deposits show the account number, product, status, and balance, and open on
+  this client. Turn on **Show closed** to include closed
+  accounts — the control then reads **Hide closed**, and loans also show a closed
+  date. The address bar updates so you can bookmark that view.
+- **Family** — household members recorded at registration or later. Add, edit,
+  or delete members from this section. When a date of birth is on file, the
+  list also shows their age.
+- **Identities**, **Documents**, **Notes**, **Address** — records attached to
+  the client. Add, edit, or remove them from each section (addresses are
+  deactivated rather than deleted). Download a document from its row menu.
+  The client's signature is managed under **Actions**, not here. Sections you
+  don't have permission to see never appear in the menu.
+
+On a wide screen the sections sit in a left-hand list. On a tablet they become a
+top bar; if there isn't room, extra sections fold into a **+N** menu.
+
+## Editing and status
+
+From the client's header you can **Edit** identity and contact details. That
+opens a docked sidebar over the client — Save and Cancel stay at the bottom,
+and the rest of the page stays put. Required fields are marked with an
+asterisk (*). Office changes use **Transfer**. Actions that need a date,
+reason, office, or staff member also open a docked sidebar. Delete and
+unassign staff ask you to confirm. Other actions depend on status and your
+permissions:
+
+- **Pending** — Activate, reject, withdraw, or delete.
+- **Active** — Close (only if they have no open accounts) or transfer to another office.
+- **Closed / rejected / withdrawn** — Reactivate or undo the previous decision.
+- **Transfer in progress** — Accept, reject, or undo the transfer.
+
+You can also assign or unassign staff. The client's photo sits in the header,
+large enough to recognise them — click it for a closer look. Buttons under the
+photo upload a file, capture from a camera, or delete. Signatures live under
+**Actions**. Actions you don't have permission for never appear.
+
+## Associated records
+
+Family, identities, documents, notes, and addresses each have an **Add**
+button when your role allows it. **Edit** and **Delete** (or **Deactivate**
+for an address) sit in the row menu. Add and edit open a docked sidebar over
+the list — Save and Cancel stay at the bottom. Required fields are marked
+with an asterisk (*).
+
+## Account detail
+
+Click a **fixed deposit** row to open the [fixed deposit workspace](/help/fixed).
+Click a **recurring deposit** row to open the
+[recurring deposit workspace](/help/recurring). Click a **loan** row
+to open the [loan workspace](/help/loans#loan-details). Click a **savings**
+row to open the [savings workspace](/help/savings). Click a **share** row to
+open the [share workspace](/help/shares).
+
+Loan repayments and other loan operations are on the
+[loan workspace](/help/loans#loan-details). Savings deposits, withdrawals,
+[charges](/help/savings/charges), and other savings actions are on the
+[savings workspace](/help/savings). Share apply, redeem, and lifecycle
+actions are on the [share workspace](/help/shares). Fixed deposit deposits,
+interest, and closure are on the [fixed deposit workspace](/help/fixed).
+Recurring deposit installments, interest, and closure are on the
+[recurring deposit workspace](/help/recurring). Deposit
+[charges](/help/fixed/charges) and [statements](/help/fixed/statement) (including
+cash receipts) are on those workspaces — the same pattern as savings. Fineract
+does not expose hold or officer-assignment commands on fixed or recurring
+deposits.
+
+## Opening an account
+
+On an **active** client, each account section has an **Open** button when your
+role allows it. Loans open a full-page wizard (the header shows this
+client's name). Savings, share, and deposit accounts open a docked sidebar
+on their list.
+
+- **Loan** — product (with optional external ID, account number, and note), dates
+  (a standing instruction collects each installment from the linked
+  savings when it falls due), then
+  principal, interest, repayments, and product-gated extras (fixed EMI,
+  equal amortization, monthly nth-day repayment, tranches, down payment
+  percent and auto-repay, top-up, progressive-schedule fields when the
+  product allows them), then
+  charges, then the repayment schedule those terms produce, then optional
+  collateral and guarantors, then review. Collateral rows pledge
+  client-registered units of types from
+  [Products → Collateral](/help/products/collaterals). A charge collected by account
+  transfer needs a linked savings account. Group-only loans do not show
+  linked savings. On the first step you can also assign an officer, a loan
+  **purpose**, and a **fund** (the donor, programme, or internal pool that
+  finances this loan). External ID is optional and sits beside the product, as a
+  reference from another system. Purpose is always on this step and is optional — leave it
+  blank if none apply, including when the list is empty. **Fund** is also always
+  on this step and is optional — leave it blank if none apply, including when
+  the list is empty. Funds are named under
+  [Organization → Funds](/help/organization/funds). If the product has a fund,
+  Bankayo copies it onto the application as the default; officers can still
+  pick a different fund or **No fund**. A fund is not required. If the product sets a minimum or maximum **principal** or **interest
+  rate**, that range appears under the field. You cannot continue until the
+  amount is inside it. A floating-rate product asks for a **differential** instead of a
+  nominal interest rate, and can track later published rate changes when the
+  product allows it. The schedule step is a preview — recalculate after you change
+  terms or charges if you want updated figures. It does not persist, and it
+  does not send linked-account or standing-instruction fields. Fineract still
+  calculates the repayment schedule when you submit.
+  Collateral must already be registered on the client. Add a guarantor from
+  the docked form: an existing client (optional savings hold), a staff
+  member, or an external person (name required). Guarantors are saved after
+  submit.
+- **Savings** — a docked sidebar with two tabs. **Required** is the product,
+  submitted date, and optional officer and external ID. **Optional** starts from
+  the product (interest, balances, lock-in, overdraft, lien, tax, and charges)
+  so you can override those for this account. Submit and Cancel sit at the
+  bottom of the sidebar.
+- **Fixed or recurring deposit** — a docked sidebar with two tabs, like
+  savings. **Required** is the product, submitted date, optional officer and
+  external ID, amount, and term. A **fixed deposit** needs the deposit
+  amount. A **recurring deposit** needs the recommended installment and
+  how often it collects (or inherit the group's meeting calendar). Amounts
+  use the product's currency — there is no separate currency picker. The
+  product's minimum and maximum amount and term appear under those fields.
+  **Optional** starts from the product: interest compounding and posting,
+  lock-in, withhold tax, and product charges. A fixed deposit can link
+  savings so posted interest transfers there, and can set what happens
+  at maturity (withdraw, transfer to savings, or reinvest when Fineract
+  offers it). The product does not store a maturity instruction — leave
+  **At maturity** as **Decide at close** to choose when the account is
+  closed. Submit and Cancel sit at the bottom of the sidebar.
+- **Share** — a docked sidebar: product, submitted and application dates,
+  requested shares, and the savings account shares are paid from.
+
+Close (X) on a wizard returns to the account list. **Back** and **Continue**
+(or **Submit**) sit at the bottom of the page. A docked sidebar's Submit and
+Cancel sit at the bottom of the sidebar instead. After submit you land on the
+new account (a loan opens in its own workspace). The client must be active.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No clients yet" or "No matching clients" | Create a client, or clear the search box. |
+| "Couldn't load clients" | Press Retry; if it persists, the core banking system may be unreachable — tell your administrator. |
+| "Principal must be at least …" or "Interest rate must not exceed …" | Change the amount on Terms so it sits in the range shown under the field. |
+| "Amount must be at least …" or "Term must be at least …" | Change the deposit amount or term so it sits in the range shown under the field. |
+| "The loan was created, but one or more guarantors could not be saved" | The loan exists. The alert includes Fineract’s reason. Open the loan and add guarantors from there. |
+| Clients menu missing | Your role lacks client-viewing permission. |

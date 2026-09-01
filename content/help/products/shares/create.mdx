@@ -1,0 +1,66 @@
+---
+title: Create a share product
+description: The eight-step wizard for creating or editing a share product.
+---
+
+**New** on the [share products list](/help/products/shares) opens this wizard.
+**Edit** on a product uses the same steps and returns to that product when you
+close.
+
+On a large screen, steps stay in a left rail. **Previous** and **Next** sit at
+the bottom of the page. On a tablet or phone the steps run across the top.
+Required fields are marked with an asterisk (*). Amounts show the currency
+**code**, not a symbol.
+
+You can jump back to an earlier step without losing what you typed. Bankayo
+only asks for extra fields when you turn a feature on — for example GL
+accounts after you leave accounting on None.
+
+Share products do **not** have a start or close date.
+
+## The eight steps
+
+1. **Details** — name (up to 200 characters), short name (up to 4), and
+   description (up to 500). All three are required.
+2. **Currency** — code, decimal places, and amount multiples. Amounts stay
+   disabled until a currency is chosen.
+3. **Terms** — total shares, shares issued, and unit price. Share capital is
+   issued shares × unit price; you cannot type it. Shares issued cannot be
+   greater than total shares.
+4. **Settings** — minimum, nominal, and maximum shares a client can hold on
+   this product. Nominal is required. If you set a minimum, nominal cannot be
+   below it; if you set a maximum, it cannot be below nominal. Optional
+   lock-in is the period and unit together (days, weeks, months, or years). Optional minimum
+   active period for dividends is in **days** only. You can allow dividend
+   calculation for inactive clients.
+5. **Market price** — optional periods. Each row is a from date and a share
+   value that applies from that date. Skip the step if the unit price is
+   enough. Two rows cannot share the same from date.
+6. **Charges** — fees that apply to shares in this product’s currency. Check
+   a row to attach it; officers can still add or remove charges when they
+   open a share account. Share charges cannot be penalties.
+7. **Accounting** — **None** or **Cash**. None does not post to the general
+   ledger. Cash needs four accounts: share reference (asset), share suspense
+   (liability), share equity (equity), and income from fees (income). There
+   is no accrual option. See [Share product accounting](/help/products/shares/accounting)
+   for every account and a walkthrough that saves and edits a
+   cash product.
+8. **Review** — confirm every section, then create or save.
+
+## Rules that span steps
+
+The core banking system will reject combinations that do not work together.
+Bankayo blocks the common ones in the form:
+
+- **Shares issued** cannot exceed **total shares**.
+- **Nominal shares** cannot sit below the minimum or above the maximum.
+- A **lock-in period** needs both a length and a unit.
+- A **minimum active period for dividends** must be in days.
+- **Cash** accounting needs the four GL accounts; **None** does not.
+
+If save still fails, the message comes from the core banking system — fix
+the highlighted fields and try again.
+
+Creating needs share-product create permission; editing needs update
+permission. Share products cannot be deleted. Viewing a product you cannot
+edit still opens the definition without **Edit**.

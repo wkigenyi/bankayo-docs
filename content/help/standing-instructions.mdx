@@ -1,0 +1,38 @@
+---
+title: Standing instructions
+description: Schedule recurring transfers between accounts, or automatic loan repayments from savings.
+---
+
+Open **Standing instructions** in Institution (or press **Ctrl+K** and type
+"standing instruction"). You need **READ_STANDINGINSTRUCTION** to see the
+list, **CREATE_STANDINGINSTRUCTION** to add one, and update or delete
+permission to change or remove it.
+
+A standing instruction is a schedule. Each run posts an
+[account transfer](/help/account-transfers). This is not the
+standing-instruction-at-disbursement flag on a new loan, and not repay from
+savings on a loan workspace.
+
+## What you can do
+
+**Filters** narrow by client name or transfer type. Types come from the
+Fineract standing-instruction template (account transfer and loan repayment
+today; charge payment only if the template includes it). **Export**
+downloads the filtered list. **Run history** opens
+[Organization → Standing instruction history](/help/organization/standing-instructions-history).
+
+**New instruction** is a five-step wizard: from, to, instruction,
+recurrence, review.
+
+- **Account transfer** cannot involve a loan — both sides must be savings.
+- **Loan repayment** must be savings to a loan.
+- A savings destination must use a **fixed** amount and **periodic**
+  recurrence.
+- Periodic recurrence needs an interval and frequency. Monthly or yearly
+  also needs the day and month (`dd MM`).
+- **Dues** amount is only for loan repayment, not savings-to-savings.
+
+Open a row to see associated transfers. **Edit** can change amount, dates,
+status, priority, instruction type, and recurrence — not the from/to
+accounts or the name. **Delete** stops future runs; posted transfers stay
+on the accounts.

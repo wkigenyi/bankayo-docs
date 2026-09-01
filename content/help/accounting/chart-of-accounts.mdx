@@ -1,0 +1,51 @@
+---
+title: Chart of accounts
+description: Ledger accounts products and charges pick when they post to the books.
+youtubeId: fy9YBoUwuXk
+---
+
+Open **Chart of accounts** from **Accounting** (or press **Ctrl+K** and type
+"chart of accounts" or "GL"). You need GL-account viewing permission to see
+the list, plus create, update, or delete permission for those actions.
+
+A GL account is a **ledger line** — name, unique GL code, type (asset,
+liability, equity, income, or expense), and usage. [Loan
+products](/help/products/loans/accounting), [savings
+products](/help/products/savings/accounting), and [charges](/help/products/charges)
+pick **detail** accounts of the matching type. Header accounts only group
+other accounts; they do not appear on those pickers.
+
+## The list
+
+- **Tree view** shows parent/child hierarchy. Expand a header account to see
+  the detail accounts nested under it. **Expand all** and **Collapse all**
+  open or close the whole chart. Search expands matching branches for you.
+- **Search** by name, GL code, description, or parent.
+- **Type** filters the list to one classification.
+- **Export** downloads the full chart as CSV or Excel, with parent links for
+  the hierarchy.
+
+## Creating an account
+
+**New GL account** opens a docked sidebar.
+
+- **Name** (up to 200 characters) and **GL code** (up to 45, unique) are
+  required.
+- **Account type** is asset, liability, equity, income, or expense.
+- **Usage** is detail or header. Detail accounts appear on product and charge
+  pickers; headers group other accounts.
+- **Parent** is optional. It must be a **header** of the same type. Create
+  the header first if you want a hierarchy.
+- **Manual entries** default to on. Turn that off when officers should not
+  post journal lines here directly.
+- **Description** is optional, up to 500 characters.
+
+## Editing and deleting
+
+- **Click a row** to edit. Disable an account so it no longer appears when
+  you create a product. Fineract refuses disable if a product still maps to
+  it. Disable is only on edit, not on create.
+- **Delete** (row menu) asks for confirmation. Fineract refuses an account
+  that has children, journal entries, or a product mapping.
+
+The address bar is **Accounting › Chart of accounts**.

@@ -1,0 +1,34 @@
+---
+title: Breach
+description: Reusable breach rules for working-capital loan products.
+---
+
+Open **Products → Breach** (or press **Ctrl+K** and type "breach"). You
+need **READ_WORKINGCAPITALBREACH** (or **READ_WORKINGCAPITALLOANPRODUCT**).
+Create, update, and delete need the matching `*_WORKINGCAPITALBREACH`
+permission. Fineract’s GET/POST also check
+**WORKINGCAPITALLOANPRODUCT**.
+
+This is Fineract `GET /working-capital/breach/template`,
+`GET/POST /working-capital/breach/breaches`, and
+`GET/PUT/DELETE /working-capital/breach/breaches/{id}`.
+
+This is **not** a loan-level breach action
+(`/working-capital-loans/{id}/breach-actions`). Attach a configuration
+when you create a working-capital product.
+
+## What you can do
+
+- **Browse** configurations by name, frequency, and calculation type.
+  Export CSV or Excel.
+- **New** / **Edit** opens a docked sidebar. Name is required, unique,
+  and at most 100 characters. Frequency must be an integer greater than
+  zero. Frequency unit membership comes from
+  `breachFrequencyTypeOptions` (R8). Amount-calculation membership
+  comes from `breachAmountCalculationTypeOptions` (R8) — Percentage or
+  Flat. Amount must be zero or greater.
+- **Delete** is refused while a working-capital product still uses this
+  configuration.
+
+If the server returns 404, the working-capital module is not on that
+Fineract. Bankayo does not fake the catalog.

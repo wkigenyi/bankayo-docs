@@ -1,0 +1,80 @@
+---
+
+title: Manage reports
+description: Create custom reports, copy a core report to change its SQL, and choose which reports appear in the catalog.
+youtubeId: tdLZkFcwTBU
+---
+
+
+Open **System → Manage reports** (or press **Ctrl+K** and type
+"manage reports"). You need report-reading permission to see the list,
+plus create, update, or delete permission for those actions.
+
+This is the configuration screen. Running a table report still happens
+from [Reports](/help/reports). **In use** is the switch that publishes a
+report into that catalog.
+
+## The list
+
+Every report from the banking service is here — published or not, table or
+not, core or custom. Filter by name, category, type, subtype, source, or
+whether it is in use. **Export** downloads the list as CSV or Excel.
+
+**Click a row** to open that report in the wizard. **New report** starts a
+blank custom report. The row menu can **copy** a report or **delete** a
+custom one.
+
+## Core and custom
+
+**Core** reports ship with the banking service. You can turn **In use** on
+or off. Name, type, SQL, and parameters stay as they are. The banking
+service refuses any other change.
+
+To fix or extend a core report, **Copy** it. Save creates a **custom**
+report with the same SQL and parameters. The copy stays out of the run
+catalog until you turn **In use** on. You can then change SQL, parameters,
+and the rest. Custom reports can be deleted; core reports cannot.
+
+Creating a report also creates a matching run permission on the banking
+service (`READ_` plus the report name). Roles that should run it need that
+permission.
+
+## The wizard
+
+Create, copy, and edit use the same four steps. **Next** checks the current
+step. **Close** (X) returns to the list without saving.
+
+1. **Details** — **Name** is required (up to 100 characters) and must be
+   unique. **Type** comes from the banking service’s allowed engines (Table,
+   Chart, Pentaho, BIRT, SMS, and any other type it lists). **Subtype** is
+   required for Chart (Bar or Pie) and must be blank for every other type.
+   **Category** is optional (up to 45 characters); pick an existing grouping
+   or type a new one. **In use** publishes the report to the
+   [Reports](/help/reports) catalog. **Description** is optional.
+2. **Parameters** — listed on this step. **Add parameter** and clicking a
+   row both open a sidebar to pick from the tenant’s stretchy-parameter
+   catalog. Each row shows the SQL placeholder for that field (Office is
+   `${officeId}`, start date is `${startDate}`). Each catalog parameter can
+   appear once. Remove a parameter from that sidebar. None is fine.
+   **Name in Pentaho or BIRT file** only appears for those report types;
+   Table and Chart SQL ignore it.
+3. **SQL** — required for Table and Chart, and must be blank for Pentaho
+   and BIRT. Chips above the query are the placeholders from the parameters
+   you attached. Click one to insert it at the cursor. Quote placeholders
+   that compare to text (including office on PostgreSQL). Session values
+   `${currentUserId}`, `${currentUserHierarchy}`, and `${currentDate}` are
+   filled automatically and do not need a catalog parameter.
+4. **Review** — confirm, then **Save**. Custom reports can be deleted from
+   this step.
+
+The address bar is **System › Manage reports**, then the report name (or
+**New report**).
+
+## SQL placeholders
+
+The catalog name (`OfficeIdSelectOne`) is the picker. Table and Chart SQL
+use that parameter’s **variable** in `${…}` (`${officeId}`). The wizard
+shows that placeholder on the parameter row and as a chip on the SQL step.
+Do not write the catalog name into the query. Session placeholders
+(`${currentUserId}`, `${currentUserHierarchy}`, `${currentDate}`) are
+filled automatically.

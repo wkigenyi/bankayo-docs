@@ -1,0 +1,27 @@
+---
+title: Bulk loan reassignment
+description: Move loans from one loan officer to another at the same office.
+---
+
+Open **Bulk loan reassignment** in Organization (or press **Ctrl+K** and
+type "bulk loan reassignment"). You need **READ_LOAN** to open the screen
+and **BULKREASSIGN_LOAN** to submit.
+
+This is Fineract `GET/POST /loans/loanreassignment`. It is not assigning
+an officer on a single loan workspace, and not [bulk import](/help/organization/bulk-import)
+of loan accounts.
+
+## What you can do
+
+Pick an **office**. Fineract then lists loan officers at that office.
+Pick the **from** officer to load their client and group loans, then the
+**to** officer (everyone except the from officer) and an **assignment
+date**.
+
+Select one or more loans and **Reassign**. Fineract moves each selected
+loan if the from officer still holds it and the client or group is
+active. Hard-locked loans are refused by Fineract — Bankayo shows that
+reason.
+
+Offices and officers come from the reassignment template, not a frozen
+staff list.

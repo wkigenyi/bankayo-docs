@@ -1,0 +1,61 @@
+---
+title: Users
+description: App logins for your institution — office, roles, and passwords.
+---
+
+Open **Users** from **Admin** (or press **Ctrl+K** and type "users"). You need
+permission to view the list, create permission to add a login, update
+permission to edit one, and delete permission to remove one.
+
+A user is a **login**, not an [employee](/help/organization#employees).
+Employees are staff records you can assign as loan officers. Users are the
+usernames that sign in to Bankayo. You can optionally link a user to a staff
+member at the same office.
+
+Self-service client logins and mapping users to clients are not in this
+screen. Fineract no longer ships Self Help as a first-party API, so that
+work is deferred. Create and edit [roles](/help/roles) under **Admin → Roles**.
+
+## The list
+
+- **Search** by username, name, email, office, or role.
+- **Sort** by clicking a column heading.
+- **Export** downloads the catalog as CSV or Excel. Passwords are never
+  included.
+- **New user** opens a docked sidebar when you have create permission.
+- **Click a row** to edit that login when you have update permission.
+- The row menu **Delete** is off for your own login and for the system user.
+
+The address bar is **Admin › Users**.
+
+## Creating a user
+
+Username, first name, last name, email, office, and at least one **role**
+are required (each name field up to 100 characters).
+
+**Email the password** is on by default. The banking service sends a
+password to the email address. Turn it off to set the password (and repeat
+it) yourself. If email delivery fails, the reason from the banking service
+is shown on the form.
+
+**Staff** is optional and lists only employees at the office you picked.
+Changing the office clears a staff link that does not belong to the new
+office.
+
+**Password never expires** skips scheduled password changes for this login.
+
+The **email** (and a staff mobile number, when SMS two-factor is configured) is also how [two-factor authentication](/help/signing-in#two-factor-authentication) delivers a sign-in code.
+
+If **New user** is missing, you do not have create permission. If the roles
+list is empty, add a [role](/help/roles) first.
+
+## Editing a user
+
+Click a row. Leave the password blank to keep the current one. If you fill
+a new password, repeat it to confirm.
+
+## Deleting a user
+
+Delete from the row menu. You cannot delete your own login or the system
+user — those actions stay off. After delete, that username can no longer
+sign in.

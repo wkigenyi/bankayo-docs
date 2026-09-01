@@ -1,0 +1,84 @@
+---
+title: Share products
+description: Browse, open, and edit share products. Create uses an eight-step wizard.
+---
+
+Open **Products → Shares** (or press **Ctrl+K** and type "share
+products"). You need permission to view share products — if the menu item is
+missing, ask your administrator.
+
+A share product is the template for every share account opened on it. It sets
+the currency, how many shares exist, the unit price, how many shares a client
+can hold, optional lock-in and dividend rules, market-price history, attached
+charges, and — when books are kept in Bankayo — the general-ledger accounts
+those movements post to.
+
+## The list
+
+Each row is a product: name, short name, currency, and total shares.
+
+- **Search** with the box above the table.
+- **New** starts the [create wizard](/help/products/shares/create) when your
+  role allows it.
+- **Open** a product by clicking its row.
+
+## Opening a product
+
+The product opens as a workspace with a section rail — the same pattern as a
+loan or savings product.
+
+- **General**, **Terms**, and **Settings** are always there.
+- **Market price**, **Fees**, and **Accounting** appear only when the product
+  has them. Accounting is there when the rule is Cash.
+- Charge names link to the [charge](/help/products/charges).
+- Accounting lists GL accounts by type (assets, liabilities, equity, income).
+  Create them under [Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+- On a phone the sections run across the top.
+
+**Edit** opens the same eight-step wizard used to create the product. Close
+returns here. Share products **cannot be deleted** — there is no Delete.
+Change a saved product with Edit.
+
+**Dividends** opens [Share dividends](/help/products/share-dividends)
+for this product (`?productId=`). That list declares and approves
+payouts. The minimum-active-period field stays on Settings here.
+
+## What a share product does not have
+
+- **No start or close date.** Only [loan products](/help/products/loans/details)
+  have a product availability window.
+- **No accrual accounting.** Share accounting is None or Cash. Loan and savings
+  products also offer Accrual (periodic); loans add Accrual (upfront).
+- **No payment-channel mappings step.** Cash accounting still needs the four GL
+  accounts on Accounting. Optional payment-channel and charge-to-income
+  mappings are not in this wizard.
+
+## Wizard steps
+
+Create and edit walk the same steps. See
+[Create a share product](/help/products/shares/create) for the fields and
+rules.
+
+1. Details — name, short name, description.
+2. Currency — code, decimal places, multiples.
+3. Terms — total shares, shares issued, unit price, and computed share capital.
+4. Settings — min / nominal / max shares, lock-in, minimum active period for
+   dividends, and dividends for inactive clients.
+5. Market price — optional periods that set the share value from a date.
+6. Charges — share charges in this product’s currency.
+7. [Accounting](/help/products/shares/accounting) — None or Cash, and the GL
+   accounts cash requires. A walkthrough creates **Normal Share With
+   Accounting** and edits it.
+8. Review — confirm every section, then create or save.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No products yet" | Use **New** to create the first product. If that button is missing, your role cannot create share products. |
+| "No matching products" | Clear or change the search. |
+| Product menu missing | Your role lacks share-product viewing permission. |
+| Save rejected | The core banking system will refuse a field that does not match its rules. Read the message and fix the highlighted fields. |
+| GL picker empty | Create a **detail** account of the matching type under [Chart of accounts](/help/accounting/chart-of-accounts). Header accounts never appear here. |
+
+See the [products hub](/help/products) for how product types sit together.

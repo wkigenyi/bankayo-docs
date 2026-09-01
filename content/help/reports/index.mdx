@@ -1,0 +1,60 @@
+---
+title: Reports
+description: Browse published reports and run table reports with their parameters.
+youtubeId: QTn2U0YG5Lo
+---
+
+Open **Reports** from the sidebar (or press **Ctrl+K** and type "reports"). You
+need report-reading permission — if the menu item is missing, ask your
+administrator.
+
+Saved SQL that a job inserts into a table is
+[Organization → Ad-hoc query](/help/organization/adhoc-query), not this catalog.
+
+The catalog lists every report from the banking service. **In use** and
+**Type** start as Yes and Table, so unpublished and non-table reports stay
+hidden until you change those filters. Filter by name, category, type,
+subtype, source (core or custom), or whether the report can be run from this
+screen. Export the catalog as CSV or Excel. CSV is UTF-8 so Excel on Windows
+opens names correctly; Excel is a real workbook.
+
+**Click a row** to open that report. **Income Statement Table** and **Balance
+Sheet Table** open the dedicated [income statement](/help/reports/income-statement)
+and [balance sheet](/help/reports/balance-sheet) screens instead of the generic
+runner. Long descriptions stay one line in the catalog and on a generic report
+page; hover to read the rest. On a generic report page, type, category, and the
+other chips stay on the header — they do not slide off the right edge.
+
+## Running a table report
+
+The report opens on an empty table. **Set parameters** opens a docked
+sidebar. Fill the fields and **Run**. While the banking service works, the
+table shows a loading skeleton. Rows then page in the grid (25 by default).
+
+- Required fields come from the report itself (office, dates, officer, and so
+  on). A child list (for example loan officers for an office) fills after you
+  pick the parent.
+- Some lists include **All** (`-1`) when the report SQL supports it.
+- Dates show in the same medium date style as the rest of Bankayo. Amounts
+  (decimal columns) use ledger figures with no currency code: grouped digits,
+  fixed decimal places, and parentheses for negatives — the report does not
+  say which currency the figure is in. **Decimal places** only changes how
+  those amounts look on screen.
+- **Parameters** on the results toolbar opens the sidebar again to change
+  filters and re-run.
+- **Export** downloads that same result as CSV or Excel. CSV is UTF-8; Excel
+  is a real workbook. Both keep the values the banking service returned, not
+  the on-screen date or decimal formatting.
+
+A report you can see in the catalog may still refuse to run if your role does
+not include that report. The banking service’s reason is shown.
+
+Chart, Pentaho, BIRT, Email, and other non-table reports appear in the catalog
+but cannot be run yet.
+
+Creating or editing report SQL is not on this screen. That lives under
+**System → [Manage reports](/help/system/reports)**. Core reports
+can only turn **In use** on or off; copy one to a custom report to change
+its SQL.
+
+The address bar is **Reports**, then the report name.

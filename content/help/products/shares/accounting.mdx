@@ -1,0 +1,75 @@
+---
+title: Share product accounting
+description: None or cash — the four GL accounts cash needs, and a create, open, and edit cycle.
+youtubeId: ig-fUeiDGXQ
+---
+
+This is step 7 of the [create wizard](/help/products/shares/create). After
+save, the product opens as a sectioned workspace. **Accounting** is on the
+rail when the rule is Cash. Share products have **no** mappings step.
+
+The walkthrough on this page creates **Normal Share With Accounting** on
+**Cash**, opens the product, and edits the description and maximum shares.
+Share products cannot be deleted. They have no start or close date, and **no
+accrual** option.
+
+This page explains the **accounting rule** and every **general ledger (GL)
+account** cash needs. Create or adjust the accounts themselves under
+[Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+
+On the seeded chart, example **codes** are in parentheses. Your institution
+may use different codes; the **type** (asset, liability, equity, income)
+must still match the picker.
+
+## Accounting rule
+
+Share products have two posting styles. There is **no** Accrual (periodic)
+and **no** Accrual (upfront) — those exist on
+[savings](/help/products/savings/accounting) and
+[loan](/help/products/loans/accounting) products.
+
+- **None** — no GL accounts. Use this while you are still designing the
+  product, or when another system is the ledger. Share accounts can still
+  be opened; they just do not write journal lines in Bankayo.
+- **Cash** — a journal posts when share money **moves** (activation, a
+  purchase, a redeem, a collected fee). Requires the four cash accounts
+  below.
+
+Every required account is a searchable list of **detail** GL accounts of
+the matching type. **Header** accounts only group other accounts and never
+appear here.
+
+## Cash accounts
+
+Required whenever the rule is Cash.
+
+- **Share reference** (asset, `1110` Cash at Main Vault) — the cash or bank
+  account share money moves through. Same idea as savings reference on a
+  savings product, or fund source on a loan product.
+- **Share suspense** (liability, `2130` Share Suspense) — money in flight
+  between cash and equity, for example a purchase that has left cash and
+  not yet landed in share equity.
+- **Share equity** (equity, `3120` Share Equity) — subscribed capital.
+  This picker lists **equity** accounts only.
+- **Income from fees** (income, `4210` Income from Fees) — the product
+  default for every share fee. Officers can still add a fee on the account
+  if you did not attach charges on the product.
+
+## Create, open, and edit
+
+**New** on the [share products list](/help/products/shares) opens the
+wizard. **Save** on Review creates the product and opens it: General, Terms,
+and Settings, plus Fees and Accounting when Cash is on.
+
+**Edit** reopens the same eight steps. Close returns to the product.
+Share products **cannot be deleted** — unlike [savings](/help/products/savings)
+products. Change a saved product with Edit.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| Accrual is missing | Share products only offer None and Cash. Use a [savings](/help/products/savings/accounting) or [loan](/help/products/loans/accounting) product for accrual. |
+| GL picker empty | Create a **detail** account of the matching type under [Chart of accounts](/help/accounting/chart-of-accounts). Equity accounts appear only on Share equity. |
+| Save rejected on Cash | All four accounts are required. Fix the highlighted pickers. |
+| No Delete | Share products have no delete in the core banking system. Edit the product instead. |

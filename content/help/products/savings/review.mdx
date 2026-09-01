@@ -1,0 +1,32 @@
+---
+title: Review a savings product
+description: Confirm every section, then create or save the product.
+---
+
+This is the last step of the [create wizard](/help/products/savings/create).
+Each section repeats what you entered: details, currency, terms, settings,
+charges, accounting, and mappings. Amounts use the currency **code**.
+
+## Before you submit
+
+- Jump back to a step from the rail if something looks wrong. Values stay
+  filled in.
+- Required extras for a feature you turned on (lock-in unit, annual-fee due
+  day, tax group, dormancy days, GL accounts) must be complete or the wizard
+  will not submit.
+- If accounting is Cash or Accrual, check that **Savings reference** is a
+  cash or bank **asset** and **Savings control** is the deposit **liability**.
+  See [Accounting](/help/products/savings/accounting).
+- The core banking system is the final check. A product that is already in
+  use can be edited only in ways it allows; some combinations are rejected
+  with a message from the core system.
+
+## After save
+
+You land on the [product workspace](/help/products/savings). Close without
+saving returns to the list (create) or to the product (edit).
+
+Officers can now [open savings accounts](/help/clients#opening-an-account)
+on this product. Journals for those accounts use the GL accounts you set,
+when accounting is not None. You can inspect postings under
+[Journal entries](/help/accounting/journal-entries).

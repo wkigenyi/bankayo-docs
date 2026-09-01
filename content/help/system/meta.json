@@ -1,0 +1,4 @@
+{
+  "title": "System",
+  "pages": ["index", "reports", "configurations", "codes", "maker-checker", "jobs", "audits", "hooks", "external-services", "datatables", "information", "entity-mapping", "external-events", "account-number-preferences"]
+}

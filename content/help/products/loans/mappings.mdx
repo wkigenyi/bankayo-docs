@@ -1,0 +1,49 @@
+---
+title: Loan product mappings
+description: Map payment channels, charges, and reasons to GL accounts.
+---
+
+This is step 7 of the [create wizard](/help/products/loans/create). Mappings
+are optional. They appear only when [accounting](/help/products/loans/accounting)
+is Cash or Accrual. If the rule is None, this step explains that and you can
+continue to review.
+
+The cash-accounting walkthrough maps the institution payment type **Cash**
+to fund-source GL `1220`. Fee and penalty rows only appear when the product
+has matching charges attached.
+
+Each mapping is a row: something officers pick (a payment type, a charge, or
+a reason) and the general ledger account it should post to. Add a row, choose
+both sides, or remove a row you do not need.
+
+The charge rows are **overrides**. [Accounting](/help/products/loans/accounting)
+already sets one income account for every fee on the product and one for every
+penalty; a row here sends a single [charge](/help/products/charges) somewhere
+else instead.
+
+## What you can map
+
+- **Payment channels** to fund-source GL accounts (payment type → account).
+  The list is institution payment types from
+  [Organization → Payment types](/help/organization#payment-types) — not
+  Fineract’s system-generated types (transfers, down payment, and similar).
+  Those exist for other loan operations, not cash channels. The mapping
+  table is hidden until at least one institution type exists.
+- **Fees** to income accounts — this **overrides** the product's default
+  *income from fees* account for that one charge. Charges with no row keep the
+  default.
+- **Penalties** to income accounts — the same override against *income from
+  penalties*.
+- **Charge-off reasons** to expense accounts.
+- **Write-off reasons** to expense accounts.
+
+Reason lists come from
+[Organization → Loan reasons](/help/organization#loan-reasons). Each mapping
+table is hidden until at least one reason and one expense account exist.
+These mappings show as their own sections on the product after save.
+
+## After save
+
+You can change mappings later with **Edit**. GL accounts themselves are
+maintained under
+[Accounting → Chart of accounts](/help/accounting/chart-of-accounts).

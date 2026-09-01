@@ -1,0 +1,61 @@
+---
+
+title: Recurring deposits
+description: Open a recurring deposit in its own workspace.
+---
+
+
+A recurring deposit has its own workspace — not the client header or section list.
+Open one from a [client’s Recurring deposits section](/help/clients#client-details).
+The product that account was opened on is defined under
+[Recurring deposit products](/help/products/recurring).
+
+The top of the page keeps the account number, status, account type (with an
+icon), product, a link to the client or group this account belongs to, and the
+balance, then splits into sections:
+
+- **Overview** — performance (balance, available, deposits, withdrawals, posted
+  interest, recommended installment, and maturity amount) next to product, deposit
+  period, lock-in, compounding and posting, collection frequency, whether
+  withdrawals are allowed, and whether the installment is mandatory. Overdue
+  amounts appear when installments are behind. Amounts use the currency **code**.
+- **Transactions** — postings on the account, 25 to a page (you can choose 10,
+  50, or 100). Filter by transaction date and type; the address bar keeps those
+  filters. Reversed postings are hidden until you turn on **Show reversed**.
+  Cash deposit and withdrawal rows can be undone or modified when the account
+  is active. Account-transfer rows cannot be undone here. Cash deposit and
+  withdrawal rows that are not reversed can download a receipt PDF.
+- **Statement** — preview a date range of postings and download a PDF. See
+  [Recurring deposit statement](/help/recurring/statement).
+- **Charges** — add, pay, waive, or stop fees and penalties. See
+  [Recurring deposit charges](/help/recurring/charges).
+
+**Actions** depend on status and your permissions. Commands that need a date,
+amount, or payout option open a docked sidebar over the account — the header
+stays visible. Confirm-only commands (calculate or post interest, undo) ask you
+to confirm. Cash deposits and withdrawals list only institution payment types —
+not system-generated ones.
+
+Typical work from the recurring deposit header:
+
+- **Pending** — approve, reject, or withdraw the application.
+- **Approved** — activate, or undo approval.
+- **Active** — record a **deposit** or **withdrawal** (withdrawal only when the
+  product allows it), calculate or post interest, **change the recommended
+  deposit** amount from a date, and **close early** (premature close). Early
+  close asks Fineract for the amount due on the chosen date, then lets you
+  **withdraw** it or **transfer** it to a savings account (the options Fineract
+  returns).
+- **Matured** — **close** with the same payout options, plus reinvest principal
+  and interest or principal only when Fineract offers them.
+
+From a client list, clicking a recurring deposit row opens this same workspace.
+Fixed deposits use the [fixed deposit workspace](/help/fixed).
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "Open a recurring deposit from a client" | Click a recurring deposit on a client. |
+| Account missing or not loading | It may have been closed, or your role may not include recurring deposits — tell your administrator. |
+| No withdrawal action | The product must allow withdrawals on this account. |

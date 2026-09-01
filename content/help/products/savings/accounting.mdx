@@ -1,0 +1,234 @@
+---
+title: Savings product accounting
+description: None, cash, or accrual periodic — every GL account, what it means, and how savings post to the books.
+youtubeId: gKoy_BQf8oA
+---
+
+This is step 6 of the [create wizard](/help/products/savings/create). After
+save, accounts appear on the product only when accounting is not None.
+Payment-channel and charge mappings are a separate
+[mappings](/help/products/savings/mappings) step.
+
+The walkthrough on this page creates **Normal Savings With Accounting**:
+ordinary savings on **Cash**, with a payment-channel mapping, and saves it.
+The [first create video](/help/products/savings/create) stops on None and
+does not save.
+
+This page explains the **accounting rule**, every **general ledger (GL)
+account** the rule needs, the usual **debits and credits** for savings
+movements, and a **glossary** of the terms on this step. Create or adjust
+the accounts themselves under
+[Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+
+On the seeded chart, example **codes** are in parentheses. Your institution
+may use different codes; the **type** (asset, liability, income, expense)
+must still match the picker.
+
+## Accounting rule
+
+Savings products have three posting styles. There is **no** Accrual (upfront)
+option — that exists only on [loan products](/help/products/loans/accounting).
+
+- **None** — no GL accounts, and mappings do not apply. Use this while you
+  are still designing the product, or when another system is the ledger.
+  Accounts still hold balances and interest; they just do not write journal
+  lines in Bankayo.
+- **Cash** — a journal posts when money **moves** (deposit, withdrawal,
+  posted interest, a collected fee). Interest expense hits the books when
+  interest is **posted** to the account, not as it is earned day by day.
+  Requires the nine cash accounts below. Overdraft accounts are required
+  even if this product does not allow overdraft.
+- **Accrual (periodic)** — the cash set, plus fees receivable, penalties
+  receivable, and interest payable. Interest receivable is **optional**
+  (used when you accrue **overdraft** interest the client owes you). Earned
+  amounts can sit on receivable or payable accounts before cash moves, then
+  clear when the fee is paid or interest is posted.
+
+Every required account is a searchable list of **detail** GL accounts of
+the matching type. **Header** accounts only group other accounts and never
+appear here.
+
+If you turned on [dormancy tracking](/help/products/savings/settings), cash
+and accrual also need an **escheat liability** account.
+
+## How savings books work
+
+A savings account is a **liability** of the institution: you owe the client
+their balance. Cash in the vault or bank is an **asset**.
+
+Two accounts make that split:
+
+- **Savings control** (liability) — the sum of client balances. A deposit
+  **increases** this liability (credit). A withdrawal **decreases** it
+  (debit).
+- **Savings reference** (asset) — the cash or bank account that actually
+  holds the money. A deposit **increases** cash (debit). A withdrawal
+  **decreases** it (credit).
+
+Do not confuse those names with the seeded liability called **Savings
+Reference** (`2120`). That account is a **liability**, so it does **not**
+appear in the Savings reference picker. For **Savings reference**, pick a
+**cash or bank asset** (`1110` Cash at Main Vault, `1120` Cash at Teller, or
+`1130` Bank Settlement Account). For **Savings control**, pick `2110`.
+
+**Fund source** on a [loan product](/help/products/loans/accounting) is the
+same idea as savings reference: a cash or bank asset. It is not an
+[Organization fund](/help/organization/funds).
+
+## Cash accounts
+
+Required whenever the rule is Cash or Accrual (periodic).
+
+### Assets
+
+- **Savings reference** — cash or bank that deposits increase and
+  withdrawals decrease. Seeded examples: `1110`, `1120`, `1130`. A
+  [payment-channel mapping](/help/products/savings/mappings) can send one
+  payment type to a different cash account (teller cash versus bank).
+- **Overdraft portfolio** — asset for principal the client **owes you** when
+  the account is below zero. Required even if overdraft is off. The seeded
+  chart has no dedicated overdraft portfolio; create a detail **asset** if
+  you need one, or reuse an asset your accountant designates.
+
+### Liabilities
+
+- **Savings control** (`2110`) — client deposit balances.
+- **Transfers in suspense** (`2410` Liability Transfer Suspense) — money
+  **in flight** between accounts (for example a transfer that has left one
+  savings account and not yet landed on the other). This picker lists
+  **liability** accounts. Loan products use an **asset** suspense account
+  (`1410`) for the same idea — do not mix them.
+
+### Income
+
+- **Income from fees** (`4210`) — default for every **fee** on the product.
+  A [mapping](/help/products/savings/mappings) can send one fee somewhere
+  else.
+- **Income from penalties** (`4310`) — the same default for **penalties**.
+- **Income from interest** — interest **you charge** on overdraft (not
+  interest you pay savers). Required even if overdraft is off. Create or
+  pick a detail **income** account your accountant designates.
+
+### Expenses
+
+- **Interest on savings** (`5210` Interest on Savings Expense) — interest
+  **you pay** savers when it is posted (cash) or accrued (periodic). This is
+  a cost, not income.
+- **Write-off** (`5110` on the seeded chart) — expense when an overdraft
+  (money the client owes) is written off.
+
+## Accrual extras
+
+Periodic accrual adds:
+
+- **Fees receivable** (`1320`, asset) — fees earned but not yet collected
+  from the account.
+- **Penalties receivable** (`1330`, asset) — the same for penalties.
+- **Interest payable** (`2220`, liability) — interest **owed to the client**
+  that has been accrued but not yet **posted** to the savings account.
+- **Interest receivable** (`1310`, asset, **optional**) — overdraft interest
+  the client owes you that has been accrued but not yet collected.
+
+[Accounting → Accruals](/help/accounting/accruals) runs **loan** periodic
+accruals through a date. It does **not** accrue savings. Savings interest
+accrual and posting are **Calculate interest** and **Post interest** on the
+[savings account](/help/savings).
+
+## Escheat liability
+
+Shown only when [Track dormancy](/help/products/savings/settings) is on and
+accounting is not None.
+
+**Escheat liability** (`2150`) receives unclaimed balances after **days to
+escheat**. The client’s savings control is reduced; the institution now
+holds the money as unclaimed property instead of as a live deposit.
+
+## What typical movements post
+
+These are the usual pairs once accounting is Cash or Accrual. The core
+banking system writes the journals; you pick which GL accounts they use.
+
+| Movement | Debit | Credit |
+| --- | --- | --- |
+| Deposit | Savings reference (cash) | Savings control |
+| Withdrawal | Savings control | Savings reference |
+| Interest posted (cash) | Interest on savings (expense) | Savings control |
+| Interest accrued (periodic) | Interest on savings (expense) | Interest payable |
+| Interest posted after accrual | Interest payable | Savings control |
+| Fee taken from the account (cash) | Savings control | Income from fees |
+| Fee accrued (periodic) | Fees receivable | Income from fees |
+| Fee then collected | Savings control | Fees receivable |
+| Overdraft interest (cash) | Overdraft portfolio | Income from interest |
+| Overdraft written off | Write-off (expense) | Overdraft portfolio |
+| Account transfer (in flight) | Involves transfers in suspense | Then the destination control or reference |
+| Escheat | Savings control | Escheat liability |
+
+Withhold tax (if enabled on settings) takes part of posted interest to the
+**tax group** liability, not to interest on savings.
+
+Manual journals and teller allocate/settle also appear under
+[Journal entries](/help/accounting/journal-entries). A
+[closure](/help/accounting/closures) blocks posting on or before that date.
+
+## Glossary
+
+**General ledger (GL)** — the institution’s books. Each line is an account
+with a type and a unique code.
+
+**Detail account** — a posting account. Product pickers only list these.
+**Header account** — a folder in the chart; it never receives a product
+mapping.
+
+**Debit / credit** — every journal is balanced (debits equal credits).
+Increasing an **asset** or **expense** is a debit; increasing a **liability**
+or **income** is a credit. Savings control is a liability, so taking a
+deposit credits it.
+
+**Accounting rule** — None (no journals), Cash (journals when money moves),
+or Accrual periodic (journals when amounts are earned or owed, then again
+when they settle).
+
+**Savings control** — liability for what you owe savers.
+
+**Savings reference** — asset for the cash or bank that backs those
+deposits. Not the seeded liability of a similar name.
+
+**Transfers in suspense** — clearing account for money between two products
+or accounts.
+
+**Interest on savings** — expense: cost of paying savers.
+
+**Income from interest** — income: what you charge on overdraft.
+
+**Overdraft portfolio** — asset: overdrawn principal outstanding.
+
+**Write-off** — expense when you give up collecting an overdraft.
+
+**Receivable** — asset: someone will pay you (fees, penalties, or overdraft
+interest).
+
+**Payable** — liability: you will pay or credit someone (interest payable to
+savers).
+
+**Escheat** — moving a long-dormant balance from savings control to
+unclaimed-property liability.
+
+**Payment channel** — an institution [payment type](/help/organization#payment-types)
+(cash, bank, mobile). Mapping it sends that channel to a chosen savings
+reference account.
+
+**Mapping** — an optional override so one payment type or one charge posts
+to a different GL than the product default.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| No GL accounts asked for | Accounting is **None**. Change the rule, or continue — mappings will be skipped. |
+| Picker empty | Create a **detail** account of that type (asset, liability, income, or expense). Headers never appear. |
+| Cannot find Savings Reference (`2120`) under Savings reference | That seeded account is a **liability**. Pick a cash or bank **asset** instead. |
+| Overdraft accounts required though overdraft is off | Cash and accrual always need them. Pick accounts and leave overdraft off on settings if you do not use it. |
+| Escheat account missing | Turn on dormancy on [settings](/help/products/savings/settings), or pick **Escheat liability** (`2150`). |
+| Accrual extras missing | Switch the rule to **Accrual (periodic)**. Interest receivable stays optional. |
+| No savings journals after posting interest | The product is on **None**, or [closures](/help/accounting/closures) block the date. |
+| Accruals screen did nothing for savings | That screen is for **loans**. Use **Post interest** on the savings account. |

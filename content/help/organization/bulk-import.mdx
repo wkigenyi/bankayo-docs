@@ -1,0 +1,69 @@
+---
+title: Bulk import
+description: Download Fineract Excel templates, fill them, and upload them for offices, clients, loans, and other entities.
+---
+
+Open an **Import …** type from Organization in the sidebar (or press
+**Ctrl+K** and type "import" plus the entity). You need the matching
+**READ_*** permission for that entity (for example **READ_CLIENT** for
+clients, **READ_LOAN** for loans). Upload needs the matching create or
+transaction permission.
+
+This is the organisation-wide Fineract workbook importer
+(`GET {entity}/downloadtemplate`, `POST {entity}/uploadtemplate`,
+`GET /imports`). It is not the [journal preview importer](/help/accounting/journal-import)
+under Accounting, not the [savings deposit importer](/help/savings/import)
+or [share purchase importer](/help/shares/import) under Institution, and not
+the Excel shortcut on the groups list — those stay as shortcuts. Journals,
+savings deposits, and share purchases are never imported from these screens.
+
+## Types
+
+Each type is a first-class Organization screen:
+
+- [Offices](/organization/bulk-import/offices)
+- [Users](/organization/bulk-import/users)
+- [Groups](/organization/bulk-import/groups)
+- [Centers](/organization/bulk-import/centers)
+- [Clients](/organization/bulk-import/clients)
+- [Employees](/organization/bulk-import/employees)
+- [Guarantors](/organization/bulk-import/guarantors)
+- [Loans](/organization/bulk-import/loans)
+- [Fixed deposits](/organization/bulk-import/fixed-deposits)
+- [Recurring deposits](/organization/bulk-import/recurring-deposits)
+- [Chart of accounts](/organization/bulk-import/chart-of-accounts)
+- [Loan repayments](/organization/bulk-import/loan-repayments)
+- [Savings transactions](/organization/bulk-import/savings-transactions)
+- [Fixed deposit transactions](/organization/bulk-import/fixed-deposit-transactions)
+- [Recurring deposit transactions](/organization/bulk-import/recurring-deposit-transactions)
+
+[Import journal entries](/accounting/journal-entries/import) stays under
+Accounting. It previews rows and posts them one at a time — it does not use
+Fineract’s journal workbook (`gljournalentries`).
+
+[Import savings](/savings/import) stays under Institution. It previews rows
+and posts deposits one at a time — it does not use Fineract’s savings-account
+workbook (`savingsaccount`). Fineract savings-transaction workbooks remain
+on this hub.
+
+[Import shares](/shares/import) stays under Institution. It previews rows
+and posts share purchases one at a time — it does not use Fineract’s
+share-account workbook (`shareaccounts`).
+
+## What you can do
+
+Open an entity. **Download template** returns an Excel workbook with the
+columns Fineract expects. Office, staff, and client type (person or entity)
+filter the lookup sheets when that entity offers them.
+
+**Upload** a completed `.xls` or `.xlsx` file (up to 10 MB). Fineract
+processes the workbook in the background. **Previous imports** lists each
+upload: started, finished, status, and row counts. **Output** downloads
+the result workbook with row-level errors (`GET /imports/downloadOutputTemplate`).
+
+Client person vs entity is taken from the type picker, or from the file
+name if you do not pick one. Guarantor templates use Fineract’s dummy loan
+path (`/loans/1/guarantors`); the path loan id is ignored for the workbook.
+
+Sending still needs a completed template that matches Fineract’s columns.
+Wrong columns fail in the output file, not in Bankayo validation.

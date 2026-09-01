@@ -1,0 +1,44 @@
+---
+title: Roles
+description: Named permission sets you assign to users.
+---
+
+Open **Roles** from **Admin** (or press **Ctrl+K** and type "roles"). You need
+permission to view the list, create permission to add a role, update
+permission to rename one, and delete permission to remove one. Granting
+permissions on a role is a separate permission.
+
+A role is a **named set of permissions**. You assign roles on
+[Users](/help/users). Changing a role’s permissions changes what every login
+with that role can do.
+
+Maker-checker flags (which actions need a checker) are **not per role**.
+They are set for the whole institution on
+[Maker-checker](/help/system/maker-checker). Commands that already require
+a checker show a **Needs checker** badge on this page.
+
+## The list
+
+- **Search** by name or description.
+- **Sort** by clicking a column heading.
+- **Export** downloads the catalog as CSV or Excel.
+- **New role** opens a docked sidebar. Name (up to 100 characters) and
+  description (up to 500) are required. After save you land on that role’s
+  permissions page.
+- **Click a row** to open permissions for that role.
+- The row menu **Edit** changes name and description. **Disable** hides the
+  role from new assignments; **Enable** brings it back. Disable and delete
+  are refused if any user still has the role.
+
+The address bar is **Admin › Roles**.
+
+## Permissions on a role
+
+The role page lists every permission, grouped (for example authorisation,
+portfolio, accounting). Search by the everyday name or the permission code.
+
+Tick a permission to grant it, or use the group checkbox to grant or clear
+the whole group. **Save permissions** writes only what changed.
+
+If the role is disabled, enable it before changing permissions. If **Save
+permissions** is missing, you do not have permission to change grants.

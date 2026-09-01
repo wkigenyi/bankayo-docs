@@ -1,0 +1,82 @@
+---
+title: Accounting
+description: Chart of accounts, journal entries, import, frequent postings, migrate opening balances, accounting rules, financial activity mappings, closures, accruals, loan-loss provisioning, and provisioning entries.
+---
+
+Open **Accounting** in the sidebar (a navigation group, not a page) or press
+**Ctrl+K** and type "accounting". You need GL-account, journal-viewing,
+journal-create, rule-viewing, financial-activity-mapping, closure-viewing,
+accrual-running, or provisioning permission — if the group is missing, ask your
+administrator.
+
+Accounting lists the ledger tools you can use. Open a screen from the group
+(or press **Ctrl+K** and type its name).
+
+## Chart of accounts
+
+[Chart of accounts](/help/accounting/chart-of-accounts) is the ledger
+[loan products](/help/products/loans/accounting),
+[savings products](/help/products/savings/accounting), and
+[charges](/help/products/charges) pick when they post to the books. Open it
+from this group (or press **Ctrl+K** and type "chart of accounts" or "GL").
+Detail accounts appear on product pickers; headers group other accounts.
+
+## Journal entries
+
+[Journal entries](/help/accounting/journal-entries) is the ledger of debit
+and credit lines. Search by date, office, account, or transaction. Post a
+balanced manual journal — pick an [accounting rule](/help/accounting/accounting-rules)
+to fill the debit and credit accounts, or choose the accounts yourself — or
+reverse one. Loan movements, savings movements, and teller cash allocate or settle appear here
+when they post to the books.
+
+## Import journal entries
+
+[Import journal entries](/help/accounting/journal-import) bulk-posts balanced
+manual journals from an Excel file. Pick office, currency, and optional payment
+type on the form; each row supplies date, amount, debit GL code, and credit GL
+code.
+
+## Frequent postings
+
+[Frequent postings](/help/accounting/frequent-postings) posts a balanced
+journal from a saved accounting rule when you only need office, rule, amount,
+and date — the rule's debit and credit accounts are filled for you.
+
+## Migrate opening balances
+
+[Migrate opening balances](/help/accounting/migrate-opening-balances) posts a
+balanced journal of opening GL balances for an office — one row per account with
+either a debit or credit amount.
+
+## Accounting rules
+
+[Accounting rules](/help/accounting/accounting-rules) save a named debit and
+credit account pair for an office. Pick the rule on New journal when the same
+pair is posted often, or choose the accounts yourself.
+
+## Financial activity mappings
+
+[Financial activity mappings](/help/accounting/financial-activities) point
+each system financial event — vault, teller, transfers, fund source — at a
+detail GL account. Teller allocate/settle and similar postings use these
+accounts.
+
+## Closures
+
+[Closures](/help/accounting/closures) lock an office through a date. No
+journal can post or reverse on or before that date until you delete the
+latest closure.
+
+## Accruals
+
+[Accruals](/help/accounting/accruals) accrue loan income through a date
+before today. The journals appear under Journal entries.
+
+## Provisioning entries
+
+[Loan-loss provisioning](/help/accounting/loan-loss-provisioning) explains how
+criteria, loans, GL accounts, and journal entries fit together.
+[Provisioning entries](/help/accounting/provisioning-entries) calculate
+loan-loss reserves from your criteria. Create an entry for a date, then post
+the journals when you are ready. The journals appear under Journal entries.

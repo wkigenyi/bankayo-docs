@@ -1,0 +1,54 @@
+---
+title: System information
+description: Build, server, and signed-in session facts for this Bankayo and Fineract instance.
+---
+
+Open **System → System information** (or press **Ctrl+K** and type "system
+information"). Any signed-in staff member can open this screen — Fineract has
+no separate permission for it.
+
+This is a read-only fact list, not a catalog. Bankayo shows only values this
+stack actually exposes. It does not invent a license server, and it never
+prints secrets from the server environment (session key, session-store URL,
+passwords).
+
+The address bar is **System › System information**.
+
+## Build
+
+- **Bankayo** is this app's version from `package.json`. It is labeled as the
+  Bankayo app, not as a Fineract version.
+- **Apache Fineract** comes from Fineract's Spring Boot `GET /actuator/info`
+  (`git.build.version`, commit, branch). Some Docker images omit git metadata —
+  those rows then show a dash.
+
+## Server
+
+- **Tenant** is the `Fineract-Platform-TenantId` header this app sends (the
+  configured tenant id).
+- **Server** is the origin of the configured Fineract base URL (scheme, host,
+  and port). The API path and credentials are not shown.
+- **Server status** is `GET /actuator/health` (up or down).
+
+## Signed-in staff
+
+Username, name, office, and roles come from the Fineract authentication payload
+stored in the server session — the same facts as the dashboard.
+
+**Business date** appears only when the `enable-business-date` configuration is
+on, a date has been set, and your role can read it (`READ_BUSINESS_DATE`, or
+`ALL_FUNCTIONS`). If the feature is off, the date was never set, or the call is
+refused, the row is omitted.
+
+**Rendered at** is the moment this page was built.
+
+## License
+
+Apache Fineract does not expose a license or entitlement API. This screen does
+not check a license server. There is no license document to display from the
+API.
+
+## What this is not
+
+- It is not a substitute for [Roles](/help/roles) permission grants.
+- It does not list environment secrets or upstream passwords.

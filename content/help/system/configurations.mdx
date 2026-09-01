@@ -1,0 +1,38 @@
+---
+title: Configurations
+description: Global enable/disable flags and institution-wide settings in Fineract.
+---
+
+Open **System → Configurations** (or **Ctrl+K** and type
+"configurations"). You need **READ_CONFIGURATION** to view the list and
+**UPDATE_CONFIGURATION** to change values.
+
+## What you can do
+
+- **Filter** by configuration name or enabled state.
+- **Toggle** the switch on a row to enable or disable a flag immediately.
+- **Edit** a row to change numeric, text, or date values in the sidebar.
+- Switch to the **Business dates** tab to view or set the logical business date (when
+  `enable-business-date` is on).
+- **Ctrl+K** (or sidebar screen search): type **business date** to jump straight to
+  that tab; on this page, **On this record** lists both tabs.
+- **Export** the full list as CSV or Excel.
+
+## Business dates
+
+Use the **Business dates** tab on the same screen as global configurations. When
+**enable-business-date** is off, the tab stays available with disabled controls and
+a hint to enable the flag on the **Configurations** tab. When it is on, the tab
+loads the current business and COB dates and **Set business date** opens the edit
+sidebar.
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, configuration updates may queue
+for approval in the [Checker Inbox](/checker-inbox-and-tasks) instead of
+applying immediately.
+
+## Locked settings
+
+Some configurations show as locked after accounts exist on the tenant
+(`trapDoor` in Fineract). Those cannot be changed from this screen.

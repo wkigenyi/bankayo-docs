@@ -1,0 +1,91 @@
+---
+title: Savings products
+description: Browse, open, and edit savings products. Create uses an eight-step wizard.
+---
+
+Open **Products → Savings** (or press **Ctrl+K** and type "savings
+products"). You need permission to view savings products — if the menu item is
+missing, ask your administrator.
+
+A savings product is the template for every savings account opened on it. It
+sets the currency, the advertised interest rate, how interest compounds and
+posts, optional opening and lock-in rules, overdraft and lien, tax and
+dormancy, attached charges, and — when books are kept in Bankayo — the
+general-ledger accounts those movements post to.
+
+When an officer [opens a savings account](/help/clients#opening-an-account),
+the docked sidebar starts from this product. **Required** is the product and
+dates; **Optional** can still change interest, balances, lock-in, overdraft,
+lien, tax, and charges for that one account.
+
+## The list
+
+Each row is a product: name, short name, currency, and accounting rule.
+
+- **Search** with the box above the table.
+- **New** starts the [create wizard](/help/products/savings/create) when your
+  role allows it.
+- **Open** a product by clicking its row.
+
+## Opening a product
+
+The product opens as a workspace with a section rail — the same pattern as a
+loan product.
+
+- **General**, **Terms**, and **Settings** are always there.
+- **Fees**, **Penalties**, **Accounting**, channel mappings, and fee/penalty
+  GL mappings appear only when the product has them.
+- Charge names link to the [charge](/help/products/charges).
+- Accounting lists GL accounts by type (assets, income, expenses, liabilities).
+  Create them under [Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+- On a phone the sections run across the top.
+
+**Edit** opens the same eight-step wizard used to create the product. Close
+returns here.
+
+## What a savings product does not have
+
+- **No start or close date.** Only [loan products](/help/products/loans/details)
+  have a product availability window.
+- **No upfront accrual.** Savings accounting is None, Cash, or Accrual
+  (periodic). Loan products also offer Accrual (upfront).
+- **No fund label.** Loan products can name an [organization fund](/help/organization/funds).
+  Savings products do not.
+- **No override checkboxes.** Loan products lock some terms unless you allow
+  overrides. On savings, the open-account sidebar always offers the product
+  defaults as optional changes for that account.
+
+## Wizard steps
+
+Create and edit walk the same steps. Each has its own help page. Two
+videos cover the wizard: [create](/help/products/savings/create) (None,
+unsaved) and
+[cash accounting](/help/products/savings/accounting) (Cash, saved as
+**Normal Savings With Accounting**).
+
+1. [Details](/help/products/savings/details) — name, short name, description.
+2. [Currency](/help/products/savings/currency) — code, decimal places,
+   multiples.
+3. [Terms](/help/products/savings/terms) — nominal annual rate, compounding,
+   posting, calculation, and days in year.
+4. [Settings](/help/products/savings/settings) — balances, lock-in, overdraft,
+   lien, tax, and dormancy.
+5. [Charges](/help/products/savings/charges) — fees and penalties in this
+   product’s currency.
+6. [Accounting](/help/products/savings/accounting) — None, cash, or accrual
+   periodic, every GL account that rule needs, and what the terms mean.
+7. [Mappings](/help/products/savings/mappings) — payment channels and charges
+   to GL accounts (when accounting is not None).
+8. [Review](/help/products/savings/review) — confirm every section, then
+   create or save.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No products yet" | Use **New** to create the first product. If that button is missing, your role cannot create savings products. |
+| "No matching products" | Clear or change the search. |
+| Product menu missing | Your role lacks savings-product viewing permission. |
+| Save rejected | The core banking system will refuse a product that is still used, or a field that does not match its rules. Read the message and fix the highlighted fields. |
+| GL picker empty | Create a **detail** account of the matching type under [Chart of accounts](/help/accounting/chart-of-accounts). Header accounts never appear here. |
+| Savings reference picker has no "Savings Reference" | That seeded name is a **liability**. The picker only lists **asset** (cash or bank) accounts. See [Accounting](/help/products/savings/accounting). |

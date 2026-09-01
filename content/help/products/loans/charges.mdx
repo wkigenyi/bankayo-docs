@@ -1,0 +1,45 @@
+---
+title: Loan product charges
+description: Attach fees and penalties in the product currency.
+---
+
+This is step 5 of the [create wizard](/help/products/loans/create). Define the
+templates first under [Charges](/help/products/charges) — collection time,
+calculation, payment mode, and penalty rules are on the charge, not here.
+After save, attached fees and penalties show as tables on the product when any
+exist. Charge names link to that catalog.
+
+## What you can attach
+
+The table lists charges that apply to loans **and** match this product’s
+[currency](/help/products/loans/currency). Each row keeps the details on
+three columns so you can scan without scrolling sideways:
+
+- **Charge** — name, fee or penalty, and (when inactive) that status. Secondary
+  text is when it is collected, how it is calculated, payment mode, and any
+  due day or frequency.
+- **Amount** — currency amount or percent, with min/max caps underneath when
+  they exist.
+- **Ledger** — income account, with the tax group underneath when one is set.
+
+Search and the **All / Fee / Penalty** tabs filter the list. Check a row (or
+click it) to attach that charge; uncheck to remove it from the product.
+Product charges become the starting set when an officer
+[opens a loan](/help/clients#opening-an-account) — they can still add or
+remove charges on that loan.
+
+If the list is empty, either no loan charges exist in this currency, or you
+have not chosen a currency yet. Create the charge first under
+[Charges](/help/products/charges), in the same currency as the product.
+
+## Fees versus penalties
+
+On the product workspace they split into **Fees** and **Penalties** sections.
+Overdue installment charges are penalties; disbursement and tranche charges
+cannot be.
+
+## After save
+
+You can change the attached set later with **Edit**. Accounting mappings for
+individual fees and penalties are configured on the
+[mappings](/help/products/loans/mappings) step when books are not None.

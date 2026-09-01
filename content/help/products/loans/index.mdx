@@ -1,0 +1,71 @@
+---
+title: Loan products
+description: Browse, open, and edit loan products. Create uses an eight-step wizard.
+---
+
+Open **Products → Loan products** (or press **Ctrl+K** and type "loan
+products"). You need permission to view loan products — if the menu item is
+missing, ask your administrator.
+
+## The list
+
+Each row is a product: name, short name, currency, and accounting rule.
+
+- **Search** with the box above the table.
+- **New** starts the [create wizard](/help/products/loans/create) when your
+  role allows it.
+- **Open** a product by clicking its row.
+
+## Opening a product
+
+The product opens as a workspace with a section rail — the same pattern as a
+client record.
+
+- **General**, **Terms**, and **Settings** are always there.
+- **Fees**, **Penalties**, **Accounting**, channel mappings, fee/penalty
+  GL mappings, and write-off or charge-off reason mappings appear only when
+  the product has them.
+- Charge names link to the [charge](/help/products/charges).
+- Accounting lists GL accounts by type (assets, income, expenses, liabilities).
+  Create them under [Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+- On a phone the sections run across the top.
+
+**Edit** opens the same eight-step wizard used to create the product. Close
+returns here.
+
+## What a loan product controls
+
+A loan product is the template for every loan opened on it: currency, principal
+and interest ranges, repayment pattern, optional features (multi-disburse,
+top-up, down payment, guarantees, interest recalculation), attached charges,
+and how the loan posts to the books.
+
+When a loan officer [opens a loan](/help/clients#opening-an-account), Bankayo
+fills those defaults. Fields the product marks as overridable can still be
+changed on that loan; the rest stay locked.
+
+## Wizard steps
+
+Create and edit walk the same steps. Each has its own help page. Two
+videos cover the wizard: [create](/help/products/loans/create) (None,
+unsaved) and
+[cash accounting](/help/products/loans/accounting) (Cash, saved as
+**Normal Loan With Accounting**).
+
+1. [Details](/help/products/loans/details)
+2. [Currency](/help/products/loans/currency)
+3. [Terms](/help/products/loans/terms)
+4. [Settings](/help/products/loans/settings)
+5. [Charges](/help/products/loans/charges)
+6. [Accounting](/help/products/loans/accounting)
+7. [Mappings](/help/products/loans/mappings)
+8. [Review](/help/products/loans/review)
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No products yet" | Use **New** to create the first product. If that button is missing, your role cannot create loan products. |
+| "No matching products" | Clear or change the search. |
+| Product menu missing | Your role lacks loan-product viewing permission. |
+| Save rejected | Fineract will refuse a product that is still used, or a field that does not match its rules. Read the message and fix the highlighted fields. |

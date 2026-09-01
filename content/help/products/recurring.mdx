@@ -1,0 +1,49 @@
+---
+title: Recurring deposit products
+description: Term, amount, interest chart, mandatory deposits, and withdrawals.
+---
+
+Open **Products → Recurring deposits**. **New** and **Edit** use the
+same wizard. Open a product for a sectioned workspace (general, terms,
+settings, interest chart, charges, and accounting when the rule is not
+None). Terms show the length and unit together — for example **3 months**.
+
+Like [fixed deposits](/help/products/fixed): term, deposit amount range,
+interest settings, lock-in, premature-closure penalty, tax, optional
+charges, and one interest chart with consecutive rate tiers. Recurring
+products can also require a mandatory deposit, allow withdrawals, apply
+advances to future installments, and set a minimum balance for interest
+(that last field is accepted only on recurring products).
+
+Chart dates belong to the rate schedule. Recurring products have no product
+start or close date.
+
+Amounts show the currency **code**. Required fields are marked with an
+asterisk (*).
+
+When an officer [opens a recurring deposit](/help/clients#opening-an-account),
+the docked sidebar starts from this product. **Required** is the product,
+dates, recommended installment, term, and collection frequency; **Optional**
+can still change interest, lock-in, mandatory/withdrawal flags, tax, and
+charges for that one account. Maturity instruction is stored on the account
+— if it is left unset, the officer chooses it when closing.
+
+## Wizard steps
+
+1. **Details** — name, short name, description.
+2. **Currency** — code, decimal places, multiples.
+3. **Terms** — default deposit amount, optional min/max amount, minimum
+   and maximum term, optional term multiples, compounding, posting, and
+   calculation. Compounding cannot be longer than posting.
+4. **Settings** — lock-in, premature-closure penalty, tax, whether deposits
+   are mandatory, whether withdrawals are allowed, and whether advances
+   apply to future installments.
+5. **Interest chart** — same consecutive-tier rules as fixed deposits,
+   including optional amount grouping.
+6. **Charges** — optional savings charges in this currency.
+7. **Accounting** — None, cash, or accrual periodic, and the GL accounts
+   that rule needs. See [Fixed deposit products](/help/products/fixed) for
+   the exact account list.
+8. **Mappings** — optional payment-channel and charge-to-income mappings
+   when accounting is not None.
+9. **Review** — confirm every section, then create or save.

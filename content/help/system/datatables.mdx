@@ -1,0 +1,45 @@
+---
+title: Manage data tables
+description: Define extra fields on clients, groups, loans, and other records.
+---
+
+Open **System → Manage data tables** (or **Ctrl+K** and type "data table").
+You need **READ_DATATABLE** (or create/update/delete) to open the list.
+**CREATE_DATATABLE**, **UPDATE_DATATABLE**, and **DELETE_DATATABLE** control
+the buttons. Superusers with **ALL_FUNCTIONS** see everything.
+
+This screen **defines** extra-data tables. Filling values on a client, group,
+or center is the Extra data tab on that record — not this page. Requiring a
+table at a lifecycle status is
+[Organization → Entity data-table checks](/help/organization/entity-data-table-checks).
+
+## What you can do
+
+- **Browse** registered tables by name, entity, and one-row vs several-rows.
+- **Create** a table in three steps: table (name, entity, optional subtype,
+  one row vs several), columns, then review. Open **New data table**. On the
+  columns step, **Add column** (or a row) opens a docked side panel for that
+  field.
+- **Edit** uses the same wizard. You can add, rename, or drop columns and
+  change the entity. The table name and one-vs-several-rows setting cannot
+  change after create.
+- **Delete** a table from the row menu. Stored extra-data rows go with it.
+- **Export** the list as CSV or Excel.
+
+## Entities and column types
+
+Entity membership is every Fineract `EntityTables` name (client, group,
+center, office, loan, loan product, savings, savings product, savings
+transaction, share product, and working-capital loan / product). Bankayo
+labels those ids; it does not hide ones Fineract still accepts.
+
+Column types follow Fineract: short text, whole number, yes/no, decimal,
+date, date and time, long text, JSON, and dropdown. Short text needs a
+length. Dropdown needs a code from **System → Codes**. A client table needs
+a subtype (Person or Organisation).
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, data-table changes may queue
+for approval in the [Checker Inbox](/checker-inbox-and-tasks) instead of
+applying immediately.

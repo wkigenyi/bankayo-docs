@@ -1,0 +1,29 @@
+{
+    "pages": [
+    "index",
+    "signing-in",
+    "navigation",
+    "users",
+    "roles",
+    "templates",
+    "clients",
+    "groups",
+    "centers",
+    "collection-sheet",
+    "individual-collection-sheet",
+    "account-transfers",
+    "standing-instructions",
+    "credit-bureau",
+    "loans",
+    "savings",
+    "fixed",
+    "recurring",
+    "shares",
+    "products",
+    "organization",
+    "accounting",
+    "reports",
+    "system",
+    "whats-new"
+  ]
+}

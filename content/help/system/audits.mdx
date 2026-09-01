@@ -1,0 +1,25 @@
+---
+title: Audit trails
+description: Read-only history of commands that ran on the tenant — who made them, who checked them, and the payload.
+---
+
+Open **System → Audit trails** (or **Ctrl+K** and type "audit"). You need
+**READ_AUDIT** to view the list and export.
+
+This screen is **read-only**. It shows commands that have already been processed
+(approved, rejected, or applied without maker-checker). Pending work still lives in
+the [Checker Inbox](/checker-inbox-and-tasks).
+
+## What you can do
+
+- **Filter** by maker date range, maker, checker, action, entity, status, and
+  resource, client, loan, or savings account IDs.
+- **Open a row** to inspect the formatted command JSON in the detail sidebar.
+- **Export** the filtered set as CSV or Excel.
+
+## Distinction from Checker Inbox
+
+| Screen | Purpose |
+| --- | --- |
+| Checker Inbox | Pending approvals — approve, reject, or delete |
+| Audit trails | Historical log — browse and export only |

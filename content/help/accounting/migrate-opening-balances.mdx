@@ -1,0 +1,28 @@
+---
+title: Migrate opening balances
+description: Post a balanced journal of opening GL balances for an office.
+---
+
+Open **Migrate opening balances** from **Accounting** (or press **Ctrl+K** and
+type "opening balance" or "migrate balances"). You need journal-create
+permission to post.
+
+Enter one row per GL account with either a **debit** or **credit** amount.
+Total debits must equal total credits. The journal posts on the transaction
+date you pick for the office and currency on the form.
+
+## Before you post
+
+- Map **Opening balances transfer contra** under
+  [Financial activity mappings](/help/accounting/financial-activities) if your
+  chart uses that system account for the contra side.
+- GL accounts must be **detail** accounts on the
+  [chart of accounts](/help/accounting/chart-of-accounts) that allow manual
+  journal entries.
+- Enable a currency under [Currencies](/help/organization#currencies) if the
+  currency picker is empty.
+
+After a successful post you land on [Journal entries](/help/accounting/journal-entries)
+with the new transaction open.
+
+The address bar is **Accounting › Migrate opening balances**.

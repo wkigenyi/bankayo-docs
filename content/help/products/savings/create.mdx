@@ -1,0 +1,69 @@
+---
+title: Create a savings product
+description: The eight-step wizard for creating or editing a savings product.
+---
+
+**New** on the [savings products list](/help/products/savings) opens this
+wizard. **Edit** on a product uses the same steps and returns to that product
+when you close.
+
+On a large screen, steps stay in a left rail. **Previous** and **Next** sit at
+the bottom of the page. On a tablet or phone the steps run across the top.
+Required fields are marked with an asterisk (*). Amounts show the currency
+**code**, not a symbol.
+
+You can jump back to an earlier step without losing what you typed. Bankayo
+only asks for extra fields when you turn a feature on — for example overdraft
+limits after you allow overdraft, a tax group after withhold tax, three
+dormancy day counts after you track dormancy, GL accounts after you leave
+accounting on None.
+
+The video on this page walks the wizard and stops on **None** without
+saving. A second walkthrough,
+[savings product with cash accounting](/help/products/savings/accounting),
+creates **Normal Savings With Accounting**, sets **Cash**, maps a payment
+channel, and saves.
+
+## The eight steps
+
+1. [Details](/help/products/savings/details) — name, short name, description.
+2. [Currency](/help/products/savings/currency) — code, decimal places,
+   multiples. Amounts stay disabled until a currency is chosen.
+3. [Terms](/help/products/savings/terms) — nominal annual rate, compounding,
+   posting, calculation, and days in year.
+4. [Settings](/help/products/savings/settings) — balances, lock-in, overdraft,
+   lien, tax, and dormancy.
+5. [Charges](/help/products/savings/charges) — fees and penalties in this
+   product’s currency.
+6. [Accounting](/help/products/savings/accounting) — None, cash, or accrual
+   periodic, and the GL accounts that rule requires.
+7. [Mappings](/help/products/savings/mappings) — payment channels and charges
+   to GL accounts (when accounting is not None).
+8. [Review](/help/products/savings/review) — confirm every section, then
+   create or save.
+
+## Rules that span steps
+
+The core banking system will reject combinations that do not work together.
+Bankayo blocks the common ones in the form:
+
+- A **lock-in period** needs both a length and a unit (days, weeks, months,
+  or years).
+- An **annual fee** on settings needs both an amount and a due day.
+- **Withhold tax** needs a [tax group](/help/organization#tax-groups).
+- **Dormancy** needs three increasing day counts (inactive, then dormant,
+  then escheat).
+- If **lien** and **overdraft** are both on, both limits are required and the
+  overdraft limit cannot be greater than the lien limit.
+- **Cash or accrual** accounting needs the matching GL accounts; **None**
+  does not. Savings accounting has no upfront accrual option. Overdraft GL
+  accounts are required on cash and accrual even if the product does not
+  allow overdraft. Tracking dormancy with books on also needs an escheat
+  liability account.
+
+If save still fails, the message comes from the core banking system — fix
+the highlighted fields and try again.
+
+Creating needs savings-product create permission; editing needs update
+permission. Viewing a product you cannot edit still opens the definition
+without **Edit**.

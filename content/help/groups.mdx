@@ -1,0 +1,227 @@
+---
+title: Groups
+description: Browse, create, and manage client groups.
+---
+
+Open **Institution → Groups** in the sidebar (or press **Ctrl+K** and type "groups").
+You need group-viewing permission — if the menu item is missing, ask your administrator.
+
+## The group list
+
+Groups appear in a table showing name, account number, office, status, and staff.
+
+- **Search** by name with the box above the table — results update as you type.
+- **Office**, **staff**, and **external ID** narrow the list further.
+- **Sort** by clicking the Name or Office column headers.
+- **Pages** — use the controls under the table; you can show 10, 25, 50, or 100 rows.
+- **Open a group** by clicking anywhere on its row.
+- The address bar always reflects your current view — **bookmark or share the URL** and
+  it reopens exactly this filtered, sorted page.
+
+## Exporting
+
+The **Export** button downloads the *entire* filtered list (not just the visible page)
+as a CSV or Excel file. Searching or filtering first narrows what's exported. Exports
+are recorded for auditing.
+
+## Importing
+
+**Import** downloads an Excel template you fill in, then uploads that workbook to
+create groups in bulk. You need group-creation permission to upload. Download is
+available to anyone who can view the list.
+
+## Creating a group
+
+Press **New group** at the top of the group list (you need group-creation permission
+to see it). One form collects:
+
+- **Name** and **office** — required. Members, staff, and an optional center must
+  belong to this office.
+- **Staff** — optional. The list is limited to employees at the selected office.
+- **Center** — optional. Search for a [center](/help/centers) in the same office if
+  this group sits in a village-style center. You only see this field if you can
+  view centers.
+- **External ID** — optional reference from another system.
+- **Submitted on** — the registration date; it cannot be in the future.
+- **Activate now** — active groups can be used right away. If you leave this off,
+  the group stays pending until you activate it from **Actions**. Activating
+  now also needs an activation date (not in the future).
+- **Members** — optional. Search for clients and add them before you save.
+
+Required fields are marked with an asterisk (*). After you save, you land on the
+new group's page.
+
+## Group details
+
+Open a group from the list. The page keeps the name, account number, status,
+office, and staff at the top, then splits into sections:
+
+- **Overview** — office, staff, external ID, and important dates (submitted,
+  activated, closed) plus who recorded them when that is on file. If the group
+  belongs to a [center](/help/centers), that name links to the center.
+- **Members** — clients in the group. Click a name to open that client when you
+  can view clients.
+- **Group loans** — loans on the group itself, plus linked member loans under
+  one group loan.
+- **Member loans** — loans opened for members of this group.
+- **Group savings** — savings on the group itself, plus linked member savings
+  under one group savings account.
+- **Member savings** — savings opened for members of this group.
+- **Meetings** — the collection meeting used for the collection sheet.
+- **Collection sheet** — attendance, repayments, and disbursements for a meeting
+  date.
+- **Notes** and **Documents** — staff notes and files attached to the group.
+- **Extra data** — custom fields your institution attached to groups. This
+  section appears only when at least one extra table is available to you.
+  Sections you don't have permission to see never appear in the menu.
+
+On a wide screen the sections sit in a left-hand list. On a tablet they become a
+row of tabs.
+
+## Members
+
+Members must belong to the **same office** as the group. **Add members** searches
+for clients and adds them in a docked sidebar. Remove a member from the row —
+their own accounts are not deleted.
+
+From a member's row menu you can:
+
+- **Assign or change a role** — pick a group role (for example chair or secretary)
+  in a docked sidebar. Removing a role does not remove the member.
+- **Transfer to another group** — move the member to a group in the same office.
+  You can keep the destination group's officer on their accounts and move open
+  group loans with them.
+
+You can add or remove members while the group is pending or active. Closed
+groups keep their member list but you cannot change it here.
+
+## Group loans
+
+Loans opened on the group itself. Turn on **Show closed** to include closed
+accounts. **Open a group loan** opens the same full-page application wizard as
+a client loan (product, optional external ID, terms, charges, schedule, review), without collateral
+or guarantors — those need a client. The header shows this group's name on every
+step. The first step defaults the officer to the group's staff when they are in
+the list, and can attach the collection meeting so repayments follow meeting
+dates. You can also link group savings when a group savings account exists. The
+group must be active. Close (X) in the top bar returns you to this list;
+**Back** and **Continue** sit at the bottom. After you submit, you land on that
+loan. The loan header names this group and links back here.
+
+## Linked member loans
+
+**Open linked member loans** opens a full-page wizard: choose a product and
+terms, then tick members and enter each principal. The header shows this group's
+name. If the product sets a minimum or maximum principal or interest rate, that
+range appears under those fields. That creates one loan per selected member, tied
+together as a group loan. The group must be active and have members. After you
+submit, you return to Group loans. Linked child loans open on the loan workspace.
+
+## Member loans
+
+Loans opened for members of this group. Turn on **Show closed** to include
+closed accounts.
+
+To open a **joint-liability loan** for a member, pick that client at the bottom
+of the page. You land on that client's open-account wizard with the group
+already linked. The header shows that client's name — the loan is on the member,
+not the group. The group must be active.
+
+## Group savings
+
+Savings opened on the group itself. **Open group savings** opens a docked
+sidebar (required product and date, optional product overrides) — the group
+must be active. Cancel closes the sidebar. After you submit, you open that
+account’s [savings workspace](/help/savings). Click a row to open the same
+workspace.
+
+## Linked member savings
+
+**Open linked member savings** opens a full-page wizard: choose a product and
+date, then tick members. The header shows this group's name. That creates linked
+savings for those members under one group savings account. After you submit, you
+return to Group savings. Linked child accounts open the
+[savings workspace](/help/savings).
+
+## Member savings
+
+Savings opened for members of this group. Open savings for a member the same
+way as a joint-liability loan: pick the client at the bottom of the page. That
+opens the savings sidebar on that client. Existing member savings open the
+[savings workspace](/help/savings).
+
+## Meetings
+
+A collection meeting is the repeating calendar this group uses for collection
+sheets. **Add meeting** collects a short title, start date, and optional
+repeat rule (weekly needs a weekday; monthly needs which week of the month).
+The meeting type is always a collection meeting.
+
+If this group belongs to a center that already has a collection meeting, that
+calendar is **inherited** and read-only here. Change it on the center instead.
+
+Delete a meeting you created on the group when you no longer need it. You
+cannot generate a collection sheet until another collection meeting exists.
+
+## Collection sheet
+
+The sheet table is empty until you generate. **Generate** opens a sidebar
+for the meeting date (usually the next eligible date). Submit to load
+clients, attendance, and amounts. Mark attendance, enter repayment amounts,
+and enter disbursements when a loan is ready to disburse. **Save collection
+sheet** on the results toolbar posts those amounts. You need permission to
+save the sheet.
+
+If there is no collection meeting yet, add one from **Meetings** first.
+The institution-wide [collection sheet](/help/collection-sheet) finds every
+center meeting that day. Individual (non-JLG) loans use the
+[individual collection sheet](/help/individual-collection-sheet).
+
+## Notes
+
+Staff notes on this group. Add, edit, or delete a note from this section.
+Notes are visible to staff who can view group notes.
+
+## Documents
+
+Files attached to this group. Upload a file with a name (and optional
+description), download it from the row, or delete it. A new upload needs a
+file; editing can keep the existing one. Files can be at most 10 MB.
+
+## Extra data
+
+Custom fields your institution attached to groups. Each table is listed
+separately. Add or edit in a docked sidebar; delete asks you to confirm. A
+table that allows more than one row lets you add another. Required fields are
+marked with an asterisk (*). This section is hidden when no extra tables are
+available to you.
+
+## Editing and status
+
+**Edit** changes the name or external ID in a docked sidebar. The office cannot
+be changed after create. Assign or unassign staff from **Actions**, not Edit.
+
+**Actions** depend on status and your permissions. Commands that need a date or
+other details open a docked sidebar; delete and unassign staff ask you to confirm.
+
+- **Pending** — edit, activate, assign or unassign staff, or delete when the
+  group has no members. Activation can be refused if there are too few or too
+  many members — the message explains why.
+- **Active** — edit, close (date and reason), assign or unassign staff.
+- **Closed** — the group is read-only here.
+
+If a command is not allowed, the reason from the core banking system is shown.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No groups yet" or "No matching groups" | Create a group, or clear the search and filters. |
+| "Couldn't load groups" | Press Retry; if it persists, the core banking system may be unreachable — tell your administrator. |
+| Groups menu missing | Your role lacks group-viewing permission. |
+| Activation refused | Check the member count and the message; then try again. |
+| Member add refused | The client must belong to the same office as the group. |
+| Center search empty | The center must belong to the same office, and you need center-viewing permission. |
+| Collection sheet empty | Add a collection meeting first, then generate for a meeting date. |
+| Inherited meeting | The calendar comes from the group's center — change it there. |
+| Extra data section missing | No extra tables are registered for groups, or your role cannot view them. |

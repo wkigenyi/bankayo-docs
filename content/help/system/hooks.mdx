@@ -1,0 +1,48 @@
+---
+title: Hooks
+description: Send Fineract events to a URL or SMS gateway.
+---
+
+Open **System → Hooks** (or **Ctrl+K** and type "hooks"). You need
+**READ_HOOK** to view the list and **CREATE_HOOK**, **UPDATE_HOOK**, or
+**DELETE_HOOK** to change it.
+
+A hook fires when a chosen command runs — for example after a loan is
+approved. Fineract posts the event to the URL or SMS settings on the hook.
+
+## What you can do
+
+- **Browse** hooks by name, template, and active flag.
+- **Create** a hook in four steps: details (template, name, active), config,
+  events, then review. Open **New hook**. On the events step, **Add event**
+  (or a row) opens a docked side panel for grouping, entity, and action.
+- **Edit** uses the same wizard. You can change the name, active flag, config,
+  and events. The template cannot change after create.
+- **Delete** a hook from the row menu.
+- **Export** the list as CSV or Excel.
+
+## Templates
+
+Membership comes from `GET /hooks/template` — typically **Web**, **SMS Bridge**,
+**Elastic Search**, and **Message Gateway**. Config fields (payload URL, content
+type, SMS provider, and so on) come from that template's schema, not a fixed
+Bankayo list.
+
+Web is the only template that can have more than one hook. The others may exist
+once.
+
+Content type on Web and Elastic Search must be `json` or `form`. Fineract
+checks that a payload URL responds when you create the hook.
+
+## Events
+
+Each event is an entity plus an action from the template groupings (Fineract
+permissions that are not READ or CHECKER). Add as many as you need; at least
+one is required. Duplicate entity/action pairs are not saved. Events are
+edited in the side panel on the events step.
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, hook changes may queue for
+approval in the [Checker Inbox](/checker-inbox-and-tasks) instead of applying
+immediately.

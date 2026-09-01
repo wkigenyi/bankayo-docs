@@ -1,0 +1,40 @@
+---
+title: Credit bureau
+description: Map a seeded bureau to this institution, attach loan products, and store connection keys.
+---
+
+Open **Credit bureau** in Institution (or press **Ctrl+K** and type
+"credit bureau"). You need **READ_CREDITBUREAU** or one of the credit-bureau
+create/update permissions. Superuser roles with **ALL_FUNCTIONS** can always
+open it.
+
+This is Fineract's **configuration** for a credit bureau. It is not a client
+credit profile and not the Mifos **CB-ILD** plugin (that talks to a separate
+server). Fetching or storing a report uses `/creditBureauIntegration` and a
+live bureau — Bankayo does not fake that product here.
+
+## Organisation
+
+The first tab lists organisation mappings. Fineract ships a small catalog
+(today **ThitsaWorks** for Myanmar). **Add bureau** picks one of those, sets
+an alias (at most 100 characters), and whether it is active. After create,
+Fineract can only turn the mapping on or off — click a row to change
+**Active**.
+
+## Loan products
+
+Map a loan product to an organisation bureau. Products come from
+`GET /CreditBureauConfiguration/loanProduct`. Create collects whether a
+credit check is mandatory, whether to skip the check if the bureau is
+unreachable, and a **stale period** in days (greater than zero). Edit can
+only change **Active**.
+
+## Configuration
+
+Keys the integration reads (Username, Password, token URL, and similar).
+Key, value, and description are each required and at most 100 characters.
+Edit cannot change the key.
+
+**Export** on each tab downloads CSV or Excel.
+
+The address bar is **Credit bureau**.

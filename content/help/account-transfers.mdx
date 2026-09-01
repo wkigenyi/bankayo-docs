@@ -1,0 +1,35 @@
+---
+title: Account transfers
+description: Move money between savings accounts, or repay a loan from savings.
+---
+
+Open **Account transfers** in Institution (or press **Ctrl+K** and type
+"account transfer"). You need **READ_ACCOUNTTRANSFER** to see the list and
+**CREATE_ACCOUNTTRANSFER** to post a transfer. Reverse a posted transfer with
+**UNDO_ACCOUNTTRANSFER**.
+
+This is the institution-wide transfer catalog. It is not the
+**Repay from savings** action on a [loan](/help/loans) workspace, and not the
+inward or outward transfer rows on a [savings](/help/savings) account.
+
+## What you can do
+
+The list shows posted transfers. **Export** downloads the page as CSV or
+Excel. **New transfer** opens a four-step wizard: from account, to account,
+details, review.
+
+Pick the **from** client first. Fineract fills the office from that client
+(the transfer template cannot start from office alone). Then pick account
+type (savings or loan) and the account. The **to** side works the same way.
+Amount must be greater than zero. Description is required and at most 200
+characters. Dates on screen are ISO `yyyy-MM-dd`; the banking service
+receives them in locale `en`.
+
+Open a row to see both sides. **Undo transfer** reverses the posting on both
+accounts when you have undo permission.
+
+## Standing instructions
+
+Recurring transfers use [Standing instructions](/help/standing-instructions).
+Run history lives under
+[Organization → Standing instruction history](/help/organization/standing-instructions-history).

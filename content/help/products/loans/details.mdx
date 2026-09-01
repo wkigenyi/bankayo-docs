@@ -1,0 +1,52 @@
+---
+title: Loan product details
+description: Name, short name, optional dates, fund, and borrower cycle.
+---
+
+This is step 1 of the [create wizard](/help/products/loans/create). After
+save, the same fields appear under **General** on the product.
+
+## Identity
+
+- **Name** — up to 100 characters. This is what officers see when they open a
+  loan.
+- **Short name** — at most **four** characters. Fineract uses it as a compact
+  code; keep it unique enough to recognise on lists.
+- **Description** — optional, up to 500 characters.
+- **External ID** — optional reference from another system, up to 100
+  characters.
+- **Fund** — optional. This is the donor, programme, or internal pool this
+  product belongs to — a label, not a ledger account. The list comes from
+  [Organization → Funds](/help/organization/funds). The field is hidden until
+  at least one fund exists. After save it appears under **General** on the
+  product. Officers still pick a fund when they
+  [open a loan](/help/clients#opening-an-account); Bankayo copies this
+  value onto the application as the default. Leave it blank if the product
+  is not tied to one source of capital (**No fund**). The
+  [cash-accounting walkthrough](/help/products/loans/accounting) sets
+  **Internal**. Do not confuse this with **fund source** on
+  [accounting](/help/products/loans/accounting), which is a GL cash or bank
+  account.
+
+## When the product may be used
+
+**Start date** and **close date** are optional. They are the product
+availability window — the only product type in Bankayo that has one.
+
+- Leave both blank if the product should stay available.
+- If you set both, close date cannot be before start date.
+- Savings, share, charge, and deposit products have no equivalent dates.
+
+## Borrower cycle
+
+- **Include in borrower cycle** — count loans on this product toward the
+  client’s cycle number.
+- **Use borrower cycle** — vary principal, interest rate, or number of
+  repayments by how many loans the client has already taken.
+
+When **Use borrower cycle** is on, you add rows for principal, interest, and
+repayments. Each row is a cycle number with a condition (equal to, or
+greater than), a default value, and optional min/max. Rows must run in
+sequence — Fineract rejects a gap or an out-of-order condition.
+
+Turn the toggle off and the variation tables are cleared.

@@ -1,0 +1,38 @@
+---
+title: Products mix
+description: Loan products that cannot be active together on the same client or group.
+---
+
+Open **Products → Products mix** (or press **Ctrl+K** and type "product mix").
+You need **READ_PRODUCTMIX**. Create, update, and delete need the matching
+`*_PRODUCTMIX` permission. Listing also uses `GET /loanproducts`, which
+needs **READ_LOANPRODUCT**.
+
+This is Fineract `GET /loanproducts?associations=productMixes`,
+`GET /loanproducts/template?isProductMixTemplate=true`, and
+`GET/POST/PUT/DELETE /loanproducts/{id}/productmix`.
+
+This is **not** the [loan product](/help/products/loans) catalog. A mix
+only records which other loan products Fineract will not let coexist
+with this one. When an officer [opens a loan](/help/clients#opening-an-account),
+`LoanApplicationValidator` refuses the application if the client or
+group already has an active loan on a restricted product.
+
+## What you can do
+
+- **Browse** mixes by loan product name and the restricted products.
+  Export CSV or Excel.
+- **New mix** opens a docked sidebar. The product picker membership
+  comes from `GET /loanproducts/template?isProductMixTemplate=true`
+  `productOptions` (R8) — products that do not already have a mix.
+  After you pick a product, restricted-product membership comes from
+  `GET /loanproducts/{id}/productmix?template=true` (`allowedProducts`
+  plus `restrictedProducts`). The product itself is omitted. Create
+  requires at least one restricted product (`@NotEmpty`).
+- **Click a row** to change the restricted set. The product cannot
+  change. Update still requires at least one restricted product —
+  use **Delete** to drop the mix.
+- **Delete** removes every restriction for that product.
+
+There is no enum `*Options` list on this resource. Product membership
+is the template arrays above.

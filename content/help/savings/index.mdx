@@ -1,0 +1,78 @@
+---
+
+title: Savings
+description: Open a savings account in its own workspace.
+youtubeId: Ldpr9yEW_-c
+---
+
+
+A savings account has its own workspace — not the client header or section list.
+Open one from a [client’s Savings section](/help/clients#client-details) or from
+[group savings](/help/groups#group-savings). The product that account was opened
+on is defined under [Savings products](/help/products/savings); how it posts to
+the books is explained under
+[Savings product accounting](/help/products/savings/accounting).
+
+The top of the page keeps the account number, status, account type (with an
+icon), product, a link to the client or group this account belongs to, and the
+balance, then splits into sections:
+
+- **Overview** — performance (balance, available balance, deposits, withdrawals,
+  posted interest, and last activity) next to product, interest rate, officer,
+  and important dates. When they apply, you also see inward and outward
+  transfers (account-to-account money, counted separately from cash deposits and
+  withdrawals), interest not yet posted, overdraft used, tax withheld, fees, and
+  dormancy. Amounts use the currency **code**. A group savings account also names
+  the group and links to it.
+- **Transactions** — postings on the account, 25 to a page (you can choose 10,
+  50, or 100). Filter by transaction date and type; the address bar keeps those
+  filters. Reversed postings are hidden until you turn on **Show reversed**.
+  A deposit or withdrawal that came from
+  an account transfer is labelled **Inward transfer** or **Outward transfer**;
+  payment details and the transfer description appear under the type when
+  Fineract sent them. You can undo or change a cash deposit or withdrawal (date,
+  amount, payment type, payment details, and external ID). Account transfers
+  cannot be undone or changed from this list — Fineract rejects that. On a hold
+  you can release the amount. A cash deposit or withdrawal that is not reversed
+  and not a transfer can **Download receipt** as a PDF.
+- **Statement** — pick a from/to range (defaults to the last month through
+  today) to preview opening and closing balances, credits, and debits, then
+  **Download PDF**. See [Savings statement](/help/savings/statement).
+- **Charges** — fees and penalties on this account. See
+  [Savings charges](/help/savings/charges) for add, pay, waive, stop recurring,
+  and remove.
+
+**Actions** depend on status and your permissions. Commands that need a date,
+amount, or other details open a docked sidebar over the account — the header
+stays visible. Confirm-only commands (undo approval, calculate or post interest,
+block, undo a transaction, release a hold) ask you to confirm. Cash deposits and
+withdrawals list only institution payment types — not system-generated ones. Add
+those types under
+[Organization → Payment types](/help/organization#payment-types). After a cash
+deposit or withdrawal, download a receipt from the sidebar when Fineract returns
+the new transaction id.
+
+Typical work from the savings header:
+
+- **Pending** — approve, reject, withdraw, or delete the application; assign an
+  officer.
+- **Approved** — activate, or undo approval.
+- **Active** — record a deposit or withdrawal, hold an amount, post or calculate
+  interest, close the account, assign an officer, or block deposits, withdrawals,
+  or both. A withdrawal or hold cannot exceed the available balance. If the
+  account is already blocked, you see the matching unblock action instead.
+
+If the account is inactive, dormant, blocked, or escheated, that state appears
+next to the usual status.
+
+From a client or group list, clicking a savings row opens this same workspace.
+
+**Import savings** (Institution) bulk-posts deposits from a spreadsheet.
+See [Import savings](/help/savings/import).
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "Open a savings account from a client" | Click a savings account on a client or group. |
+| Account missing or not loading | It may have been closed, or your role may not include savings — tell your administrator. |

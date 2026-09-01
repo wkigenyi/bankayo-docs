@@ -1,0 +1,114 @@
+---
+title: Savings charges
+description: Add, pay, waive, or stop fees and penalties on a savings account.
+youtubeId: qBGUSSulkkE
+---
+
+
+The savings workspace has a **Charges** section. Open it from an account — there
+is no institution-wide savings list. The **?** button on that section opens this
+page.
+
+A charge on an account is money: an amount due, paid, or waived. The template it
+comes from lives under [Products → Charges](/help/products/charges). Collection
+time and calculation are on that template, not here. A
+[savings product](/help/products/savings/charges) can attach templates so they
+start on every new account; you can still add more from this section.
+
+The walkthrough on this page creates a **specified due-date** savings fee in the
+catalog, adds it on an account, and pays it.
+
+## The table
+
+Each row is a charge on this account: name, fee or penalty, when it is
+collected, due date, amount, paid, outstanding, and status.
+
+| Status | Meaning |
+| --- | --- |
+| **Outstanding** | An amount is still due. |
+| **Overdue** | The due date has passed and an amount is still due. |
+| **Paid** | Nothing is left to collect. |
+| **Waived** | The outstanding amount was written off. |
+| **Stopped** | A recurring annual, monthly, or weekly fee is no longer collected on this account. |
+
+## Add a charge
+
+**Add charge** opens a docked sidebar. You need permission to create a savings
+account charge, and the account must not be closed or rejected.
+
+Pick a savings charge in this account’s currency. Amount defaults from the
+template and can be changed. Extra fields depend on collection time:
+
+- **Specified due date** — a **due date**.
+- **Annual fee** and **monthly fee** — a **due day** (day and month).
+- **Monthly fee** and **weekly fee** — how often the fee repeats (months or
+  weeks).
+
+If the picker is empty, create an active savings charge first under
+[Charges](/help/products/charges), in the same currency as this account.
+
+Product-attached charges also appear when
+[opening a savings account](/help/clients#opening-an-account) — already
+selected; you can still add or remove charges after the account is open.
+
+## Pay
+
+On an **active** account, **Pay** collects the outstanding amount from this
+savings account. The sidebar asks for a **payment date**, the **amount**, and
+an optional **payment type** if your institution uses them. Cash types are
+institution payment types only — not system-generated ones. Add those types
+under [Organization → Payment types](/help/organization#payment-types).
+
+You cannot pay a charge that is already paid, waived, or stopped.
+
+## Waive
+
+**Waive** writes off the outstanding amount so it is no longer due. The account
+must be active and the charge still outstanding — the same rule as pay.
+
+## Stop recurring
+
+**Stop recurring** is only for an **annual**, **monthly**, or **weekly** fee
+that has **no** amount still due. It stops collecting that fee on this account.
+It does not appear on a specified due-date charge, or while an amount is still
+outstanding — pay or waive first.
+
+## Remove
+
+**Remove** is only for a charge on a **pending** application that has not been
+paid or waived. Confirm in the dialog. After the account is approved or
+activated, you pay, waive, or stop instead of deleting.
+
+## Savings collection times
+
+These times are set on the [charge template](/help/products/charges), not on the
+account:
+
+- **Specified due date** — you pick the due date when you add it.
+- **Savings activation** — when the account is activated.
+- **Savings closure** — when the account is closed.
+- **Withdrawal fee** — when the client withdraws. Pair with
+  [Apply withdrawal fee to transfers](/help/products/savings/settings) if
+  account-to-account transfers should pay it too.
+- **Annual fee** / **Monthly fee** / **Weekly fee** — recurring.
+- **Overdraft fee** — when the account is overdrawn.
+- **No-activity fee** — when the account has no qualifying activity.
+
+Calculation is **flat**, or **percent of amount** on withdrawal and no-activity
+fees. Savings charges have **no** payment mode — that field is loan and
+working-capital only.
+
+A product-level annual fee on
+[settings](/help/products/savings/settings) is separate from an annual-fee
+**charge**. Use charges when you want the fee on this section. Do not set both
+unless you intend two fees.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| Cannot add a charge | The account may be closed or rejected, or there are no savings charge templates in this currency. |
+| There are no charges available to add | Create an active savings charge under [Charges](/help/products/charges) in this currency. |
+| Cannot remove a charge | You can only remove a charge from a pending application that has not been paid or waived. |
+| Cannot pay or waive a charge | The account must be active and the charge still outstanding. |
+| Stop recurring is missing | That action is only for an annual, monthly, or weekly fee with nothing still due. |

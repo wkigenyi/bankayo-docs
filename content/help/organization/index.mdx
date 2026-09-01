@@ -1,0 +1,376 @@
+---
+title: Organization
+description: Institution settings — offices, employees, working days, holidays, tellers, currencies, funds, payment types, floating rates, delinquency buckets, loan reasons, loan provisioning criteria, tax groups, SMS campaigns, entity data-table checks, ad-hoc query, fund mapping, investors, loan originators, and standing instruction history.
+---
+
+Open **Organization** in the sidebar (a navigation group, not a page) or press
+**Ctrl+K** and type "organization". You need permission for at least one
+organization screen — if the group is missing, ask your administrator.
+
+Organization lists institution settings you can use. Open a screen from the
+group (or press **Ctrl+K** and type its name).
+
+## Offices
+
+Open **Offices** from the Organization hub (or press **Ctrl+K** and type
+"office"). You need office-viewing permission to see the list, plus create or
+update permission for those actions. Fineract does not delete offices.
+
+The list is an expandable **tree** under your hierarchy — same idea as
+[Chart of accounts](/help/accounting/chart-of-accounts). Expand a parent to
+see its branches. **Expand all** and **Collapse all** open or close the
+whole tree. **Search** opens matching offices and their parents.
+**Sort** and **export** (CSV or Excel) work like the other organization
+catalogs.
+
+- **New office** opens a docked sidebar. Name (up to 100 characters), parent,
+  and opening date are required. External ID is optional.
+- **Click a row** to edit. The **head office** cannot change parent.
+
+The address bar is **Organization › Offices**.
+
+## Working days
+
+Open **Working days** from the Organization hub (or press **Ctrl+K** and type
+"working days"). You need working-days viewing permission to see the page, and
+update permission to save.
+
+This is a single settings form, not a list. Turn on the weekdays the
+institution is open (at least one). **Repayment reschedule** is where a
+repayment that falls on a closed day moves — same day, next working day, next
+meeting day, or previous working day. Two optional toggles extend the loan
+term when a daily repayment or a holiday repayment would otherwise shorten it.
+
+The address bar is **Organization › Working days**.
+
+## Employees
+
+Open **Employees** from the Organization hub (or press **Ctrl+K** and type
+"staff" or "employee"). You need staff-viewing permission to see the list,
+plus create or update permission for those actions. Fineract does not delete
+staff — inactive members stay on the list.
+
+- **Search** by name, office, mobile, or external ID.
+- **New employee** opens a docked sidebar. First name, last name, and office
+  are required. Loan officer, active, joining date, mobile, email, and
+  external ID are optional. Mobile must be 7–15 digits, optionally with a
+  leading +.
+- **Click a row** to edit. Turning **Active** off is refused if that person
+  still has a client or loan portfolio — the message from the banking service
+  is shown; this screen does not force the change.
+
+The address bar is **Organization › Employees**.
+
+## Holidays
+
+Open **Holidays** from the Organization hub (or press **Ctrl+K** and type
+"holiday"). You need holiday-viewing permission to see the list, plus create,
+update, activate, or delete permission for those actions.
+
+A holiday names a closed period for one or more offices and how loan
+repayments that fall in it should move. New holidays are **pending** until
+you **Activate** them from the row menu. Only **active** holidays reschedule
+repayments.
+
+- **Search** by name or office. Deleted holidays are hidden.
+- **New holiday** opens a docked sidebar. Name, from/to dates, and at least
+  one office are required. Reschedule is either the next repayment date or a
+  specific date you pick.
+- **Click a row** to edit. Pending holidays can change every field. Active
+  holidays can change name and description only.
+- **Delete** (row menu) asks for confirmation. This is a soft delete.
+
+The address bar is **Organization › Holidays**.
+
+## Tellers
+
+[Tellers](/help/organization/tellers) are cash desks at an office. Save the
+till first, then allocate **cashiers** (staff) from the list. **Cash details**
+on a cashier is a dedicated page — allocate cash from the vault, settle it
+back, and page through movements. Amounts use the currency **code**. Open
+**Tellers** from this group (or press **Ctrl+K** and type "teller" or
+"cashier").
+
+## Currencies
+
+Open **Currencies** from the Organization hub (or press **Ctrl+K** and type
+"currencies"). You need currency-viewing permission to see the list, and
+currency-update permission to change it.
+
+This list is the currencies your institution **permits**. Loan, savings, and
+charge products can only be created in a currency that is enabled here. The
+first enabled currency (when sorted by name) is the default when a screen
+shows a total that has no currency of its own — for example mixed client
+performance figures.
+
+- **Search** by name or code.
+- **Sort** by clicking Name, Code, or Decimal places.
+- **Export** downloads the enabled list as CSV or Excel.
+- **Add currency** opens a docked sidebar, searches the full catalog, and
+  enables the one you pick.
+- **Remove** (row menu) takes a currency out of use. You cannot remove the last
+  remaining currency, and Fineract will refuse a currency that is still used by
+  a product or charge.
+
+The address bar is **Organization › Currencies**.
+
+## Funds
+
+[Funds](/help/organization/funds) are source-of-capital names — donor,
+programme, or internal pool — that you tag on a [loan
+product](/help/products/loans/details) and when [opening a
+loan](/help/clients#opening-an-account). They are labels, not ledger
+accounts. Open **Funds** from this group (or press **Ctrl+K** and type
+"funds"). The Fund field on those screens stays hidden until at least one
+name exists.
+
+## Payment types
+
+Open **Payment types** from the Organization hub (or press **Ctrl+K** and type
+"payment types"). You need payment-type viewing permission to see the list,
+plus create, update, or delete permission for those actions.
+
+A payment type is a **method** — cash, mobile money, cheque — that officers
+pick on cash loan payments, and that you can map to a fund-source GL account
+on a [loan product](/help/products/loans/mappings). The payment-channel
+mapping table and cash payment pickers stay empty until at least one
+institution type exists here.
+
+- **Search** by name or description.
+- **Sort** by clicking Name, Cash, Position, or System.
+- **Export** downloads the list as CSV or Excel.
+- **New payment type** opens a docked sidebar. Name is required (up to 100
+  characters). Description, cash flag, and position are optional.
+- **Click a row** to edit that type.
+- **Delete** (row menu) asks for confirmation. Fineract refuses a type that
+  is still used on a payment or a product mapping.
+
+**Cash payment** marks the type for reporting. Loan cash repayments list
+every **non-system** type — cash or not. Fineract also creates
+**system-generated** types (transfers, down payment, and similar). Those
+appear with a System badge. You can rename them; you cannot delete them.
+Cash loan payments and loan-product payment-channel mappings never offer
+them.
+
+The address bar is **Organization › Payment types**.
+
+## Floating rates
+
+Open **Floating rates** from the Organization hub (or press **Ctrl+K** and
+type "floating rates"). You need floating-rate viewing permission to see the
+list, plus create or update permission for those actions.
+
+A floating rate is a **published scheme** — a name, optional base-lending-rate
+flag, and dated periods — that a [loan product](/help/products/loans/terms)
+can track. The floating-rate picker on that step stays empty until at least
+one **active** rate exists here.
+
+- **Search** by name.
+- **Export** downloads the list as CSV or Excel.
+- **New floating rate** opens a docked sidebar. Name is required (up to 200
+  characters). Add at least one period that starts **tomorrow or later**.
+- **Click a row** to edit. Periods that have already started are read-only.
+  Saving replaces only the **future** periods.
+- Fineract does not delete floating rates.
+
+**Base lending rate** may be on for only one scheme at a time. Other rates
+can then mark a period as a **differential** against that base. Inactive
+rates do not appear when you create a product.
+
+Opening a loan on a floating-rate product uses that published rate plus the
+product’s differential. Officers can keep the loan tracking later periods when
+the product allows floating calculation.
+
+The address bar is **Organization › Floating rates**.
+
+## Delinquency buckets
+
+Open **Delinquency buckets** from the Organization hub (or press **Ctrl+K**
+and type "delinquency"). You need delinquency-bucket viewing permission to
+see the list, plus create, update, or delete permission for those actions.
+
+A **range** is a day-past-due band (classification, minimum days, optional
+maximum). A **bucket** names a set of ranges. A
+[loan product](/help/products/loans/settings) turns on installment-level
+delinquency by picking a **bucket** — the field stays hidden until at least
+one bucket exists here.
+
+Start on **Ranges** if none exist yet:
+
+- **Search** by classification (ranges) or name and range (buckets).
+- **Export** downloads the current tab as CSV or Excel.
+- **New range** opens a docked sidebar. Classification is required (up to
+  100 characters). Minimum days must be at least 1. Leave maximum blank for
+  an open-ended band (for example 181+).
+- **New bucket** is available after at least one range exists. Name is
+  required. Include at least one range. Fineract refuses overlapping ranges
+  in the same bucket.
+- **Click a row** to edit. **Delete** (row menu) asks for confirmation.
+  Fineract refuses a range still used in a bucket, or a bucket still used
+  on a product.
+
+The address bar is **Organization › Delinquency buckets**.
+
+## Loan reasons
+
+Open **Loan reasons** from the Organization hub (or press **Ctrl+K** and type
+"write-off" or "charge-off"). You need code-value viewing permission to see
+the list, plus create, update, or delete permission for those actions.
+
+These are the write-off and charge-off reasons officers pick on a loan, and
+that a [loan product](/help/products/loans/accounting) can map to an expense
+account. The two lists are Fineract system codes (`WriteOffReasons` and
+`ChargeOffReasons`); this page does not manage other codes.
+
+- **Write-off** and **Charge-off** tabs. **Search** by name or description.
+- **Export** downloads the current tab as CSV or Excel.
+- **New** opens a docked sidebar. Name is required (up to 100 characters).
+  Description, position, and active are optional. Inactive reasons do not
+  appear when writing off or charging off a loan.
+- **Click a row** to edit. **Delete** (row menu) asks for confirmation.
+  Fineract refuses a reason that is still in use.
+
+The address bar is **Organization › Loan reasons**.
+
+## Loan provisioning criteria
+
+Open **[Loan provisioning criteria](/help/organization/loan-provisioning-criteria)**
+from the Organization hub (or press **Ctrl+K** and type "provisioning criteria").
+You need provisioning-criteria viewing permission to see the list, plus create,
+update, or delete permission for those actions.
+
+Define overdue-age bands, reserve percentages, and liability and expense GL
+accounts for each loan product.
+[Provisioning entries](/help/accounting/provisioning-entries) need at least one
+criteria before you can calculate reserves. See
+[Loan-loss provisioning](/help/accounting/loan-loss-provisioning) for how
+criteria, loans, GL accounts, and journal entries fit together.
+
+The address bar is **Organization › Loan provisioning criteria**.
+
+## Tax groups
+
+Open **Tax groups** from the Organization hub (or press **Ctrl+K** and type
+"tax"). You need tax-group or tax-component viewing permission to see the
+list, plus create or update permission for those actions. Fineract does not
+delete tax components or groups.
+
+A **component** is a named percentage (for example 16% VAT) with an optional
+credit GL account. A **group** names a set of components. A
+[charge](/help/products/charges) can pick a **group** — the field stays
+hidden until at least one group exists here.
+
+Start on **Components** if none exist yet:
+
+- **Search** by name or account (components) or name and component (groups).
+- **Export** downloads the current tab as CSV or Excel.
+- **New component** opens a docked sidebar. Name and percentage are required
+  (percentage greater than 0 and at most 100). Start date is optional.
+  Credit account is optional and cannot change after create. Create those
+  accounts under [Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+- **New group** is available after at least one component exists. Name is
+  required. Include at least one component. Combined percentages cannot
+  exceed 100%.
+- **Click a row** to edit. Changing a component percentage needs a start
+  date tomorrow or later. You can add components to a group; Fineract does
+  not remove a component once it is in the group.
+
+The address bar is **Organization › Tax groups**.
+
+## SMS campaigns
+
+Open **SMS campaigns** from the Organization hub (or press **Ctrl+K** and
+type "sms campaign"). You need SMS-campaign viewing permission.
+
+Compose SMS or in-app notifications against a Fineract business-rule
+audience. Sending needs a configured SMS gateway (or the notification
+toggle). See [SMS campaigns](/help/organization/sms-campaigns).
+
+## Bulk import
+
+Open an **Import …** type from Organization (or press **Ctrl+K** and type
+"import" plus the entity). You need the matching read permission for each
+entity.
+
+Download a Fineract Excel template, fill it, and upload it. This is the
+organisation-wide importer — not the [journal preview importer](/help/accounting/journal-import),
+the [savings deposit importer](/help/savings/import),
+the [share purchase importer](/help/shares/import),
+or the groups-list shortcut. See [Bulk import](/help/organization/bulk-import).
+
+## Bulk loan reassignment
+
+Open **Bulk loan reassignment** from the Organization hub (or press
+**Ctrl+K** and type "bulk loan reassignment"). You need loan viewing
+permission; submit needs bulk-reassign permission.
+
+Move loans from one officer to another at the same office. See
+[Bulk loan reassignment](/help/organization/bulk-loan-reassignment).
+
+## Password preferences
+
+Open **Password preferences** from the Organization hub (or press
+**Ctrl+K** and type "password preferences"). You need password-preferences
+viewing permission.
+
+Choose which seeded Fineract policy new user passwords must meet. See
+[Password preferences](/help/organization/password-preferences).
+
+## Entity data-table checks
+
+Open **Entity data-table checks** from the Organization hub (or press
+**Ctrl+K** and type "entity data table checks"). You need entity-datatable-check
+viewing permission.
+
+Require a registered extra-data table when a client, group, loan, or savings
+account reaches a status. This is not
+[System → Manage data tables](/help/system/datatables). See
+[Entity data-table checks](/help/organization/entity-data-table-checks).
+
+## Ad-hoc query
+
+Open **Ad-hoc query** from the Organization hub (or press **Ctrl+K** and
+type "ad-hoc query"). You need create, update, or delete permission —
+Fineract has no read-only ad-hoc permission.
+
+Saved SQL the schedule job inserts into a table. This is not a live
+query console and not [Reports](/help/reports). See
+[Ad-hoc query](/help/organization/adhoc-query).
+
+## Fund mapping
+
+Open **Fund mapping** from the Organization hub (or press **Ctrl+K** and
+type "fund mapping"). You need loan viewing permission.
+
+Search outstanding loans grouped by office and product. This is not
+[Funds](/help/organization/funds) and not a ledger mapping. See
+[Fund mapping](/help/organization/fund-mapping).
+
+## Investors
+
+Open **Investors** from the Organization hub (or press **Ctrl+K** and
+type "investors"). You need loan viewing permission.
+
+Search external asset-owner transfers. Cancel a pending or buyback
+transfer from the row. Sale and buyback start on a loan. See
+[Investors](/help/organization/investors).
+
+## Loan originators
+
+Open **Loan originators** from the Organization hub (or press
+**Ctrl+K** and type "loan originators"). You need loan-originator
+viewing permission.
+
+Name parties that originate loans. Attach them on a pending loan, not
+here. See [Loan originators](/help/organization/loan-originators).
+
+## Standing instruction history
+
+Open **Standing instruction history** from the Organization hub (or press
+**Ctrl+K** and type "standing instruction history"). You need standing
+instruction viewing permission.
+
+This is every **run** of a standing instruction — successful transfers and
+failures — not the instruction itself. Create and edit instructions under
+[Institution → Standing instructions](/help/standing-instructions). See
+[Standing instruction history](/help/organization/standing-instructions-history).

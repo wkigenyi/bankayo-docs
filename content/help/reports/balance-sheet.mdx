@@ -1,0 +1,39 @@
+---
+title: Balance sheet
+description: As-of assets, liabilities, and equity with year-over-year columns and a printable PDF.
+---
+
+Open **Balance sheet** from the sidebar, press **Ctrl+K**, or click
+**Balance Sheet Table** in the [reports catalog](/help/reports). You need
+report-reading permission. The screen looks up the published table report named
+**Balance Sheet Table**. If that report is missing or not in use, the page stays
+empty instead of failing.
+
+## Parameters
+
+**Set parameters** opens a docked sidebar.
+
+- **As of** — the statement date.
+- **Office** (and any other stretchy fields the report defines) come from the
+  banking service.
+
+**Run** sends that as-of date to Fineract. Comparison columns are **extra runs
+of the same report** for the same date one year earlier and two years earlier.
+If the report has no date parameter, Bankayo runs it once.
+
+Amounts are ledger figures with no currency code: grouped digits and
+parentheses for negatives.
+
+## Layout
+
+Rows are grouped as **Assets**, **Liability**, and **Equity**, with a section
+total for each.
+
+**Retained Earnings** (code `3XXX`) is a **presentation plug** so Assets minus
+Liabilities minus Equity closes. It is not a general-ledger posting and does
+not change the books. A note under the table repeats that.
+
+**Download PDF** re-runs the report with the same parameters and prints the
+same columns, including the retained-earnings footnote.
+
+Trial Balance stays on the generic catalog runner. It has no dedicated screen.

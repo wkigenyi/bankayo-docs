@@ -1,0 +1,86 @@
+---
+title: Loan product accounting
+description: None, cash, or accrual — and every GL account cash accounting needs.
+youtubeId: D0RidQFFZ9c
+---
+
+This is step 6 of the [create wizard](/help/products/loans/create). After
+save, accounts appear on the product only when accounting is not None.
+Payment-channel, fee, penalty, and reason mappings are a separate
+[mappings](/help/products/loans/mappings) step.
+
+The walkthrough on this page creates **Normal Loan With Accounting**: a
+normal fixed product on **Cash**, with a payment-channel mapping, and
+saves it. The [first create video](/help/products/loans/create) stops on
+None and does not save.
+
+## Accounting rule
+
+Fineract has three posting styles. Accrual is split, so the picker shows
+four choices.
+
+- **None** — no GL accounts, and mappings do not apply. Use this when the
+  product should not keep books in Fineract (still designing, paper process,
+  or another system is the ledger).
+- **Cash** — income posts when money moves. Interest hits income on
+  repayment, not as it accrues. Requires the nine accounts below.
+- **Accrual (periodic)** — the cash set, plus receivable interest, fee, and
+  penalty asset accounts. A job books earned amounts onto those receivables
+  before cash arrives, then clears them when the client pays. Optional
+  **accrual activity posting** adds a visible accrual transaction, not only
+  the receivable balances.
+- **Accrual (upfront)** — the same receivable set, but interest income is
+  recognized at disbursement instead of spreading over the term.
+
+Every required account is a searchable list of **detail** GL accounts of
+the matching type (asset, income, expense, or liability). Header accounts
+are for grouping and never appear here. Create them under
+[Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+
+**Fund source** on this step is a cash or bank GL account. It is not an
+[Organization fund](/help/organization/funds) (those names tag whose capital
+a product or loan uses).
+
+**Loan-loss provisioning** uses separate liability and expense GL accounts
+on [provisioning criteria](/help/organization/loan-provisioning-criteria) —
+not the mappings on this product step. See
+[Loan-loss provisioning](/help/accounting/loan-loss-provisioning).
+
+## Cash accounts
+
+On the seeded chart these codes are:
+
+- **Fund source** (`1220`) — cash or bank asset that disbursement draws
+  from and repayment returns to.
+- **Loan portfolio** (`1210`) — outstanding principal asset. Disbursement
+  increases it; principal repayment decreases it.
+- **Transfers in suspense** (`1410`) — money in flight between accounts.
+- **Interest on loans** (`4110`) — interest income. On cash accounting this
+  posts when the client pays, not when it is earned.
+- **Income from fees** (`4210`) — default for every fee on the product. A
+  [mapping](/help/products/loans/mappings) can send one fee somewhere else.
+- **Income from penalties** (`4310`) — the same default for penalties.
+- **Income from recovery** (`4410`) — cash collected after a write-off.
+- **Write-off** (`5110`) — expense when outstanding principal is written
+  off.
+- **Overpayment liability** (`2140`) — money the client paid above what the
+  loan owes, until you refund it or apply it.
+
+## Accrual extras
+
+Periodic and up-front both add:
+
+- **Interest receivable** (`1310`)
+- **Fees receivable** (`1320`)
+- **Penalties receivable** (`1330`)
+
+[Income capitalization and buy-down](/help/products/loans/settings) add
+still more accounts, and only with accrual plus the advanced payment
+strategy.
+
+## Transaction strategy
+
+How a repayment is allocated is set on
+[settings](/help/products/loans/settings), not here. The walkthrough saves
+**Penalties, Fees, Interest, Principal order** — the usual Mifos order —
+on a cumulative, horizontal schedule.

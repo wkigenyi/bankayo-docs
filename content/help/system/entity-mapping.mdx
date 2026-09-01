@@ -1,0 +1,46 @@
+---
+title: Entity-to-entity mapping
+description: Restrict which offices or roles can use which loan products, savings products, or charges.
+---
+
+Open **System → Entity-to-entity mapping** (or **Ctrl+K** and type "entity
+mapping"). You need **READ_FINERACTENTITY** to view the list.
+**CREATE_ENTITYMAPPING**, **UPDATE_ENTITYMAPPING**, and
+**DELETE_ENTITYMAPPING** control the buttons. Superusers with
+**ALL_FUNCTIONS** see everything.
+
+These mappings limit which loan products, savings products, or charges an
+office or role may use. Fineract applies them when
+**office-specific-products-enabled** is on in
+[Configurations](/help/system/configurations).
+
+## What you can do
+
+- **Browse** mappings by type (office or role to a product or charge), with
+  optional from/to filters and name search.
+- **Create** a mapping: pick the type Fineract offers, the from entity, the
+  to entity, and optional start and end dates.
+- **Edit** the from/to pair and dates. The mapping type cannot change after
+  create.
+- **Delete** a mapping from the row menu.
+- **Export** the filtered list as CSV or Excel.
+
+## Mapping types
+
+Membership comes from `GET /entitytoentitymapping` — typically office access
+to loan products, savings products, or charges, and role access to loan or
+savings products. Bankayo labels those codes; it does not hide types Fineract
+still returns.
+
+From and to pickers load offices, roles, loan products, savings products, and
+charges from their Fineract lists. Unknown types still appear in the table
+using Fineract's code name.
+
+A pair of from and to on the same type can exist only once. End date, when
+set, cannot be before start date.
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, mapping changes may queue for
+approval in the [Checker Inbox](/checker-inbox-and-tasks) instead of applying
+immediately.

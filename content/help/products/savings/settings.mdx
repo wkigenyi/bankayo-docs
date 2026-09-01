@@ -1,0 +1,117 @@
+---
+title: Savings product settings
+description: Balances, lock-in, overdraft, lien, tax, and dormancy.
+---
+
+This is step 4 of the [create wizard](/help/products/savings/create). Extra
+fields appear only when you turn a feature on. Money fields stay disabled
+until you choose a [currency](/help/products/savings/currency).
+
+Officers who [open a savings account](/help/clients#opening-an-account) see
+these as defaults on Optional and can change them for that account.
+
+## Balances
+
+- **Minimum opening balance** — optional. The smallest amount that can
+  activate an account on this product. Leave blank if an account may open
+  with zero.
+- **Minimum balance for interest** — optional. Interest is not calculated
+  while the balance is below this floor. Use it so tiny balances do not earn
+  (or cost you) interest. This is not the same as the minimum **required**
+  balance below.
+- **Minimum required balance** — optional. A floor the account should stay
+  above after withdrawals.
+- **Enforce minimum required balance** — when on, a withdrawal that would
+  take the account below the minimum required balance is refused. When off,
+  the minimum is informational.
+
+## Lock-in period
+
+Optional. The period and unit sit in one field, for example **6 months**.
+Units come from the product template (days, weeks, months, or years).
+
+During lock-in the client cannot withdraw (the core banking system enforces
+this). Use it for compulsory or contractual savings. Leave the field
+blank if funds may be withdrawn as soon as the account is active.
+
+Clearing the period also clears the unit.
+
+## Withdrawal fee on transfers
+
+**Apply withdrawal fee to transfers** — whether a [withdrawal fee
+charge](/help/products/savings/charges) also applies when funds move to
+another account, not only when cash is taken out.
+
+This does not create a fee by itself. Attach a withdrawal-fee charge on the
+charges step, or the toggle has nothing to apply.
+
+## Annual fee on the product
+
+Optional **annual fee** amount. If you enter an amount, you must also choose
+the **day** and **month** it falls due.
+
+This is the product-level annual fee the core banking system still accepts
+on the savings product itself. Prefer attaching an **annual fee**
+[charge](/help/products/savings/charges) when you need the same fee on the
+account’s Charges section, with pay / waive / stop. If you set both, you can
+end up collecting two annual fees — use one approach.
+
+## Overdraft
+
+Turn **Allow overdraft** on if this product may go below zero.
+
+Then you can set:
+
+- **Overdraft limit** — how far below zero the account may go. Required if
+  **Allow lien** is also on.
+- **Overdraft interest rate** — nominal annual rate **charged** on the
+  overdrawn amount (income to the institution). Separate from the
+  [nominal annual interest rate](/help/products/savings/terms) paid on a
+  positive balance.
+- **Minimum overdraft for interest** — optional floor. Overdraft interest is
+  not calculated until the overdrawn amount reaches this.
+
+Even if you leave overdraft off, [cash or accrual accounting](/help/products/savings/accounting)
+still needs the overdraft GL accounts (overdraft portfolio, income from
+interest, write-off). Those sit unused until an account actually overdraws.
+
+## Lien
+
+A **lien** is a hold or claim on the account — typically so the institution
+(or a linked loan) can block part of the balance.
+
+Turn **Allow lien** on to set an optional **maximum lien limit**. If overdraft
+and lien are both on, both limits are required and the overdraft limit
+**cannot be greater than** the lien limit.
+
+## Withhold tax
+
+Turn **Withhold tax** on to deduct tax from interest when it is posted. You
+must pick a [tax group](/help/organization#tax-groups). The picker is empty
+until a group exists.
+
+Tax withheld shows on the savings workspace when it applies. The tax group
+defines the rate and the liability account the deduction posts to — not this
+product’s interest-on-savings expense account.
+
+## Dormancy
+
+Turn **Track dormancy** on to age an account from last activity into
+inactive, then dormant, then escheat.
+
+You must enter three **day counts**, each **greater than** the last:
+
+1. **Days to inactive** — no customer-initiated activity for this many days.
+   The account can still show as inactive next to its usual status.
+2. **Days to dormant** — longer still. Dormant accounts typically stop
+   earning and may block withdrawals, depending on your institution’s
+   process.
+3. **Days to escheat** — unclaimed funds. Escheat moves the balance off the
+   client’s savings control onto an **escheat liability** account (unclaimed
+   property), so you no longer treat it as a live deposit.
+
+When [accounting](/help/products/savings/accounting) is Cash or Accrual,
+escheat also needs that **escheat liability** GL account. None does not.
+
+The savings workspace shows these states next to status when they apply. See
+[Savings](/help/savings).

@@ -1,0 +1,64 @@
+---
+title: Fixed deposit products
+description: Term, deposit amount, interest settings, and a tiered interest chart.
+---
+
+Open **Products → Fixed deposits**. **New** and **Edit** use the same
+wizard. Open a product for a sectioned workspace (general, terms,
+settings, interest chart, charges, and accounting when the rule is not
+None). Terms show the length and unit together — for example **3 months**,
+not a bare 3.
+
+Term, deposit amount range, interest settings, lock-in, optional
+premature-closure penalty, tax withholding, optional savings charges, and
+one interest chart with one or more consecutive rate tiers. Chart `from` /
+`until` dates belong to the rate schedule, not to the product — fixed
+deposits have no product start or close date.
+
+Amounts show the currency **code**. Required fields are marked with an
+asterisk (*).
+
+When an officer [opens a fixed deposit](/help/clients#opening-an-account),
+the docked sidebar starts from this product. **Required** is the product,
+dates, deposit amount, and term; **Optional** can still change interest,
+lock-in, linked savings, maturity instructions, tax, and charges for that
+one account. Maturity instruction is stored on the account, not the
+product — if it is left unset, the officer chooses it when closing.
+
+## Wizard steps
+
+1. **Details** — name, short name, description.
+2. **Currency** — code, decimal places, multiples.
+3. **Terms** — default deposit amount, optional min/max amount, minimum
+   and maximum term (each term is the length and unit together, for
+   example 3 months), optional term multiples, optional nominal annual
+   rate (the chart supplies the rate when present), interest compounding,
+   posting, and calculation. Compounding cannot be longer than posting —
+   daily compounding with monthly posting is the usual pair. Anniversary
+   posting types follow the same pairing rule.
+4. **Settings** — optional lock-in, premature-closure penalty (rate and
+   whether it applies to the whole term or till premature withdrawal), and
+   withhold tax with a tax group.
+5. **Interest chart** — chart from/until dates, plus one or more rate
+   tiers. A single tier gives a flat rate for the whole term; add more to
+   pay a different rate for different period ranges (e.g. 4% for 3–6
+   months, 5% for 7–12 months). Tiers must be consecutive and must not
+   overlap — leave the last tier's "to period" blank to make it
+   open-ended. Optionally group tiers by deposit amount instead of period,
+   or combine both (amount bands inside each period). The first band
+   starts at 0 or 1; when the primary range changes, the other range must
+   restart at 0 or 1 and the previous other-range must be open-ended.
+6. **Charges** — optional savings charges in this currency that start on
+   every new account.
+7. **Accounting** — None, cash, or accrual periodic. Cash and accrual both
+   need a reference, control, transfers-suspense, interest, fee-income, and
+   penalty-income GL account; accrual also needs fees-receivable,
+   penalties-receivable, and interest-payable accounts. Fixed and recurring
+   deposits don't support overdraft, so unlike savings products there's no
+   overdraft-related GL account here.
+8. **Mappings** — optional payment-channel and charge-to-income GL
+   mappings when accounting is not None.
+9. **Review** — confirm every section, then create or save.
+
+See [Recurring deposits](/help/products/recurring) for the product that also
+supports mandatory deposits and withdrawals.

@@ -1,0 +1,147 @@
+---
+
+title: Loan provisioning criteria
+description: Age bands, reserve percentages, and GL accounts per loan product before you run provisioning entries.
+youtubeId: TkdGYI3VSDA
+---
+
+
+Open **Loan provisioning criteria** from **Organization** (or press
+**Ctrl+K** and type "provisioning criteria"). You need
+`READ_PROVISIONINGCRITERIA` to see the list, plus create, update, or delete
+permission for those actions.
+
+Criteria define **how much to reserve** and **which GL accounts** to use for
+each overdue-day band. [Provisioning entries](/help/accounting/provisioning-entries)
+need at least one criteria before Fineract will calculate reserves. For the
+full picture — loans, chart of accounts, entries, and journals — see
+[Loan-loss provisioning](/help/accounting/loan-loss-provisioning).
+
+## Prerequisites
+
+- **[Loan products](/help/products/loans)** must exist. Each criteria binds
+  one or more products; only loans on those products are included in
+  provisioning runs.
+- **[Chart of accounts](/help/accounting/chart-of-accounts)** needs **detail**
+  GL accounts:
+  - **Liability** accounts (type Liability) for the balance-sheet provision.
+  - **Expense** accounts (type Expense) for the reserve charge.
+  These are **not** the fund source, loan portfolio, or income accounts on
+  [loan product accounting](/help/products/loans/accounting).
+
+Fineract supplies **provisioning categories** (for example STANDARD,
+SUB-STANDARD, DOUBTFUL, LOSS) from
+`GET /provisioningcriteria/template`. You cannot add or rename categories in
+Bankayo — you configure each one inside the criteria.
+
+## The list
+
+- **Search** by criteria name or who created it.
+- **New criteria** opens the create wizard.
+- **Click a row** to edit (single-page form, not the wizard).
+- **Delete** (row menu) asks for confirmation. Fineract refuses criteria still
+  referenced by a [provisioning entry](/help/accounting/provisioning-entries).
+
+The address bar is **Organization › Loan provisioning criteria**.
+
+## Creating criteria (wizard)
+
+**New criteria** at `/organization/loan-provisioning-criteria/new` walks
+through:
+
+### Setup
+
+- **Name** — up to 100 characters.
+- **Loan products** — pick every product this criteria should cover (at least
+  one).
+
+### One step per category
+
+Fineract categories appear in template order. On each step:
+
+- **Min age** — overdue days at the start of the band.
+  - The **first** category (usually STANDARD): you enter min age; it typically
+    starts at **0**.
+  - **Later categories**: min age is **automatic** — one day after the previous
+    category’s max age. Bands must be **contiguous** (no gaps, no overlaps).
+- **Max age** — last overdue day in this band (required).
+- **Reserve %** — provisioning percentage from 0 to 100.
+- **Liability GL** — liability detail account from the chart.
+- **Expense GL** — expense detail account from the chart.
+
+The stepper marks steps with validation issues after you try to reach **Review**
+or **Create**, so you can jump back without visiting every step.
+
+### Review
+
+Confirm name, products, and every category band before **Create criteria**.
+
+## Editing criteria
+
+**Click a row** to open `/organization/loan-provisioning-criteria/[id]/edit`.
+
+The edit form shows all categories in one **table** with the same fields. Min
+age on the first row is editable; later rows show the derived min age. Changing
+a **max age** updates the next row’s min age automatically.
+
+Save when you adjust bands, percentages, products, or GL accounts. If criteria
+already fed an unposted provisioning entry, use **Recreate lines** on that
+entry after you save.
+
+## Age bands (contiguous)
+
+Provisioning categories are **ordered**. If STANDARD ends at day 30,
+SUB-STANDARD starts at day **31**, not 32 or 30.
+
+| Category | Min age | Max age | Meaning |
+| --- | --- | --- | --- |
+| STANDARD | 0 | 30 | 0–30 days past due |
+| SUB-STANDARD | 31 | 60 | 31–60 days past due |
+| DOUBTFUL | 61 | 90 | 61–90 days past due |
+| LOSS | 91 | 360 | 91–360 days past due |
+
+Reserve percentages often increase as delinquency worsens (for example 2% →
+20% → 100%). Fineract validates overlap at the engine level; Bankayo also
+enforces contiguity in the form.
+
+## GL account rules
+
+- **Liability GL** pickers list **liability** detail accounts only.
+- **Expense GL** pickers list **expense** detail accounts only.
+- Options come from the provisioning template first; if empty, Bankayo loads
+  eligible accounts from the chart (manual entries allowed, not disabled,
+  detail usage).
+
+Each category can use different accounts. Many institutions reuse the same
+pair across bands for simplicity.
+
+## What happens after you save
+
+Fineract stores the criteria. On the next [provisioning
+entry](/help/accounting/provisioning-entries) for a date, the engine:
+
+1. Considers loans on the bound products.
+2. Matches each loan’s overdue days to a category band.
+3. Applies the reserve percentage and GL mapping from that band.
+
+You do **not** pick a criteria on the entry screen — Fineract uses all
+configured criteria.
+
+## Permissions
+
+| Permission | Action |
+| --- | --- |
+| `READ_PROVISIONINGCRITERIA` | List and view |
+| `CREATE_PROVISIONINGCRITERIA` | New criteria wizard |
+| `UPDATE_PROVISIONINGCRITERIA` | Edit form |
+| `DELETE_PROVISIONINGCRITERIA` | Delete from list |
+
+## Related help
+
+- [Loan-loss provisioning](/help/accounting/loan-loss-provisioning) —
+  ecosystem overview and setup order.
+- [Provisioning entries](/help/accounting/provisioning-entries) — run
+  provisioning and post journals.
+- [Chart of accounts](/help/accounting/chart-of-accounts) — create liability
+  and expense accounts.
+- [Journal entries](/help/accounting/journal-entries) — ledger after posting.

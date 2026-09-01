@@ -1,0 +1,60 @@
+import { notFound } from 'next/navigation';
+import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
+
+import { YouTubeEmbed } from '@/components/youtube-embed';
+import { isYouTubeId } from '@/lib/youtube';
+import { helpSource } from '@/lib/source';
+import { docsSiteUrl } from '@/lib/site';
+import { getMDXComponents } from '@/mdx-components';
+
+export function generateStaticParams() {
+  return helpSource.generateParams();
+}
+
+export const dynamicParams = false;
+
+type HelpPageProps = {
+  params: Promise<{ slug?: string[] }>;
+};
+
+export default async function HelpPage(props: HelpPageProps) {
+  const params = await props.params;
+  const page = helpSource.getPage(params.slug);
+  if (!page) notFound();
+
+  const MDX = page.data.body;
+  const youtubeId = isYouTubeId(page.data.youtubeId) ? page.data.youtubeId : undefined;
+
+  return (
+    <DocsPage toc={page.data.toc} full={page.data.full}>
+      <DocsTitle>{page.data.title}</DocsTitle>
+      <DocsDescription>{page.data.description}</DocsDescription>
+      {youtubeId ? (
+        <div className="mb-6">
+          <YouTubeEmbed id={youtubeId} title={page.data.title} />
+        </div>
+      ) : null}
+      <DocsBody>
+        <MDX components={getMDXComponents()} />
+      </DocsBody>
+    </DocsPage>
+  );
+}
+
+export async function generateMetadata(props: HelpPageProps) {
+  const params = await props.params;
+  const page = helpSource.getPage(params.slug);
+  if (!page) notFound();
+  const url = `${docsSiteUrl()}${page.url}`;
+  return {
+    title: page.data.title,
+    description: page.data.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: page.data.title,
+      description: page.data.description,
+      url,
+      type: 'article',
+    },
+  };
+}

@@ -1,0 +1,87 @@
+---
+title: Signing in
+description: Access your Bankayo workspace with your credentials.
+---
+
+Open Bankayo in your browser and you'll land on the sign-in screen (if you're already
+signed in, you'll go straight to the dashboard). On a large screen the Bankayo letter
+mark sits on the left with a quiet grid behind it; on smaller screens you'll see the
+mark and a short tagline at the top, then the sign-in card below.
+
+## Steps
+
+1. If you use more than one Fineract server, pick or add one at the **top of the
+   sign-in card** (see below). Otherwise skip to step 2.
+2. Enter your **username**. It's not an email address.
+3. Enter your **password**. Use the eye button inside the field to check what you've
+   typed.
+4. Press **Sign in**. If your account requires two-factor authentication, Bankayo asks how to send a verification code (email or text, from the addresses on your user record), then for the code. After that you'll arrive at the dashboard.
+
+## Two-factor authentication
+
+When the banking server has two-factor authentication on, most logins must confirm with a one-time code after the password. Bankayo never stores that code or the resulting token in your browser — both stay on the server.
+
+1. Sign in with your username and password as usual.
+2. Choose **Email** or **Text message** (only the methods Fineract can actually deliver for your login are listed).
+3. Open the message and enter the code. It expires after a few minutes; **Send a new code** requests another.
+4. **Verify** completes sign-in.
+
+If the list of methods is empty, your user record has no email (or no staff mobile number for SMS). An administrator must add one on **Admin → Users**. A role with the `BYPASS_TWOFACTOR` permission skips this step.
+
+Signing out tells the banking server to drop the two-factor token as well as ending your Bankayo session.
+
+## Signing in to a different server
+
+By default you sign in to the Fineract server Bankayo is configured with. If you
+work with more than one server, you can save others as named profiles right on
+the sign-in screen — no account needed first.
+
+1. At the top of the sign-in card, select **Add server**. A panel opens on the side.
+2. Give it a **name** (anything that helps you tell servers apart), its
+   **address** (starting with `https://`), and its **tenant ID**. Just the
+   domain is fine — if you leave off the rest of the path, Bankayo fills in
+   the standard Fineract API path for you.
+3. Save it. The sign-in form now shows it as your current server.
+4. To use a different saved server later, select **Change** to reopen that
+   same panel — it lists every server you've saved, with pencil and trash
+   icons to edit or remove one, and an **Add server** button for another.
+   Picking one closes the panel and gets you ready to sign in with it.
+
+Once you've saved a server, **Default server** also appears at the top of
+that list — it's the server Bankayo ships with, always there so you can
+switch back to it without deleting anything you've added.
+
+Your saved servers live only in this browser — they aren't shared with anyone
+else, and nobody else's servers show up for you. Only `https://` addresses
+with a valid, CA-issued certificate are accepted; a self-signed certificate is
+rejected and you'll see a clear message explaining why.
+
+Already signed in and want a different server? Sign out, then pick another
+saved server (or add a new one) from the sign-in screen before entering your
+credentials again.
+
+## About your session
+
+- Your session ends automatically after **30 minutes of inactivity**, and in any case
+  after **12 hours** — you'll simply be asked to sign in again. This protects client
+  data if a workstation is left unattended.
+- Use **Sign out** (top-right corner) whenever you leave your desk.
+- Closing the browser also ends your access — reopening requires signing in again.
+
+## Trouble signing in?
+
+| What you see | What it means | What to do |
+| --- | --- | --- |
+| "Username or password is incorrect." | The credentials didn't match. | Check for typos (the eye button helps) and try again. Repeated failures? Ask your administrator to reset your password. |
+| A prompt for a verification code | Two-factor authentication is on for your account. | Choose email or text, then enter the code from that message. |
+| "No way to send a code" | Your login has no email or SMS target. | Ask an administrator to add an email (or a staff mobile number) on your user record. |
+| "That code is incorrect or has expired." | The OTP didn't match, or it timed out. | Try again, or send a new code. |
+| "Your sign-in timed out." | The two-factor step took too long. | Enter your username and password again. |
+| "Your password has expired." | Your password must be renewed. | Contact your administrator for a reset — self-service renewal is coming later. |
+| "The banking service is unreachable right now." | Bankayo couldn't reach the core banking system. | Wait a moment and retry; if it persists, tell your administrator. |
+| "This server's certificate isn't trusted." | You're signing in to a custom server (see below) whose certificate is self-signed, expired, or otherwise not CA-validated. | Ask whoever runs that server to install a valid certificate — self-signed certificates are never accepted. |
+
+## Security notes
+
+- Bankayo never stores your password (or anything derived from it) in your browser.
+- Nobody can retrieve your password — administrators can only reset it.

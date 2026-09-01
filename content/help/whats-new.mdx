@@ -1,0 +1,1014 @@
+---
+title: What's new
+description: Feature updates as they ship.
+---
+
+## September 2026
+
+### Income statement and balance sheet
+
+**Income statement** and **Balance sheet** are first-class screens (sidebar and
+Ctrl+K), not only catalog rows. They look up the published table reports
+**Income Statement Table** and **Balance Sheet Table**, run the current period
+plus the same window one and two years earlier, and download a PDF. Year-over-year
+columns are extra runs of the same Fineract report. On the balance sheet,
+Retained Earnings (`3XXX`) is a presentation plug so the statement closes — not
+a general-ledger posting. Opening those two names from the catalog redirects
+here. Trial Balance stays on the generic runner. See
+[Income statement](/help/reports/income-statement) and
+[Balance sheet](/help/reports/balance-sheet).
+
+## August 2026
+
+### Import shares
+
+**Import shares** (Institution) bulk-creates share accounts or purchases
+additional shares from an Excel spreadsheet. Match clients by external ID,
+preview rows, and post valid purchases one at a time against a selected share
+product. This replaces the Fineract share-account workbook under
+Organization bulk import. See [Import shares](/help/shares/import).
+
+### Import savings
+
+**Import savings** (Institution) bulk-posts cash deposits from an Excel
+spreadsheet (`POST /savingsaccounts/{id}/transactions?command=deposit`).
+Match clients by external ID, preview rows, and post valid deposits one at
+a time. This replaces the Fineract savings-account workbook under
+Organization bulk import. See [Import savings](/help/savings/import).
+
+### Bulk import navigation
+
+Each bulk-import type is its own Organization screen (**Import offices**,
+**Import clients**, **Import loans**, and the rest). Open them from the
+sidebar or Ctrl+K — there is no catalog item in navigation. Journal entries
+stay under Accounting →
+[Import journal entries](/help/accounting/journal-import) — not the Fineract
+workbook hub. Savings deposits stay under Institution →
+[Import savings](/help/savings/import). Share purchases stay under Institution →
+[Import shares](/help/shares/import). See [Bulk import](/help/organization/bulk-import).
+
+### Near-breach
+
+**Near-breach** (Products) lists reusable working-capital near-breach
+rules (`GET/POST /working-capital/near-breach`). Frequency membership
+comes from the breach template — there is no near-breach template API.
+This is not a loan-level near-breach action. See
+[Near-breach](/help/products/near-breach).
+
+### Breach
+
+**Breach** (Products) lists reusable working-capital breach rules
+(`GET/POST /working-capital/breach/breaches`). Frequency and amount
+calculation membership come from `GET /working-capital/breach/template`.
+This is not a loan-level breach action. See
+[Breach](/help/products/breach).
+
+### Share dividends
+
+**Share dividends** (Products) lists payouts for a share product
+(`GET/POST /shareproduct/{id}/dividend`). Declare a period and amount,
+then approve or delete while the payout is still initiated. Status is
+Fineract `ShareProductDividendStatusType` (initiated / approved). This
+is not the minimum-active-period field on the share product. See
+[Share dividends](/help/products/share-dividends).
+
+### Products mix
+
+**Products mix** (Products) lists loan products that cannot be active
+together (`GET /loanproducts?associations=productMixes`). Product
+membership comes from the mix template. This is not the loan-product
+catalog. See [Products mix](/help/products/mix).
+
+### Collateral catalog
+
+**Collateral** (Products) lists reusable collateral types
+(`GET/POST /collateral-management`). Currency membership comes from
+`GET /collateral-management/template`, kept to enabled organisation
+currencies. This is not the loan-application collateral grid. See
+[Collateral](/help/products/collaterals).
+
+### Loan originators
+
+**Loan originators** (Organization) lists parties that originate loans
+(`GET/POST /loan-originators`). Status and type membership come from
+`GET /loan-originators/template`. Attach/detach stays on the loan. See
+[Loan originators](/help/organization/loan-originators).
+
+### Investors
+
+**Investors** (Organization) lists external asset-owner transfers
+(`POST /external-asset-owners/search`). Cancel the latest pending or
+buyback transfer. Sale and buyback stay on the loan. See
+[Investors](/help/organization/investors).
+
+### Fund mapping
+
+**Fund mapping** (Organization) searches outstanding loans by office and
+product (`POST /search/advance`). Product and office membership comes
+from `GET /search/template`. This is not the Funds catalog and not a
+fund-to-GL map. See [Fund mapping](/help/organization/fund-mapping).
+
+### Ad-hoc query
+
+**Ad-hoc query** (Organization) lists saved SQL the
+**Generate AdhocClient Schedule** job inserts into a table. Frequency
+membership comes from `GET /adhocquery/template`. This is not a live
+SQL console and not Reports. See
+[Ad-hoc query](/help/organization/adhoc-query).
+
+### Entity data-table checks
+
+**Entity data-table checks** (Organization) require a registered extra-data
+table when a client, group, loan, or savings account reaches a status.
+Entity and status membership come from `GET /entityDatatableChecks/template`.
+Fineract has no update API. This is not System → Manage data tables. See
+[Entity data-table checks](/help/organization/entity-data-table-checks).
+
+### Password preferences
+
+**Password preferences** (Organization) chooses the seeded Fineract
+policy for new user passwords (`simple`, `secure`, `strong`). Membership
+comes from `GET /passwordpreferences/template`. See
+[Password preferences](/help/organization/password-preferences).
+
+### Bulk loan reassignment
+
+**Bulk loan reassignment** (Organization) moves selected loans from one
+loan officer to another at the same office. Offices and officers come
+from `GET /loans/loanreassignment/template`. See
+[Bulk loan reassignment](/help/organization/bulk-loan-reassignment).
+
+### Bulk import
+
+**Bulk import** (Organization) is Fineract Excel templates for offices,
+clients, loans, and other entities. Each type is a sidebar link
+(**Import offices**, **Import clients**, and the rest). Download a
+template, fill it, and upload it. Previous imports show row counts and an
+output workbook for errors. This is not the journal preview importer or
+the groups-list shortcut. See
+[Bulk import](/help/organization/bulk-import).
+
+### SMS campaigns
+
+**SMS campaigns** (Organization) lists Fineract SMS and notification
+campaigns. **New campaign** is a four-step wizard (details, audience,
+message, review). Activate, close, or reactivate from the campaign page.
+Sending needs an SMS gateway; the UI still talks to `/smscampaigns`. See
+[SMS campaigns](/help/organization/sms-campaigns).
+
+### Credit bureau
+
+**Credit bureau** (Institution) maps a seeded Fineract bureau to this
+institution, attaches loan products, and stores connection keys. It is not
+a client credit profile and not the CB-ILD plugin. See
+[Credit bureau](/help/credit-bureau).
+
+### Account transfers and standing instructions
+
+**Account transfers** (Institution) lists one-off postings between savings
+accounts or from savings to a loan. **New transfer** is a four-step wizard
+(from, to, details, review). Open a transfer to undo it.
+**Standing instructions** schedules those transfers. **New instruction** is
+a five-step wizard; edit cannot change from/to accounts or the name.
+**Standing instruction history** (Organization) lists each run. These are
+not repay-from-savings on a loan workspace. See
+[Account transfers](/help/account-transfers),
+[Standing instructions](/help/standing-instructions), and
+[Standing instruction history](/help/organization/standing-instructions-history).
+
+### Collection sheet
+
+**Collection sheet** (Institution) finds centers with a collection meeting
+on a date for an office and staff member. Open a center to post attendance
+and repayments on that center's sheet. **Individual collection sheet** posts
+bulk repayments and mandatory savings for individual loans in an office.
+These are not the sheet on a group or center workspace. See
+[Collection sheet](/help/collection-sheet) and
+[Individual collection sheet](/help/individual-collection-sheet).
+
+### Account number preferences
+
+**System → Account number preferences** lists Fineract account number formats
+(one per entity: client, loan, savings, center, group, shares, working capital
+loan). Create, edit, or delete a prefix; membership comes from
+`GET /accountnumberformats/template`. Sequential versus random numbers is the
+**random-account-number** configuration, not this screen. See
+[Account number preferences](/help/system/account-number-preferences).
+
+### External events
+
+**System → External events** lists every outbound Fineract business-event
+type and lets you enable or disable posting to Kafka or JMS. Membership
+comes from `GET /externalevents/configuration`. This is not Hooks and not
+the notifications bell. See [External events](/help/system/external-events).
+
+### Entity-to-entity mapping
+
+**System → Entity-to-entity mapping** lists Fineract office and role access
+to loan products, savings products, and charges. Create, edit, or delete a
+mapping; types come from `GET /entitytoentitymapping`. See
+[Entity-to-entity mapping](/help/system/entity-mapping).
+
+### System information
+
+**System → System information** shows live build, server, and signed-in staff
+facts: Bankayo version, Fineract actuator info, tenant header, server origin
+and health, and office/roles from authentication. Fineract has no license API
+— the screen documents that gap instead of inventing a license server. Any
+signed-in staff member can open it. See
+[System information](/help/system/information).
+
+### Manage data tables
+
+**System → Manage data tables** is the admin catalog for extra-data tables.
+Create and edit use a three-step wizard (table, columns, review). Columns
+are listed on the second step; add or edit a field in the docked side panel.
+This is not the Extra data tab on a client, group, or center — that is where
+staff fill values. See [Manage data tables](/help/system/datatables).
+
+### External services
+
+**System → External services** configures SMS, email (SMTP), Amazon S3, and
+notification (GCM/FCM) gateways. Side tabs pick a gateway; the card shows
+live fields. Leave secret fields blank to keep the stored value.
+See [External services](/help/system/external-services).
+
+### Hooks
+
+**System → Hooks** lists Fineract webhooks. Create and edit use a four-step
+wizard (details, config, events, review). Config fields and events come from
+`GET /hooks/template` (Web, SMS Bridge, Elastic Search, Message Gateway).
+Only Web can have more than one hook. See [Hooks](/help/system/hooks).
+
+### Jobs: scheduler, workflow, and catch-up
+
+**System → Jobs** can start or stop the global scheduler, run a job with
+optional parameters, and show whether the batch queue is busy. A **Workflow**
+tab orders close-of-business steps and can run loan COB for specific loan
+IDs. Loan COB catch-up shows lag against the COB date and can be started
+from this screen. See [Jobs](/help/system/jobs).
+
+### Maker-checker flags
+
+Which commands need a checker is now set under **System → Maker-checker**.
+The flags are institution-wide (Fineract has no per-role maker-checker).
+Role permission pages show a **Needs checker** badge on those commands.
+See [Maker-checker](/help/system/maker-checker) and [Roles](/help/roles).
+
+### Center meetings, collection sheet, accounts, notes, and extra data
+
+A center workspace now has the same leftover sections as a group: a collection
+meeting (inherited by groups in the center), a collection sheet for a meeting
+date, a read-only accounts overview, staff notes, and extra data tables. Open
+new loans or savings from a group, not from the center. See [Centers](/help/centers).
+
+### Two-factor authentication
+
+When the banking server requires two-factor authentication, sign-in asks for a one-time code after the password — sent by email or text, using the methods Fineract offers for that login. The token stays on the server (never in the browser) and is dropped when you sign out. See [Signing in](/help/signing-in).
+
+### Clear the fund on a loan application
+
+Fund on a loan application is optional. When the product has a fund, Bankayo
+still copies it as the default, but officers can choose **No fund**. The same
+clear option is on the loan product wizard. See
+[Opening an account](/help/clients#opening-an-account) and
+[Funds](/help/organization/funds).
+
+### Fixed and recurring deposit charges, statements, and receipts
+
+Fixed and recurring deposit workspaces now have **Charges** and **Statement**
+sections, matching savings. Add, pay, waive, or stop fees on the account;
+preview a date range and download a PDF; cash deposit and withdrawal rows (and
+the sidebar after a successful cash posting) can download a receipt. Holds and
+officer assignment are not on these accounts — Fineract has no commands for
+them. See [Fixed deposit charges](/help/fixed/charges),
+[Fixed deposit statement](/help/fixed/statement),
+[Recurring deposit charges](/help/recurring/charges), and
+[Recurring deposit statement](/help/recurring/statement).
+
+### Open a fixed or recurring deposit
+
+Opening a fixed or recurring deposit is a docked sidebar on the client's
+list — the same pattern as savings, not a full-page wizard. Required is
+the product, dates, amount, and term (plus collection frequency on a
+recurring deposit). Optional starts from the product. See
+[Opening an account](/help/clients#opening-an-account).
+
+### Fixed and recurring deposit workspaces
+
+A fixed or recurring deposit now opens in its own workspace — not under the
+client header. Overview shows performance next to product and term facts;
+Transactions lists postings. See [Fixed deposits](/help/fixed) and
+[Recurring deposits](/help/recurring).
+
+### Fixed and recurring deposit applications
+
+Opening a fixed or recurring deposit now follows Fineract's account
+create rules. A recurring deposit collects the recommended installment
+and collection frequency (or inherits the group meeting calendar) —
+not a single deposit amount. A fixed deposit still takes the deposit
+amount and term, and can link savings for interest transfer and set
+maturity instructions. Product min/max amount and term are enforced
+before submit. See [Clients — Opening an account](/help/clients#opening-an-account).
+
+### Fixed and recurring deposit product detail
+
+Fixed and recurring deposit products open as a sectioned workspace, like
+loan and savings products: general, terms, interest chart, and accounting
+when the rule is not None. Minimum and maximum term show as a length and
+unit together — for example **3 months**. See
+[Fixed deposits](/help/products/fixed) and
+[Recurring deposits](/help/products/recurring).
+
+### Amount and unit on one field
+
+Where a number only makes sense with its unit — minimum term, lock-in,
+repay every, deposit period — Bankayo now shows them as one control, for
+example **3 months**, instead of two separate boxes. Chart rate tiers
+put the from-period and unit together the same way.
+
+### Fixed and recurring deposit money movements
+
+Recurring deposits use the [recurring deposit workspace](/help/recurring).
+Fixed deposits use the [fixed deposit workspace](/help/fixed). On an active
+account you can record a
+deposit or withdrawal, calculate or post interest, and close early — with the
+amount Fineract calculates on the chosen date, paid out in cash or transferred
+to savings. Recurring deposits can change the recommended installment from a
+date; withdrawals appear only when the product allows them. Matured accounts
+close with the payout options Fineract returns (including reinvest when
+offered). Cash deposit and withdrawal rows can be undone or modified. See
+[Recurring deposits](/help/recurring) and
+[Fixed deposits](/help/fixed).
+
+### Templates
+
+**Admin → Templates** is live. The list shows every user-generated document
+and SMS template. Create and edit use a four-step wizard (details, mappers,
+text, review). Entity (client or loan) and type (document or SMS) come from
+the banking service. Click a Mustache parameter to insert it into the body.
+See [Templates](/help/templates).
+
+### Loan-loss provisioning documentation
+
+Help now covers the full provisioning ecosystem:
+[Loan-loss provisioning](/help/accounting/loan-loss-provisioning) (criteria,
+entries, loans, GL accounts, and journal entries),
+[Loan provisioning criteria](/help/organization/loan-provisioning-criteria),
+and an expanded [Provisioning entries](/help/accounting/provisioning-entries)
+page — each with a YouTube walkthrough on the help page.
+
+### Manage reports
+
+**System → Manage reports** is live. The list shows every report (core and
+custom). Create, copy, and edit use a four-step wizard (details, parameters,
+SQL, review). Core reports can only turn **In use** on or off.
+**Copy** creates a custom report you can change SQL and parameters on.
+New custom reports and **In use** control what appears in the
+[Reports](/help/reports) catalog. See [Manage reports](/help/system/reports).
+
+### Reports
+
+**Reports** is live. The catalog lists published reports (search, type
+filter, CSV/Excel). Open a **Table** or **SMS** report, fill its parameters,
+and run it. Results page in a grid and export as CSV or Excel. Dates and
+decimal amounts are formatted on screen (ledger figures with no currency
+code; negatives in parentheses). Catalog and result **CSV** files are UTF-8
+so Excel can open them; **Excel** downloads are real workbooks.
+Table and SMS reports run from this screen. Chart, Pentaho, and BIRT
+types may still appear when Fineract lists them; running those engines
+is out of scope (Pentaho is a plugin; Chart and BIRT are not Bankayo run
+targets). See [Reports](/help/reports).
+
+### Faster entity search
+
+**Ctrl+K** searches clients, loans, savings, shares, groups, centers, and client
+identifiers in one go (name, account number, mobile, or external ID). Client
+pickers in forms (for example guarantors and group members) also match account
+number, mobile, external ID, and ID documents — not only display name. The
+**Clients** list (and its CSV/Excel export) uses the same richer search when you
+type in the filter box. See [Finding your way around](/help/navigation) and
+[Clients](/help/clients).
+
+### Client list shows mobile number
+
+The client list (and CSV/Excel export) now includes each client's mobile number,
+between name and external ID. See [Clients](/help/clients).
+
+### Client wizard: default savings and the rest of create
+
+**New client** can pick a **default savings product**. If you activate the
+client now, Fineract opens an active savings account on that product as soon as
+the client is created. If you leave them pending, the product is stored as
+their default and the account opens when you activate them. The wizard also
+collects the other create fields the API already accepted: gender and staff
+flag for a person; constitution, business line, and incorporation for an
+entity; optional account number and submitted date; client type and
+classification; marital status and profession on family members. See
+[Clients — Creating a client](/help/clients#creating-a-client).
+
+### Share certificate
+
+Active share accounts with approved shares can **Download certificate** from
+the workspace header. The PDF names the member, account, product, approved
+shares, and market value, with signature and stamp lines for the institution.
+See [Shares](/help/shares).
+
+### Savings statement and cash receipts
+
+The savings workspace now has a **Statement** section: pick a date range, preview
+opening and closing balances with credits and debits, and download a PDF. Cash
+deposits and withdrawals (not reversed, not account transfers) can download a
+receipt PDF from the transaction row, and from the sidebar after you record one.
+See [Savings statement](/help/savings/statement).
+
+### New client uses the product wizard layout
+
+**New client** now uses the same full-page workspace as loan and savings
+product wizards: close in the header, steps in a left rail on a large screen
+(across the top on a tablet or phone), and **Previous** / **Next** (then
+**Create client**) in the footer. The four steps are unchanged — basic
+details, contact, optional family, then review. See
+[Clients — Creating a client](/help/clients#creating-a-client).
+
+### Fixed and recurring deposit product wizard
+
+Creating or editing a fixed or recurring deposit product now matches how loan
+and savings products work — each step validates before you move on, and a
+final review summarizes everything before you save. The interest chart has
+its own step, separate from the rest of the terms, and now supports multiple
+rate tiers instead of a single flat rate — add a tier for each period range
+that should earn a different rate (e.g. 4% for 3–6 months, 5% for 6–12
+months), and tiers are checked for overlap as you go. Editing an existing
+product with several tiers now correctly loads all of them, rather than only
+the first. The terms step also gained a maximum term field alongside the
+existing minimum. Recurring products put mandatory deposit and allow
+withdrawal on terms (there is no separate settings step).
+
+Accounting also has its own step now, with the same validation Fineract
+itself applies: choosing cash or accrual periodic requires the matching GL
+accounts (reference, control, transfers-suspense, interest, fee and penalty
+income, plus fees/penalties-receivable and interest-payable for accrual) —
+narrower than savings products since fixed and recurring deposits don't
+support overdraft. Editing an existing product now correctly loads its
+accounting setup too, which previously wasn't read back at all. See
+[Fixed deposit products](/help/products/fixed) and
+[Recurring deposit products](/help/products/recurring).
+
+### Sign in to a server you manage
+
+The sign-in screen can now connect to a Fineract server you specify, instead
+of the one Bankayo ships with. Save a server as a named profile (just its
+address and a tenant ID — leave off the path and Bankayo fills in the
+standard one) from a panel on the sign-in screen, then pick it before
+entering your username and password — your whole session runs against that
+server. Only `https://` addresses with a valid, CA-issued certificate are
+accepted; self-signed certificates are rejected. See
+[Signing in](/help/signing-in).
+
+### Share accounts
+
+Share accounts open in their own `/shares/[id]` workspace (like savings and
+loans), not under the client header. Overview shows holdings and market value;
+**Transactions** lists purchases and redemptions, paged like savings and loans
+(25 at a time; 10, 50, or 100 if you prefer). Reversed postings are hidden until
+you turn on **Show reversed**. Approve or reject pending purchases from the row;
+**Charges** lists fees. From **Actions** you can
+approve, activate, undo approval, reject, close, apply for additional shares, or
+redeem. Lifecycle commands use the Fineract date field names (`approvedDate`,
+`activatedDate`, `closedDate`). See [Shares](/help/shares).
+
+### Share products
+
+Creating or editing a share product is an eight-step wizard (details,
+currency, terms, settings, market price, charges, accounting, review). Terms
+cover total shares, shares issued, unit price, and computed share capital.
+Settings cover min / nominal / max shares, lock-in, a minimum active period
+for dividends (days only), and dividends for inactive clients. Accounting is
+None or Cash — share products have no accrual option. Cash needs share
+reference, share suspense, share equity, and income from fees. Share
+products cannot be deleted. There is no product start or close date. Open a
+product for a sectioned workspace (general, terms, settings, plus market
+price, fees, and accounting when present). A walkthrough creates **Normal
+Share With Accounting** on Cash and edits it. See
+[Share products](/help/products/shares),
+[Create a share product](/help/products/shares/create), and
+[Share product accounting](/help/products/shares/accounting).
+
+### Find screens and sections
+
+The sidebar searches every screen you can open — including nested Organization,
+Products, and Accounting pages — without opening a section first. **Ctrl+K**
+also lists the sections of the record you are on, and finds clients, loans,
+groups, and centers. On a help page, the same shortcut (or the help sidebar
+search) opens a topic list you can filter by Guides, Products, Accounting, or
+Organization. See [Finding your way around](/help/navigation).
+
+### Savings charges
+
+The savings workspace has a **Charges** section. Add a fee or penalty from
+savings charge templates, pay or waive an outstanding charge on an active
+account, stop a recurring annual, monthly, or weekly fee, or remove a charge
+from a pending application. Specified due-date charges need a due date; annual
+and monthly fees need a due day. See [Savings charges](/help/savings/charges).
+
+### Savings deposits and withdrawals
+
+From a savings account you can record deposits and withdrawals, post or
+calculate interest, hold and release amounts, block deposits or withdrawals,
+and assign an officer. On a deposit or withdrawal you can undo it or change
+the date, amount, payment type, payment details (account, cheque, routing,
+receipt, bank), and external ID. A deposit or withdrawal that is an account
+transfer is shown as an inward or outward transfer, with payment and transfer
+details under the type; those rows cannot be undone or changed here. The
+transaction list is paged (25 at a time; 10, 50, or 100 if you prefer). Reversed
+postings are hidden until you turn on **Show reversed**. Cash
+payments use institution payment types only — not system-generated ones. See
+[Savings](/help/savings).
+
+### Savings account workspace
+
+A savings account has its own workspace — not the client header — with
+performance (balance, available, deposits, inward and outward transfers when
+they exist, withdrawals, posted interest, last activity), transactions, and
+charges. Open it from a client or group. See [Savings](/help/savings).
+
+### Open a savings account
+
+Opening a savings account is a docked sidebar — product, submitted date, and
+optional officer on Required, and product defaults you can override on Optional.
+The same sidebar opens group savings. See
+[Opening an account](/help/clients#opening-an-account) and
+[Group savings](/help/groups#group-savings).
+
+### Savings products
+
+Creating or editing a savings product is an eight-step wizard (details,
+currency, terms, settings, charges, accounting, mappings, review), the same
+pattern as a loan product. Help now covers every field: compounding versus
+posting (including daily posting and anniversary periods), daily versus
+average balance, lock-in, overdraft and lien, withhold
+tax, dormancy and escheat, attached charges, and cash or accrual GL accounts
+with a glossary (savings control, savings reference, suspense, interest
+payable, and the rest). The posting picker includes Daily and anniversary
+periods, not only calendar monthly through annual. Open a product for a
+sectioned workspace. Savings
+accounting has no upfront accrual option and no product start or close date.
+Two walkthroughs cover the wizard: create stops on **None** without saving;
+[cash accounting](/help/products/savings/accounting) saves **Normal Savings
+With Accounting**. See [Savings products](/help/products/savings),
+[Savings product accounting](/help/products/savings/accounting), and
+[Create a savings product](/help/products/savings/create).
+
+### Centers
+
+**Institution → Centers** lists village-style centers that hold groups.
+Search by name, sort, and export. **New center** picks an office, optional
+staff, and optional groups, and can activate immediately. Open a center for
+overview and groups. **Actions** activate, close, or delete a pending center
+with no groups. Groups must belong to the center's office and not already sit
+in another center. See [Centers](/help/centers).
+
+### Groups
+
+**Institution → Groups** lists client groups. Search by name, filter by office,
+staff, or external ID, sort, and export. **Import** downloads a template and
+uploads a workbook. **New group** picks an office, optional staff, optional
+center, and optional members, and can activate immediately. Open a group for
+overview, members (roles and transfers), group and member loans and savings,
+meetings, collection sheet, notes, documents, and extra data. **Open a group
+loan** or **Open group savings** on an active group; **Open linked member
+loans** or **Open linked member savings** when the group has members. Opening a
+loan application shows the client's name or the group name in the
+wizard header. Opening a savings account is a docked sidebar (required product and date,
+optional product overrides), not a wizard. If the product sets a minimum or maximum principal or interest
+rate, that range appears on Terms and you cannot continue until the amount is
+inside it. Opening a group loan defaults the officer to that group's staff,
+and can attach the collection meeting and link group savings.
+**Actions** activate, close, assign or unassign staff, or delete a pending
+group with no members. Members must belong to the group's office.
+Joint-liability loans and savings still open from a member. See
+[Groups](/help/groups).
+
+### Provisioning entries
+
+**Accounting → Provisioning entries** calculates loan-loss reserves from
+your provisioning criteria. **New entry** picks a date on or before today,
+and can post the journals immediately. Click a row to see the lines; create
+journals or recreate the lines from the row menu while journals are not yet
+posted. Posted journals appear under Journal entries. See
+[Provisioning entries](/help/accounting/provisioning-entries).
+
+### Accruals
+
+**Accounting → Accruals** accrues loan income through a date before today.
+**Run accruals** posts the journals; they appear under Journal entries. See
+[Accruals](/help/accounting/accruals).
+
+### Closures
+
+**Accounting → Closures** locks an office so no journal can post or reverse on
+or before that date. **New closure** picks an office and a date; comments are
+optional. Click a row to change the comment (office and date stay as they
+were). Delete only the latest closure for that office. See
+[Closures](/help/accounting/closures).
+
+### Accounting rules
+
+**Accounting → Accounting rules** lists named debit and credit account pairs.
+**New rule** picks an office and two detail GL accounts. Search, sort, and
+export the catalog. Click a row to edit; delete from the row menu when the
+rule is not in use. On **New journal**, pick a rule to fill the debit and
+credit accounts, or choose the accounts yourself. See
+[Accounting rules](/help/accounting/accounting-rules).
+
+### Roles
+
+**Admin → Roles** lists named permission sets. **New role** collects a name
+and description, then opens that role so you can grant permissions. Click a
+row to search and tick grants by group. Disable or delete is refused while
+users still have the role. See
+[Roles](/help/roles).
+
+### Users
+
+**Admin → Users** lists app logins (not Employees). Search, sort, and export
+the catalog. **New user** opens a docked sidebar: username, name, email,
+office, optional staff at that office, roles, and whether the password is
+emailed or set here. Click a row to edit; leave password blank to keep it.
+You cannot delete your own login or the system user. See
+[Users](/help/users).
+
+### Journal entries
+
+**Accounting → Journal entries** lists debit and credit lines (last month
+through today by default). Tabs switch all, manual, or system entries.
+**Filters** sets dates, office, account, and transaction ID; **Clear**
+restores the default month. **New journal** opens a wizard: details (optional accounting rule fills the
+debit and credit accounts and shows them on that step), optional payment type
+and cheque or receipt numbers, debit and credit lines, then review before you
+post. Click a row to see the whole transaction and **Reverse** it when you have
+permission. Amounts use the currency **code**. See
+[Journal entries](/help/accounting/journal-entries).
+
+### Teller cash allocate and settle
+
+**Cash details** on a cashier is its own page. The header has a compact
+currency picker (ISO codes such as `KES`, not a symbol) next to **Allocate
+cash** and **Settle cash**. The page shows allocated, cash in, cash out,
+settled, and net cash, plus a paginated transaction list. Allocate and
+settle collect date, currency, amount, and a note. See
+[Tellers](/help/organization/tellers).
+
+### Organization offices, staff, calendar, and tellers
+
+**Admin → Organization** now includes **Offices**, **Working days**,
+**Employees**, **Holidays**, and **Tellers**. Offices are an expandable
+branch tree (no delete), the same pattern as chart of accounts. Working
+days is a weekday and repayment-reschedule form.
+Employees are staff (no delete; deactivate is refused if they still have a
+portfolio). Holidays start pending and need activate; delete is a soft
+delete. Tellers are saved first; cashiers show on the list and open from
+that column or the row menu. See [Tellers](/help/organization/tellers).
+
+### Distinct navigation icons
+
+Sidebar, Ctrl+K, and the Products / Organization / Accounting hubs now use a
+different icon per screen: loan products are not the same box as charges, and
+organization catalogs are not all a building. See
+[Finding your way around](/help/navigation).
+
+### Open a floating-rate loan
+
+Officers can [open a loan](/help/clients#opening-an-account) on a product that
+tracks a published floating rate. The wizard asks for a differential instead
+of a nominal rate, and can keep the loan tracking later published periods when
+the product allows it. The product’s fund is copied onto the application as
+the default. See [Loan product terms](/help/products/loans/terms).
+
+### Loan charges
+
+[Charges](/help/products/charges) now documents every loan variation: five
+collection times (disbursement, specified due date, installment, overdue,
+tranche), five calculations including percent of disbursement on tranches
+only, payment mode, penalty locks, min/max caps, tax, and how templates
+attach to a product or to a loan. Income for loan charges is mapped on the
+product mappings step, not on the charge.
+
+### Loan product charges and mappings
+
+The loan product wizard now has **eight** steps. Charges is a selectable table:
+name and fee/penalty on the first column, with collection, calculation, and
+payment mode as secondary text; amount (and caps) in the second; ledger
+account and tax group in the third. Payment-channel, fee, penalty, and
+reason-to-expense mappings moved out of Accounting onto their own
+**Mappings** step. Channel mapping lists institution payment types only —
+not system-generated types. See
+[Create a loan product](/help/products/loans/create).
+
+### Heritage theme
+
+The account menu **Theme** list now includes **Heritage** (warm pearl and
+heritage green, from the micropay UI). It is the default for new sessions.
+Neutral, Royal Blue, Cerulean, Ruby, and Emerald remain. See
+[Finding your way around](/help/navigation).
+
+### Tax groups
+
+**Admin → Organization → Tax groups** lists tax components and the groups a
+charge can pick. Create a component first (name, percentage, optional start
+date and credit account), then group components. Add or edit from a docked
+sidebar. Fineract does not delete tax components or groups. Combined
+percentages in a group cannot exceed 100%. See
+[Organization — Tax groups](/help/organization#tax-groups).
+
+### Write-off and charge-off reasons
+
+**Admin → Organization → Loan reasons** lists the write-off and charge-off
+reasons officers pick on a loan. Add or edit a reason (name, description,
+position, active) from a docked sidebar. Delete asks for confirmation.
+Fineract refuses a reason that is still in use. A loan product can map each
+reason to an expense account when accounting is not None. See
+[Organization — Loan reasons](/help/organization#loan-reasons).
+
+### Chart of accounts
+
+**Accounting → Chart of accounts** lists the ledger accounts a loan product
+picks for cash or accrual accounting. Add or edit an account (name, GL code,
+type, usage, optional parent header) from a docked sidebar. Detail accounts
+show on product and charge pickers; headers group other accounts. The list now
+supports expandable tree rows to show hierarchy inline. Delete
+asks for confirmation. Fineract refuses an account that is still in use. See
+[Accounting — Chart of accounts](/help/accounting/chart-of-accounts).
+
+### Organization delinquency buckets
+
+**Admin → Organization → Delinquency buckets** lists day-past-due ranges and
+the buckets a loan product can assign for installment-level delinquency.
+Create ranges first, then group them into a bucket. Add or edit from a
+docked sidebar; delete asks for confirmation. Fineract refuses a range or
+bucket that is still in use. See
+[Organization — Delinquency buckets](/help/organization#delinquency-buckets).
+
+### Organization floating rates
+
+**Admin → Organization → Floating rates** lists the published rates a floating
+loan product can follow. Add or edit a rate (name, base lending rate, active,
+and future periods) from a docked sidebar. Periods that have already started
+cannot be changed. Officers can open a loan on a floating-rate product. See
+[Organization — Floating rates](/help/organization#floating-rates).
+
+### Organization payment types
+
+**Admin → Organization → Payment types** lists the methods officers pick on
+cash loan payments and that you map to fund-source accounts on a loan
+product. Add or edit a type (name, description, cash flag, position) from a
+docked sidebar. System-generated types cannot be deleted, and cash loan
+payments never offer them. See
+[Organization — Payment types](/help/organization#payment-types).
+
+### Organization funds
+
+**Admin → Organization → Funds** lists the donor, programme, or internal-pool
+names you put on a loan product and when opening a loan. They tag whose
+capital that product or loan uses; they do not hold a balance or post to the
+ledger (that is the GL **fund source** account on accounting). Add or edit a
+fund (name and optional external ID) from a docked sidebar. Fineract does
+not delete funds. See [Organization — Funds](/help/organization/funds).
+
+### Dedicated product help
+
+Help for products is split by type. Loan products have a page per wizard
+step (details through review). [Create a loan product](/help/products/loans/create)
+embeds the public YouTube walkthrough. See
+[Loan products](/help/products/loans).
+
+### Command forms in a sidebar
+
+Actions that collect details (a date, amount, reason, officer, and so on) now
+open a docked sidebar over the page. Only yes/no confirms — delete, undo,
+unassign — stay in a dialog. See [Clients](/help/clients#editing-and-status)
+and [Loans](/help/loans#loan-details).
+
+### Loan operations
+
+The loan workspace **Actions** menu now covers the Fineract loan lifecycle:
+approve and disburse, repayments and down payments, write-off, charge-off,
+foreclosure, close, officer assignment, and the matching undo commands.
+Disburse to a linked savings account is a choice on the disbursement form
+when you have permission. Repayment can transfer from the customer’s
+savings (shown first) or be recorded as cash; a transfer cannot exceed
+available savings or the loan outstanding. Cash loan payments do not
+offer system-generated payment types. What you see depends on the
+loan’s status and your permissions. See [Loans](/help/loans#loan-details).
+
+### Client loan list details
+
+A client’s **Loans** section is a table: submitted date, then requested
+amount. Outstanding balance and disbursement date are optional (outstanding
+on by default; disbursement hidden). A loan in arrears keeps its status and
+shows an **In arrears** badge. **Show closed** also lists a closed date.
+Click a row to open that loan’s workspace. See
+[Clients](/help/clients#client-details).
+
+### Dedicated loan pages
+
+Loans have their own list and workspace, like clients. Open **Loans** in the
+sidebar, or click a loan on a client — the loan is no longer shown inside the
+client header. Transaction lists are paged (25 at a time; 10, 50, or 100) and
+hide reversed postings until you turn on **Show reversed**. A group loan names
+the group and links to it. See [Loans](/help/loans).
+
+### Open an account from a client
+
+Active clients can open a loan, savings, fixed deposit, recurring deposit, or
+share account from the matching section. Loans use a wizard with the product’s
+defaults; savings, deposits, and shares are a docked sidebar. A loan
+includes charges, the repayment schedule, and optional collateral and
+guarantors before review. After submit you land on the new account. See
+[Clients — Opening an account](/help/clients#opening-an-account).
+
+### Account detail
+
+Click a loan, savings, deposit, or share on a client to open it. Loans,
+savings, shares, and deposits open in their own workspace. Approve, disburse
+or activate, reject, withdraw, undo, or close from **Actions**. Loan repayments
+and the rest of the loan lifecycle are on the loan workspace; savings deposits,
+withdrawals, and related actions are on the [savings workspace](/help/savings);
+share apply, redeem, and lifecycle actions are on the
+[share workspace](/help/shares); fixed and recurring deposit money movements
+are on the [fixed deposit workspace](/help/fixed) and
+[recurring deposit workspace](/help/recurring). See
+[Loans](/help/loans), [Savings](/help/savings), [Shares](/help/shares),
+[Fixed deposits](/help/fixed), [Recurring deposits](/help/recurring), and
+[Clients — Account detail](/help/clients#account-detail).
+
+### Client associated records
+
+Family, identities, documents, notes, and addresses on a client are no longer
+read-only. Add, edit, or remove them from each section (addresses are
+deactivated rather than deleted). Documents can be downloaded. A family
+member with a date of birth also shows their age. Add and edit
+open a docked sidebar. See
+[Clients — Associated records](/help/clients#associated-records).
+
+### Account menu
+
+The top-right account control is an initials avatar. Open it for your name,
+branch, roles, theme (Heritage, Neutral, Royal Blue, Cerulean, Ruby, or Emerald), appearance (light / dark /
+system), and **Sign out**. Theme and appearance apply immediately. See
+[Finding your way around](/help/navigation).
+
+### Bankayo mark
+
+Sign-in and the sidebar now use the Bankayo letter mark (the italic B / BANKAYO
+boxes). The collapsed sidebar shows the B only. Sign-in uses a quiet animated
+grid behind the mark on a large screen. See
+[Signing in](/help/signing-in) and
+[Finding your way around](/help/navigation).
+
+### Loan product detail
+
+A loan product now opens as a workspace with a section rail. Fees, penalties,
+accounting entries, and payment/GL mappings appear as tables when the product
+has them. Charge names link to the charge. See
+[Loan products](/help/products/loans).
+
+### Charge wizard
+
+Creating a charge is now four steps (applies to, terms, amount & settings,
+review). Options and required extras follow Fineract: charge time and
+calculation depend on where the charge applies; loan and working-capital
+charges need a payment mode; annual and monthly savings fees need a due day.
+See [Charges](/help/products/charges).
+
+### Loan product wizard
+
+Creating a loan product is eight steps (details, currency, terms, settings,
+charges, accounting, mappings, review). Charges is a selectable table of
+amount, collection, calculation, payment mode, caps, tax, income account, and
+related attributes. Mappings (payment channels, fees, penalties, write-off and
+charge-off reasons) are their own step after accounting. The wizard covers the
+combinations Fineract accepts: min/max principal and repayments, floating or
+fixed interest, schedule type, grace, multi-disburse, guarantees, down payment,
+variable installments, interest recalculation parameters, charges, and GL
+accounts when accounting is not None. Progressive schedules send Fineract’s
+default advanced payment allocation. Related fields share a row (min / default /
+max, paired settings, GL accounts). See
+[Create a loan product](/help/products/loans/create).
+
+### Required fields
+
+Forms mark required fields with an asterisk (*). A short note on each form
+explains the mark, except sign-in, where username and password are enough.
+See [Signing in](/help/signing-in),
+[Clients](/help/clients), and [Products](/help/products).
+
+### Products
+
+**Admin → Products** now lists loan, savings, share, fixed deposit, and
+recurring deposit products, plus charges. Create and edit use the same
+full-page wizard. Only loan products have start and close dates. Creating or
+editing a loan product on a large screen uses a two-column workspace (step
+rail + form); on a tablet or phone the steps run across the top. Currency is a
+searchable list (name and code) and can set decimal
+places and multiples. Amounts such as principal show the currency **code**
+in the field and stay disabled until a currency is chosen. See
+[Products](/help/products).
+
+### Product edit wizard
+
+**Edit** on a loan, savings, share, charge, fixed deposit, or recurring
+deposit product opens the same wizard used to create it. Close returns to the
+product. Client edit stays a docked sidebar. See
+[Products](/help/products).
+
+### Edit client sidebar
+
+**Edit** on a client opens a docked sidebar over the page you are on, instead
+of sending you to a separate screen. Save and Cancel stay at the bottom of the
+panel. Close it or press Cancel to stay where you were. See
+[Clients — Editing and status](/help/clients#editing-and-status).
+
+### Sidebar
+
+The sidebar now leads with **Quick access** (Dashboard, Clients). Institution and
+Admin are sections you open, and they follow the page you are on. Unfinished
+screens show a **Soon** badge. Ctrl+K finds nested screens such as Currencies.
+See [Finding your way around](/help/navigation).
+
+### Currency configuration
+
+**Admin → Organization → Currencies** lists the currencies your institution
+permits. Add from the full catalog or remove one that is not in use. Products
+and accounts can only use an enabled currency. See
+[Organization — Currencies](/help/organization#currencies).
+
+### Top bar
+
+Breadcrumbs use the client's name instead of their ID, search finds clients as
+well as screens (**Ctrl+K** / **⌘K**), and **?** opens help for the page you're
+on. Theme (Heritage, Neutral, Royal Blue, Cerulean, Ruby, or Emerald) and appearance (light / dark / system)
+live in the account menu. The account control is your initials. See
+[Finding your way around](/help/navigation).
+
+### Client performance
+
+Overview shows figures for the client: loan cycles, active loans, last loan
+amount, total savings, shares, outstanding loan amount, and overdue loans.
+Amounts use the currency code, not a symbol. Totals that have no single
+currency use the first currency enabled for the institution. See
+[Clients — Client details](/help/clients#client-details).
+
+### Client photo, signature, and closed accounts
+
+A client's photo shows large in the header so staff can recognise them. Click it
+for a closer look, or use the buttons under it to upload a file, capture from a
+camera, or delete. Signatures live under **Actions**. On Loans, Savings, and the
+other product sections, **Show closed** includes closed accounts. See
+[Clients — Client details](/help/clients#client-details).
+
+### Client actions
+
+From a client's header you can edit their details, activate a pending client,
+close, transfer, assign staff, and reverse those decisions — only the actions
+your role allows. See [Clients — Editing and status](/help/clients#editing-and-status).
+
+### Client detail and associated lists
+
+A client's page is now a tablet-friendly workspace: identity header, then
+sections for overview, loans, savings, fixed and recurring deposits, shares,
+family, identities, documents, notes, and address. Wide screens use a vertical
+section list; narrower screens overflow extra sections into a **+N** menu. See
+[Clients — Client details](/help/clients#client-details).
+
+### Client registration wizard
+
+Create clients directly from the client list: a four-step wizard (basic details,
+contact & identifiers, family members, review) for persons and entities, with
+immediate or deferred activation. Family members are registered together with the
+client in one step. Every step validates as you go. See
+[Clients — Creating a client](/help/clients#creating-a-client).
+
+### Clients: list, search, and export
+
+The first business module: browse your institution's clients under
+**Institution → Clients**. Search by name, sort, page through large lists, open a
+client's detail page, and export the full filtered list as CSV or Excel. Views are
+bookmarkable — the URL always captures your current search and sort. See
+[Clients](/help/clients).
+
+### Workspace navigation
+
+The app shell arrived: a collapsible sidebar organized the way Mifos users expect
+(Institution, Accounting, Reports, Checker Inbox, Admin), breadcrumbs, a **Ctrl+K**
+quick-jump menu, live notifications in the bell, dark/light mode, and your user menu.
+You only see menu items your permissions allow. See
+[Finding your way around](/help/navigation).
+
+### Sign-in and secure sessions
+
+The first release of Bankayo: sign in with your username and password, land on your
+dashboard showing your office, roles, and permissions, and sign out from the header.
+Sessions expire after 30 minutes of inactivity (12 hours maximum) to keep client data
+safe on shared workstations.

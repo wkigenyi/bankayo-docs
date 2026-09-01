@@ -1,0 +1,60 @@
+---
+title: Journal entries
+description: Search ledger postings, post a balanced journal, or reverse one.
+---
+
+Open **Journal entries** from **Accounting** (or press **Ctrl+K** and type
+"journal" or "ledger"). You need journal-viewing permission to see the list,
+create permission to post, and reverse permission to undo a posting.
+
+A journal line is one debit or credit against a [GL
+account](/help/accounting/chart-of-accounts). Several lines share a
+**transaction** ID. Loan disbursements and repayments, savings deposits,
+withdrawals, and posted interest, and cashier allocate or settle cash show
+up here when they post to the books. [Loan-loss provisioning](/help/accounting/loan-loss-provisioning)
+journals appear here after you **Create journals** on a provisioning entry.
+Amounts use the currency **code**
+(`KES`, not a symbol).
+
+## The list
+
+The first view is the last month through today. Tabs switch all, manual, or
+system entries. **Filters** opens a popover for dates, office, account, and
+transaction ID. **Clear** restores the last month through today. **Export**
+downloads every line that matches the current filters as CSV or Excel.
+
+- **Click a row** to open every line on that transaction.
+- The address bar keeps the filters so you can bookmark or share the view.
+
+The address bar is **Accounting › Journal entries**.
+
+## Posting a journal
+
+**New journal** opens a wizard. You work through **Details** (office, currency,
+and date; an [accounting rule](/help/accounting/accounting-rules) is optional
+and fills the debit and credit accounts — Details shows those accounts as soon
+as you pick the rule; reference and comments are optional), **Payment** if
+payment types exist, then **Lines**. If you skipped the rule, pick the
+accounts yourself. Totals must match — Fineract refuses an unbalanced journal.
+**Review** shows the full entry before you post. Amounts use the currency
+**code**.
+
+If **New journal** is missing, you do not have create permission. If Post
+stays off, enable a currency under [Currencies](/help/organization#currencies)
+and create a detail account with **Manual entries** on.
+
+The address bar is **Accounting › Journal entries › New journal**.
+
+## Import from Excel
+
+[Import journal entries](/help/accounting/journal-import) is the Bankayo
+spreadsheet importer (preview, then post). Open it from Accounting next to
+Journal entries, or from **Import** on this list. It is not the Fineract
+workbook under Organization bulk import.
+
+## Reversing
+
+Open a transaction and **Reverse** when you have reverse permission. An
+optional reason is stored on the reversing journal. Already reversed
+transactions cannot reverse again. System postings from loans, savings, and tellers
+follow the same rule — Fineract’s reason is shown if it refuses.

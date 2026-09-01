@@ -1,0 +1,35 @@
+---
+title: Financial activity mappings
+description: Map system financial events to GL accounts.
+---
+
+Open **Financial activity mappings** from **Accounting** (or press **Ctrl+K** and
+type "financial activity" or "vault"). You need mapping-viewing permission to
+see the list, create permission to add, update permission to edit, and delete
+permission to remove.
+
+Fineract uses these mappings when teller cash moves, vault balances change,
+transfers post, opening balances migrate, and similar system events hit the
+books. Each activity expects a **detail** GL account of a specific type — asset,
+liability, or equity — and the form filters the account picker accordingly.
+
+## The list
+
+Search by activity name or GL account. Export the catalog as CSV or Excel.
+
+- **New mapping** opens a sidebar: pick the financial activity, then the GL
+  account. Only detail accounts of the required type appear.
+- **Click a row** to change the mapped GL account. The activity itself cannot
+  change on edit — delete and recreate if you picked the wrong activity.
+- The row menu **Delete**s a mapping Fineract allows to remove.
+
+Common activities include **Cash at main vault**, **Cash at teller**, **Asset
+fund source**, **Asset transfer**, **Liability transfer**, **Opening balances
+transfer contra**, and **Payable dividends**. Your tenant may expose others;
+labels come from Fineract.
+
+Set these up before teller allocate/settle or opening-balance migration — those
+journal lines use the accounts you map here. `pnpm seed:gl` can seed a starter
+chart and mappings for local Fineract.
+
+The address bar is **Accounting › Financial activity mappings**.

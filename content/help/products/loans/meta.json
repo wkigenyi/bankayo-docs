@@ -1,0 +1,15 @@
+{
+  "title": "Loan products",
+  "pages": [
+    "index",
+    "create",
+    "details",
+    "currency",
+    "terms",
+    "settings",
+    "charges",
+    "accounting",
+    "mappings",
+    "review"
+  ]
+}

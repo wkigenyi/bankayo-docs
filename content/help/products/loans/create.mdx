@@ -1,0 +1,67 @@
+---
+title: Create a loan product
+description: The eight-step wizard for creating or editing a loan product.
+youtubeId: Au0S1f52PMk
+---
+
+**New** on the [loan products list](/help/products/loans) opens this wizard.
+**Edit** on a product uses the same steps and returns to that product when you
+close.
+
+On a large screen, steps stay in a left rail. **Previous** and **Next** sit at
+the bottom of the page. On a tablet or phone the steps run across the top. Required fields
+are marked with an asterisk (*).
+
+You can jump back to an earlier step without losing what you typed. Bankayo
+only asks for extra fields when you turn a feature on — for example tranche
+count appears after multi-disburse, GL accounts after you leave accounting
+on None.
+
+The video on this page walks the wizard and stops on **None** without
+saving. A second walkthrough,
+[loan product with cash accounting](/help/products/loans/accounting),
+creates **Normal Loan With Accounting**, sets **Cash**, maps a payment
+channel, and saves.
+
+## The eight steps
+
+1. [Details](/help/products/loans/details) — name, short name, optional dates,
+   fund, borrower cycle.
+2. [Currency](/help/products/loans/currency) — code, decimal places, multiples.
+   Amounts stay disabled until a currency is chosen.
+3. [Terms](/help/products/loans/terms) — principal, repayments, fixed or
+   floating interest.
+4. [Settings](/help/products/loans/settings) — schedule, grace, and optional
+   features (multi-disburse, top-up, guarantees, and so on).
+5. [Charges](/help/products/loans/charges) — fees and penalties in this
+   product’s currency, with amount, collection, calculation, and related
+   attributes.
+6. [Accounting](/help/products/loans/accounting) — None, cash, or accrual, and
+   the GL accounts that rule requires.
+7. [Mappings](/help/products/loans/mappings) — payment channels, charges, and
+   write-off or charge-off reasons to GL accounts (when accounting is not
+   None).
+8. [Review](/help/products/loans/review) — confirm every section, then create
+   or save.
+
+## Rules that span steps
+
+Fineract will reject combinations that do not work together. Bankayo blocks
+the common ones in the form:
+
+- A **floating rate** needs declining-balance interest and interest
+  recalculation.
+- A **progressive** schedule needs the advanced payment allocation strategy.
+- **Cash or accrual** accounting needs the matching GL accounts; **None**
+  does not.
+- Optional features only show the extra fields Fineract requires when that
+  feature is on.
+
+If save still fails, the message comes from Fineract — fix the highlighted
+fields and try again.
+
+## Permissions
+
+Creating needs loan-product create permission; editing needs update
+permission. Viewing a product you cannot edit still opens the workspace
+without **Edit**.

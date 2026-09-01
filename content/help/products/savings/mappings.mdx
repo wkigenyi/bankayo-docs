@@ -1,0 +1,56 @@
+---
+title: Savings product mappings
+description: Map payment channels and charges to GL accounts.
+---
+
+This is step 7 of the [create wizard](/help/products/savings/create). It
+applies only when [accounting](/help/products/savings/accounting) is Cash or
+Accrual. On **None**, the step explains that mappings are skipped.
+
+Each mapping is a row: something officers pick (a payment type or a charge)
+and the general ledger account it should post to. Add a row, choose both
+sides, or remove a row you do not need.
+
+All mappings are **optional**. You can save without any. After save, mappings
+appear on the product only when at least one row exists.
+
+## Payment channels
+
+Map an institution [payment type](/help/organization#payment-types) to the
+**savings reference** (cash or bank **asset**) that should receive that
+channel.
+
+Examples: **Cash** → teller cash (`1120`); a bank or mobile type → bank
+settlement (`1130`). Deposits and withdrawals that use that payment type
+then hit the mapped account instead of the product default savings
+reference.
+
+The list is institution payment types — **not** system-generated types
+(transfers and similar). Those exist for other operations, not cash
+channels. The mapping table is hidden until at least one institution type
+and one asset account exist.
+
+## Fees and penalties to income
+
+[Accounting](/help/products/savings/accounting) already sets one **income
+from fees** account for every fee on the product and one **income from
+penalties** for every penalty. A row here **overrides** that default for a
+**single** [charge](/help/products/charges).
+
+- **Fee to income** — a fee charge to the income account it should post to.
+  Charges with no row keep the product default.
+- **Penalty to income** — the same override against income from penalties.
+
+Fee rows only appear when the product has at least one attached fee; penalty
+rows when it has a penalty. Attach charges on the
+[charges](/help/products/savings/charges) step first.
+
+Add a row only when a charge needs its own account — an unmapped charge is
+not an error. The accounts offered are **detail** income accounts from
+[Chart of accounts](/help/accounting/chart-of-accounts).
+
+## After save
+
+You can change mappings later with **Edit**. GL accounts themselves are
+maintained under the chart of accounts. Savings products do not map
+write-off or charge-off **reasons** (loan products do).

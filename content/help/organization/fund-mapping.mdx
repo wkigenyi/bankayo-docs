@@ -1,0 +1,36 @@
+---
+title: Fund mapping
+description: Search outstanding loans by office and product.
+---
+
+Open **Fund mapping** in Organization (or press **Ctrl+K** and type
+"fund mapping"). You need **READ_LOAN** (or **ALL_FUNCTIONS_READ**).
+
+This is Fineract `GET /search/template` and `POST /search/advance`.
+Mandatory body field is `entities`; Bankayo always sends `["loans"]`
+because core Fineract only implements the loans query.
+
+This is **not** [Funds](/help/organization/funds) (source-of-capital
+names) and **not** [Financial activity mappings](/help/accounting/financial-activities)
+(fund-source GL accounts). The Mifos name is leftover from an
+outstanding-by-office-and-product search.
+
+## What you can do
+
+- Choose a **date type** and range. Date types are Fineract
+  `SearchLoanDate` (`approvalDate`, `createdDate`, `disbursalDate`). The
+  template does not return them.
+- Optionally restrict **status**, **loan products**, and **offices**.
+  Products and offices come from `GET /search/template` (R8). Status
+  codes are the strings Fineract maps (`all`, `active`, `overpaid`,
+  `closed` = obligations met, `writeoff` = written-off). `arrears` is
+  omitted — Fineract’s branch does not add a loan status.
+- Optionally filter the grouped result by **share of outstanding**
+  (percent) or **outstanding amount**, using Fineract’s comparison
+  operators (`between`, `<=`, `>=`, `<`, `>`, `=`).
+- **Search** lists one row per office and loan product: loan count,
+  outstanding, and that group’s share of expected repayment. Export the
+  last search as CSV or Excel.
+
+Amounts have no currency code. Fineract sums `total_outstanding_derived`
+without one — same idea as ledger amounts on table reports.

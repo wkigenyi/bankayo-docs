@@ -1,0 +1,57 @@
+---
+title: Import shares
+description: Bulk-post share purchases from an Excel spreadsheet.
+---
+
+Open **Import shares** from **Institution** (or press **Ctrl+K** and type
+"shares import"). You need permission to create share accounts or to apply
+additional shares. This is Bankayo’s preview importer — not Fineract’s
+Organization Excel bulk-import entity (`shareaccounts`).
+
+Each spreadsheet row buys shares in the product you pick on the upload form.
+Amount is divided by that product’s unit price (rounded down) to get the
+share count. If the client already has an active account for the product, the
+row purchases additional shares and auto-approves them. Otherwise it creates,
+approves, and activates a new account. Payment is always from the client’s
+first active savings account (`useSavings`).
+
+## Before you import
+
+- Download the Excel template from the import page.
+- Every client in the file needs an **external ID** that matches the client
+  record, and an **active** savings account (not a fixed or recurring deposit).
+- Add a [share product](/help/products/shares) if the product picker is empty.
+- The amount on each row must be enough for at least one share at the product
+  unit price.
+
+## Spreadsheet columns
+
+1. **s/n** — serial number (ignored)
+2. **External Client ID** — required; matches the client’s external ID
+3. **Client Name** — optional; filled from the matched client when blank
+4. **Amount** — purchase amount greater than zero
+5. **Date** — transaction date (see below)
+
+There is no narration column. Share product is not in the file — it comes from
+the form.
+
+## Date formats
+
+The Date column accepts:
+
+- **Excel date cells** — format the column as Date in Excel (recommended).
+- **ISO text** — `yyyy-MM-dd` when you type dates as text (for example `2024-03-15`).
+- **Excel serial numbers** — numeric date values Excel stores internally.
+
+Avoid ambiguous slash dates such as `01/02/2024`. Day and month order varies by
+locale and may import as the wrong date. Rows with an unrecognised date are
+marked invalid in the preview.
+
+Preview the file before posting. Invalid rows can be exported, fixed, and
+uploaded again. Valid rows post one at a time; failed rows can be exported
+without undoing purchases that already posted.
+
+If a client has more than one active savings account, the first active regular
+savings account is used.
+
+The address bar is **Institution › Import shares**.

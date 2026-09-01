@@ -1,0 +1,37 @@
+---
+title: Savings product currency
+description: Currency code, decimal places, and amount multiples.
+---
+
+This is step 2 of the [create wizard](/help/products/savings/create).
+
+## Choosing a currency
+
+Currency is a searchable list of currencies your institution has **enabled**
+under [Organization → Currencies](/help/organization#currencies). Each option
+shows the name and the **code** (for example `KES`, not a symbol).
+
+Choosing a currency fills **decimal places** from that currency. You can still
+change decimal places on the product if the core banking system allows it
+(0–6). Decimal places control how money fields round on later steps and on
+accounts opened on this product.
+
+If the currency you need is missing, enable it under Currencies first, then
+return here.
+
+## Multiples
+
+**In multiples of** is optional. Opening balances, limits, and similar
+amounts round to this step (for example 1, 10, or 100). Leave it blank if any
+amount in this currency is allowed.
+
+## Amounts on later steps
+
+Fields such as minimum opening balance stay **disabled** until a currency is
+chosen. From then on they show the currency **code** in the field — never `$`,
+`€`, or `KSh`.
+
+[Charges](/help/products/savings/charges) are filtered to this currency.
+Change currency after attaching charges and unmatched charges disappear from
+the list. Accounting GL accounts are not currency-specific in the picker —
+use accounts your institution keeps in this product’s currency.

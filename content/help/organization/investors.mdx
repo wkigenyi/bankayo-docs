@@ -1,0 +1,39 @@
+---
+title: Investors
+description: External asset-owner transfers on loans.
+---
+
+Open **Investors** in Organization (or press **Ctrl+K** and type
+"investors"). You need **READ_LOAN** (or **ALL_FUNCTIONS_READ**).
+Cancel needs **CANCEL_ASSET_OWNER_TRANSACTION**.
+
+This is Fineract `POST /external-asset-owners/search` and
+`POST /external-asset-owners/transfers/{id}?command=cancel`. The
+resource is gated by `fineract.module.investor.enabled` (on by
+default). If the module is off, Bankayo shows that instead of an empty
+list.
+
+This is **not** a catalog of investors you maintain here. Creating an
+owner is `POST /external-asset-owners`. Selling or buying back a loan
+is `POST /external-asset-owners/transfers/loans/{loanId}`. Those
+commands stay on the loan — this screen searches transfers and can
+cancel the latest **pending** or **buyback** row.
+
+## What you can do
+
+- **Search** by owner, transfer, or loan external ID. Filter
+  **settlement** and **effective** date ranges. Fineract’s request
+  fields are `submittedFromDate` / `submittedToDate` (applied to
+  settlement date) and `effectiveFromDate` / `effectiveToDate`.
+- Each row is one transfer: status, owner, loan, settlement, effective
+  from, and outstanding when Fineract returns details. Open a row to
+  see the loan. Export CSV or Excel.
+- **Cancel transfer** (row menu) is offered when status is Pending or
+  Buyback. Fineract refuses any other status and refuses a transfer
+  that is not the latest effective one for that loan.
+
+Status labels are Bankayo copy for Fineract `ExternalTransferStatus`
+(`ACTIVE`, `PENDING`, `BUYBACK`, intermediate variants, `DECLINED`,
+`CANCELLED`). Unknown values show the Fineract code.
+
+Amounts have no currency code on the search payload.

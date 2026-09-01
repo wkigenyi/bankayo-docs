@@ -1,0 +1,48 @@
+---
+title: External services
+description: SMS, email, Amazon S3, and notification gateway settings in Fineract.
+---
+
+Open **System → External services** (or press **Ctrl+K** and type
+"external services", "SMS", "SMTP", or "S3"). You need
+**READ_EXTERNALSERVICECONFIGURATION**, **ALL_FUNCTIONS_READ**, or
+**UPDATE_EXTERNALSERVICES** to view the list, and **UPDATE_EXTERNALSERVICES**
+to save changes. Superusers with **ALL_FUNCTIONS** can do both.
+
+These are institution-wide Fineract gateways — not document/SMS templates
+(Mustache text) and not the notifications bell in the top bar.
+
+## What you can do
+
+- **Switch gateways** with the side tabs (SMS, Email, Amazon S3,
+  Notification). On small screens the tabs scroll horizontally. Current
+  values sit on the same row as the control. Secret fields stay blank;
+  leave them blank to keep the stored value.
+- **Bookmark** a gateway with `?service=sms` (or `email`, `s3`,
+  `notification`) — that selects its tab. The command menu uses those links.
+- **Export** every setting as CSV or Excel. Secret values (passwords and keys)
+  are exported as dots, not the live secret.
+
+## Gateways
+
+| Service | What it configures |
+|---|---|
+| **SMS** | Message gateway host, port, endpoint, and tenant app key |
+| **Email** | SMTP username, password, host, port, TLS, from email, and from name |
+| **Amazon S3** | Bucket, access key, and secret key for file storage |
+| **Notification** | Server key plus GCM and FCM endpoints for push notifications |
+
+Membership of each gateway's fields comes from Fineract
+(`ExternalServicesConstants`). Bankayo labels those keys; it does not hide a
+setting Fineract stores.
+
+## Secrets
+
+Fineract does not send stored passwords or server keys back in full. Leave a
+secret field **blank** to keep the current value. Type a new value only when
+you intend to replace it.
+
+## Maker-checker
+
+When maker-checker is enabled for **UPDATE_EXTERNALSERVICES**, a save may wait
+in the checker inbox instead of applying immediately.

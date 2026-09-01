@@ -1,0 +1,34 @@
+---
+title: Near-breach
+description: Reusable near-breach rules for working-capital loan products.
+---
+
+Open **Products → Near-breach** (or press **Ctrl+K** and type "near
+breach"). You need **READ_WORKINGCAPITALNEARBREACH** (or
+**READ_WORKINGCAPITALLOANPRODUCT**). Create, update, and delete need
+the matching `*_WORKINGCAPITALNEARBREACH` permission. Fineract’s
+GET/POST also check **WORKINGCAPITALLOANPRODUCT**.
+
+This is Fineract `GET/POST /working-capital/near-breach` and
+`GET/PUT/DELETE /working-capital/near-breach/{id}`. There is **no**
+near-breach template API. Frequency-unit membership comes from
+`GET /working-capital/breach/template` `breachFrequencyTypeOptions`
+(R8) — the same enum as [Breach](/help/products/breach).
+
+This is **not** a loan-level near-breach action
+(`/working-capital-loans/{id}/near-breach-actions`). Attach a
+configuration when you create a working-capital product.
+
+## What you can do
+
+- **Browse** configurations by name, frequency, and threshold percent.
+  Export CSV or Excel.
+- **New** / **Edit** opens a docked sidebar. Name is required and at
+  most 100 characters. Frequency must be an integer greater than zero.
+  Threshold must be greater than 0 and at most 100
+  (`DataValidatorBuilder.percentage`).
+- **Delete** may fail if a working-capital product still uses this
+  configuration.
+
+If the server returns 404, the working-capital module is not on that
+Fineract. Bankayo does not fake the catalog.

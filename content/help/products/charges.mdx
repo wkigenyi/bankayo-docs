@@ -1,0 +1,236 @@
+---
+title: Charges
+description: Loan fees and penalties — collection time, calculation, payment mode, and how they attach to products and loans.
+youtubeId: -r2nosu_5BY
+---
+
+Open **Products → Charges** (or press **Ctrl+K** and type "charges").
+You need charge-viewing permission to see the list, plus create, update, or
+delete permission for those actions.
+
+A charge is a **reusable template**: name, currency, when Fineract collects it,
+how the amount is calculated, and whether it is a fee or a penalty. It is not
+money by itself. A [loan product](/help/products/loans/charges) attaches the
+templates that should start on every new loan. An officer can still add or
+remove charges when [opening a loan](/help/clients#opening-an-account), and can
+add more from the loan workspace **Charges** section.
+
+This page covers **loan** charges in detail. Savings charges use the same
+wizard with different times and calculations — see
+[Other applies-to](#other-applies-to) and
+[Savings charges](/help/savings/charges) for the account. Client, share, and
+working-capital charges are summarised there too.
+
+**New** and **Edit** use the same four-step wizard: applies to, terms, amount
+and settings, and review. After create, **Applies to** cannot change —
+Fineract does not allow it. Charges have **no** product availability window.
+
+## The list
+
+Each row is a template: name, applies to, collection time, amount, and active.
+
+- **Search** filters as you type (name, applies-to, time, amount, active).
+- **Export** downloads the catalog as CSV or Excel.
+- **Click a row** to open the charge, then **Edit** for the wizard.
+- Inactive charges stay in the catalog but do not appear when you attach
+  charges to a new loan product.
+
+## Creating — applies to
+
+**New charge** opens the wizard. **Applies to** is the first step and the one
+field you cannot change later.
+
+| Applies to | Where it is used |
+| --- | --- |
+| **Loan** | Loan products and loan accounts. Five collection times, full calculation set, required payment mode. |
+| Savings | Savings and deposit products. See [Savings charges](/help/savings/charges). |
+| Client | Collected from the client, not a product. Flat, specified due date. Optional income account on the charge. |
+| Shares | Share products. Cannot be a penalty. |
+| Working capital | Working-capital loans. Specified due date, flat only. No tax group. |
+
+Pick **Loan** for everything on this page.
+
+## Collection time (loan)
+
+**Charge time** is when Fineract puts the charge on the loan. Loan has five
+values. Changing time resets calculation to the first allowed option and
+clears due-day extras.
+
+### Disbursement
+
+Due when the loan is disbursed. Typical processing or origination fee.
+
+**Cannot be a penalty.** The penalty switch is off and disabled.
+
+### Specified due date
+
+Due on a date the officer sets when they add the charge to an application or
+to an existing loan. Use this for a one-off fee that is not tied to
+disbursement or to every installment — insurance, a legal fee, a dated
+penalty.
+
+On the loan, **Add charge** requires a due date for this time type.
+
+### Installment fee
+
+Added to **each repayment installment** — a recurring processing fee, not a
+late fee. It can be a fee or a penalty (penalty is unusual here).
+
+### Overdue installment
+
+A **late fee**. Fineract **requires** the penalty flag; Bankayo turns it on
+and locks the switch.
+
+Optional **add fee frequency** (days, weeks, months, or years, plus an
+interval) controls how often the overdue charge repeats. Interval is required
+when frequency is on.
+
+### Tranche disbursement
+
+For **multi-disburse** loans: collected when a tranche is disbursed, not only
+on the first disbursement.
+
+**Cannot be a penalty.** Calculation is only **flat** or **% of disbursement
+amount**.
+
+## Calculation (loan)
+
+How the number is computed. The amount field is a currency amount for
+**flat**, and a percent for the others.
+
+| Calculation | Meaning | Caps |
+| --- | --- | --- |
+| **Flat** | Fixed amount in the charge currency. | No |
+| **% of amount** | Percent of principal (or of the relevant outstanding amount). | Optional min / max |
+| **% of amount and interest** | Percent of principal plus interest. | Optional min / max |
+| **% of interest** | Percent of interest only. | Optional min / max |
+| **% of disbursement amount** | Percent of the disbursed amount. **Tranche disbursement only** — other times hide it. | Optional min / max |
+
+Min and max caps are amounts in the charge currency. They bound the
+*calculated* result so a percentage fee cannot fall below a floor or exceed a
+ceiling. Both are optional; if both are set, min cannot be above max.
+
+## Payment mode
+
+Required on loan and working-capital charges.
+
+- **Regular** — collected with the loan (repayment / cash path).
+- **Account transfer** — collected by transfer from a savings account.
+
+## Amount and settings
+
+- **Amount** — the flat figure or the percent, depending on calculation.
+- **Active** — defaults to on. Turn off to keep the template without offering
+  it on new products.
+- **Penalty** — marks the charge as a penalty rather than a fee. Locked off
+  for disbursement and tranche disbursement; locked on for overdue
+  installment.
+- **Tax group** — optional when at least one group exists under
+  [Organization → Tax groups](/help/organization#tax-groups). Create
+  components first, then a group. Working-capital charges do not take a tax
+  group.
+- **Income account** — **not** on a loan charge. The product decides where a
+  loan charge posts: a default on [accounting](/help/products/loans/accounting),
+  overridden per charge on [mappings](/help/products/loans/mappings). See
+  [Where a charge posts](#where-a-charge-posts). Client charges are the
+  exception — they pick an income or liability account on the charge itself.
+
+## Review, edit, delete
+
+Review repeats applies to, terms, and amount. Save creates the template.
+
+- **Edit** uses the same wizard. Applies to stays locked.
+- **Delete** is refused if the charge is still attached to a product or a
+  loan — read Fineract’s message.
+
+Create [detail GL accounts](/help/accounting/chart-of-accounts) before a
+product can map charge income.
+
+## Attach to a loan product
+
+On the product [Charges](/help/products/loans/charges) step, the table lists
+loan charges in **this product’s currency**. Check a row to attach it. Search
+and **All / Fee / Penalty** tabs filter the list.
+
+Those attachments become the starting set when an officer opens a loan.
+Officers can still add or remove charges on that loan. Fee and penalty income
+GL accounts are configured on [mappings](/help/products/loans/mappings), not
+on the charge.
+
+If the product list is empty, create the charge here first, in the same
+currency.
+
+### Where a charge posts
+
+Two steps on the product decide the GL account, and the second one wins.
+
+1. **[Accounting](/help/products/loans/accounting)** sets the product
+   defaults: one **income from fees** account for every fee on the product,
+   and one **income from penalties** account for every penalty. Both are
+   required once the rule is Cash or Accrual.
+2. **[Mappings](/help/products/loans/mappings)** overrides that per charge.
+   **Fee GL mappings** and **Penalty GL mappings** each take a row of
+   *charge → income account*, so one fee or one penalty can post to its own
+   preferred account while everything else keeps the default.
+
+Add a row only when a charge needs its own account — an unmapped charge is
+not an error, it just follows the product default. Mappings are optional,
+appear only when accounting is not None, and can be changed later with
+**Edit**. The accounts offered are the **detail** income accounts from
+[Accounting → Chart of accounts](/help/accounting/chart-of-accounts).
+
+## On a loan
+
+The loan workspace has a **Charges** section.
+
+- The table shows name, fee or penalty, when it is collected, due date,
+  amount, paid, outstanding, and status (outstanding, overdue, paid, waived).
+- **Add charge** (needs loan-charge create permission) opens a docked
+  sidebar. Pick a loan charge; specified due-date charges need a **due date**.
+  Amount defaults from the template and can be changed.
+- You cannot add charges on a closed, overpaid, or written-off loan.
+- **Remove** (needs loan-charge delete permission) is only for a charge that
+  has not been paid or waived and has no amount paid. Confirm in the dialog.
+
+Product-attached charges also appear when [opening a loan](/help/clients#opening-an-account)
+from the client — already selected; uncheck to drop one, or add another in
+the same currency.
+
+## On a savings account
+
+Add, pay, waive, stop, and remove are documented under
+[Savings charges](/help/savings/charges).
+
+## Other applies-to
+
+Same wizard, fewer combinations:
+
+- **Savings** — activation, closure, withdrawal, annual, monthly, weekly,
+  overdraft, no-activity, or specified due date. Flat, or percent of amount
+  on withdrawal and no-activity. Annual and monthly fees need a due day;
+  monthly and weekly need a repeat interval. Attach them on a
+  [savings product](/help/products/savings/charges); manage them on the
+  account under [Savings charges](/help/savings/charges). The product
+  [accounting](/help/products/savings/accounting) step sets default income
+  accounts, with optional per-charge mappings.
+- **Client** — specified due date, flat only. Optional income account.
+- **Shares** — activation (flat only), purchase, or redeem. Cannot be a
+  penalty.
+- **Working capital** — specified due date, flat, payment mode required, no
+  tax group.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| Charge missing on a loan product | Create it here in the **product currency**, keep it **active**, applies to **Loan**. |
+| Penalty switch disabled | Disbursement and tranche cannot be penalties; overdue installment must be. |
+| No percent of disbursement | That calculation exists only on tranche disbursement. |
+| No min / max caps | Caps appear for percentage calculations on loan charges, not for flat. |
+| No tax group field | Create a tax group under Organization first. |
+| No income account on a loan charge | Map income on the loan product mappings step. |
+| Cannot add a charge on a loan | The loan may be closed, overpaid, or written off, or no matching templates exist. |
+| Cannot remove a loan charge | It is paid, waived, or already has an amount paid. |
+| Cannot add, pay, waive, or remove a savings charge | See [Savings charges](/help/savings/charges). |
+| Save rejected | Read the message from Fineract — applies-to cannot change after create. |
+| Charge missing after search | Clear search; inactive charges still list here but not on a new product. |

@@ -1,0 +1,43 @@
+---
+title: Fixed deposit statement
+description: Preview a date range of fixed deposit postings and download a PDF.
+---
+
+The fixed deposit workspace has a **Statement** section. Open it from an
+account — there is no institution-wide statement list. The **?** button on that
+section opens this page.
+
+Fineract does not expose a statement API. Bankayo builds the statement from the
+same postings already loaded on the account: reversed rows are omitted, remaining
+rows are ordered oldest first, and opening balance is the running balance of the
+last posting strictly before **From**. Closing balance is the last running balance
+in the range, or the opening balance when the range is empty.
+
+Credits are deposits, interest postings, amount releases, dividend payouts, and
+inward account transfers. Debits are withdrawals, fee deductions, overdraft
+interest, tax withheld, amount holds, escheat, write-offs, and outward account
+transfers. Office-transfer status postings are not treated as money in or out.
+When Fineract sent a transfer description, that text is used instead of the
+plain type.
+
+Amounts use the currency **code**, never a symbol. Download PDF asks the server
+for a file (`statement_{account}_{from}_{to}.pdf`). You need permission to read
+the fixed deposit account.
+
+## Date range
+
+The page opens on the last calendar month through today. Change **From** and
+**To**, then **Show statement**. The preview table and the PDF use that applied
+range. **From** cannot be after **To**.
+
+## Cash receipts
+
+A cash deposit or withdrawal that is not reversed and not an account transfer
+can download a receipt PDF from the transaction row. After you record a cash
+deposit or withdrawal from the header, the sidebar stays open with **Download
+receipt** when Fineract returned the new transaction id. Account transfers do
+not get a receipt.
+
+See [Fixed deposits](/help/fixed) for the rest of the workspace. Recurring
+deposits use the same statement and receipt pattern on
+[Recurring deposits](/help/recurring/statement).

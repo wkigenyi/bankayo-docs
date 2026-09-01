@@ -1,0 +1,61 @@
+---
+title: Jobs
+description: Scheduler jobs, close-of-business steps, catch-up, and run history.
+---
+
+Open **System → Jobs** (or **Ctrl+K** and type "jobs"). You need
+**READ_SCHEDULER** to view the list. **UPDATE_SCHEDULER** lets you start or
+stop the scheduler, edit schedules, toggle jobs active, and change
+close-of-business steps. **EXECUTEJOB_SCHEDULER** lets you run a job now,
+run loan COB catch-up, or run close of business for specific loans.
+
+The screen has two tabs: **Scheduler jobs** and **Workflow**.
+
+## Scheduler
+
+The scheduler is either **Active** (cron jobs run as scheduled) or
+**Standby** (scheduled runs wait). Stop it only for maintenance — jobs that
+are already running will finish. You can still **Run now** while it is on
+standby.
+
+A queue badge shows how many jobs are currently running. The list
+auto-refreshes every 30 seconds.
+
+## Loan COB catch-up
+
+When loans lag behind the close-of-business date, **Run catch-up** processes
+each missed day until they catch up. The panel shows whether catch-up is
+running, the date being processed, and the oldest processed date next to the
+current COB date. If this banking server is not the batch manager, a run
+will say so instead of starting.
+
+## Scheduler jobs
+
+- **Search** jobs by display name or cron expression.
+- **Toggle** the active switch to enable or disable a scheduled job.
+- **Edit** a job to change its display name, cron expression, or active flag.
+- **Run now** opens a sidebar. Leave parameters empty unless the job expects
+  named values (name and value pairs the banking service passes through).
+  The button is disabled while that job is already running.
+- **View history** to see recent runs, status, and error logs.
+
+If a job shows a **Config error** badge, Fineract could not initialize it
+(`initializingError` is set). Fix the underlying configuration before expecting
+the job to run successfully.
+
+## Workflow (close of business)
+
+Pick a workflow job such as loan close of business. The ordered steps are
+what that job runs each day. Move steps up or down, remove one, or add an
+unused step from the list Fineract offers. **Save** writes the new order.
+
+When the job has an inline run (loan COB), enter loan IDs and **Run for loan
+IDs** to process those loans immediately.
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, job updates may queue for approval
+in the [Checker Inbox](/checker-inbox-and-tasks) instead of applying immediately.
+
+The address bar is **System › Jobs**. The Workflow tab is
+`/system/jobs?tab=workflow`.

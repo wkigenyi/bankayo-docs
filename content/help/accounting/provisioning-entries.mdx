@@ -1,0 +1,74 @@
+---
+
+title: Provisioning entries
+description: Calculate loan-loss reserves and optionally post the journals.
+youtubeId: cPgNAsHsM4o
+---
+
+
+Open **Provisioning entries** from **Accounting** (or press **Ctrl+K** and
+type "provisioning"). You need permission to create entries, post the
+journals, or recreate the lines — if the menu item is missing, ask your
+administrator.
+
+For how criteria, loans, GL accounts, and journal entries fit together, start
+with [Loan-loss provisioning](/help/accounting/loan-loss-provisioning).
+Criteria must already exist — see [Loan provisioning
+criteria](/help/organization/loan-provisioning-criteria).
+
+## The list
+
+Search by date or who created it. Export as CSV or Excel.
+
+- **New entry** picks a date on or before today. Tick **Create journal
+  entries** to post the reserve now, or leave it off and post later.
+- **Click a row** to see the reserved amounts by office, product, and aging
+  category, with liability and expense account codes on each line.
+- **Create journals** posts those lines to the ledger. They appear under
+  [journal entries](/help/accounting/journal-entries). Use this while
+  journals are not yet posted.
+- **Recreate lines** recalculates the amounts when
+  [criteria](/help/organization/loan-provisioning-criteria) changed before
+  journals are posted.
+- **View journal entries** (after posting) opens the ledger filtered for
+  review.
+
+You cannot create two entries for the same date. There is no delete.
+
+## Entry lines explained
+
+Each line ties together:
+
+- **Office** and **loan product** — where the overdue loans sit.
+- **Category** — Fineract provisioning category (STANDARD, SUB-STANDARD, …)
+  from the matching criteria band.
+- **Overdue days** — days past due used for the match.
+- **Amount reserved** — calculated reserve for that slice.
+- **Liability** and **Expense** — GL code and name from the criteria row for
+  that category.
+
+If no loans match on the date, the entry may exist but show no lines.
+
+## Permissions
+
+| Permission | Action |
+| --- | --- |
+| `CREATE_PROVISIONENTRIES` | List, create, view lines, export |
+| `CREATE_PROVISIONJOURNALENTRIES` | Create journals |
+| `RECREATE_PROVISIONENTRIES` | Recreate lines (before journals post) |
+
+Fineract has no separate read permission; Bankayo gates the screen on any of
+the three codes above.
+
+## Related help
+
+- [Loan-loss provisioning](/help/accounting/loan-loss-provisioning) — full
+  ecosystem and setup order.
+- [Loan provisioning criteria](/help/organization/loan-provisioning-criteria)
+  — define bands and GL accounts first.
+- [Journal entries](/help/accounting/journal-entries) — verify posted
+  reserves.
+- [Chart of accounts](/help/accounting/chart-of-accounts) — liability and
+  expense accounts used on criteria.
+
+The address bar is **Accounting › Provisioning entries**.

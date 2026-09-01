@@ -1,0 +1,34 @@
+---
+title: External events
+description: Enable or disable outbound Fineract business events posted to a message channel.
+---
+
+Open **System → External events** (or **Ctrl+K** and type "external events").
+You need **READ_EXTERNAL_EVENT_CONFIGURATION** to view the list and
+**UPDATE_EXTERNAL_EVENT_CONFIGURATION** to turn types on or off.
+
+These flags control which Fineract **business events** are posted to the
+tenant's outbound channel (Kafka or JMS when the server has that enabled).
+They are not [Hooks](/help/system/hooks) (HTTP or SMS callbacks) and not
+the notifications bell in the top bar.
+
+## What you can do
+
+- **Browse** every event type Fineract returns. Membership comes from
+  `GET /externalevents/configuration` — Bankayo does not hide types.
+- **Filter** by name, family (the leading word of the type, such as Client
+  or Loan), and enabled or disabled.
+- **Enable or disable** a type with the switch. The change is saved at once
+  via `PUT /externalevents/configuration`.
+- **Export** the filtered list as CSV or Excel.
+
+Event names on screen are Bankayo labels derived from the Fineract type
+(`ClientCreateBusinessEvent` → Client Create). The raw type stays in the
+Type column. Unknown types still appear using that Fineract name.
+
+Posting only happens when the banking server has external events turned on
+(`FINERACT_EXTERNAL_EVENTS_ENABLED`). Enabling a type here does not start a
+broker by itself.
+
+Without update permission the switches are disabled; you can still search
+and export.

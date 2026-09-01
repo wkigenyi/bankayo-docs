@@ -1,0 +1,80 @@
+---
+title: Products
+description: Loan, savings, share, and deposit products, plus charges, collateral, product mix, and share dividends — each type has its own pages.
+---
+
+Open **Products** in the sidebar (a navigation group, not a page) or press
+**Ctrl+K** and type "products". You only see the product types your role can
+view.
+
+Each product type has its own list, detail, and create/edit wizard. The **?**
+button on a product screen opens the page for that type.
+
+## Product types
+
+- [Loan products](/help/products/loans) — the fullest wizard: terms, settings,
+  charges, accounting, and mappings. Create and edit are eight steps.
+- [Savings products](/help/products/savings) — eight-step wizard: interest
+  compounding, posting, calculation, balances, charges, accounting, and
+  mappings. Create and edit use the same steps. [Accounting](/help/products/savings/accounting)
+  explains cash versus accrual, every GL account, and the terms (control,
+  reference, suspense, interest payable, escheat, and the rest).
+- [Share products](/help/products/shares) — eight-step wizard: total and
+  issued shares, unit price, min / nominal / max, lock-in, dividends, market
+  price, charges, and None or Cash accounting. Open a product for a
+  sectioned workspace. Create and edit; unused products cannot be deleted.
+  [Accounting](/help/products/shares/accounting) explains the four cash GL
+  accounts.
+- [Fixed deposits](/help/products/fixed) — term, amount, and an interest chart.
+  Open a product for a sectioned workspace (general, terms, interest chart,
+  accounting). Minimum and maximum term show as a length and unit together,
+  for example 3 months.
+- [Recurring deposits](/help/products/recurring) — like fixed deposits, with
+  mandatory deposits and withdrawals. Detail uses the same sectioned layout.
+- [Charges](/help/products/charges) — fees and penalties. Loan charges have
+  five collection times and five calculations; attach them to a loan product
+  or add them on a loan. Savings templates use the same catalog; add, pay,
+  and waive them on [Savings charges](/help/savings/charges).
+- [Collateral](/help/products/collaterals) — reusable types (name, quality,
+  unit, base price, percent to base). Officers register quantity on a
+  client, then pledge those units when opening a loan. This is not the
+  loan-application collateral grid.
+- [Products mix](/help/products/mix) — which loan products cannot be
+  active together on the same client or group. Not the loan-product
+  catalog.
+- [Share dividends](/help/products/share-dividends) — declare and
+  approve a payout for a share product. Not the minimum-active-period
+  field on the share product itself.
+- [Breach](/help/products/breach) — reusable working-capital breach
+  rules. Not a loan-level breach action.
+- [Near-breach](/help/products/near-breach) — reusable near-breach
+  rules (threshold percent). Frequency units come from the breach
+  template.
+
+## Create and edit
+
+**New** opens a full-page wizard. **Edit** uses the same wizard. Close on
+create returns to the list; close on edit returns to the product you were
+viewing. Required fields are marked with an asterisk (*). Amounts show the
+currency **code**, not a symbol.
+
+On a large screen, loan, savings, share, and charge wizards keep steps in a left rail. On a
+tablet or phone the steps run across the top. **Previous** and **Next** (or
+**Submit**) sit at the bottom of the page.
+
+## Date ranges
+
+Only [loan products](/help/products/loans/details) have an optional start and
+close date (when the product may be used). Savings, share, charge, fixed
+deposit, and recurring deposit products do **not** have a product availability
+window in Fineract.
+
+Fixed and recurring deposits do have **interest chart** dates (`from` /
+`until`). Those belong to the rate schedule, not to the product itself.
+
+## Videos
+
+Each dedicated page can include a public YouTube walkthrough of that screen,
+recorded on the demo tenant. Written steps on the page stay the source of
+truth — search, the **?** button, and troubleshooting tables always work
+without the video.

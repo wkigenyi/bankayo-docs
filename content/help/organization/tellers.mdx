@@ -1,0 +1,84 @@
+---
+title: Tellers
+description: Cash desks, cashier assignments, and allocating or settling cash.
+---
+
+Open **Tellers** from **Organization** (or press **Ctrl+K** and type
+"teller" or "cashier"). Fineract has no separate view permission — you need
+create or update teller permission to open the page.
+
+A **teller** is a cash desk at an office. **Cashiers** are staff assigned to
+that desk for a date range. From a cashier you **allocate cash** from the
+vault onto the till and **settle cash** back. Amounts always show the
+currency **code** (`KES`, not a symbol). Allocate and settle post to the
+ledger when vault and teller cash accounts are mapped — find those lines
+under [Journal entries](/help/accounting/journal-entries).
+
+## The list
+
+- **Search** by name, office, or cashier staff name.
+- **Sort** by clicking a column heading.
+- **Export** downloads the list as CSV or Excel.
+- **New teller** opens a docked sidebar. Office, name (up to 50 characters),
+  and start date are required. End date, description, and status are optional.
+  The teller form does not collect cashiers — save the till first.
+- **Click a row** to edit the till.
+- **Cashiers** on each row lists the staff on that till. Click the names (or
+  **None**) to open that till’s cashiers. The row menu has the same action.
+  After you create a teller, this sidebar opens so you can add the first
+  cashier.
+- **Delete** (row menu) asks for confirmation. Fineract refuses if cashiers
+  are still allocated — remove them first.
+
+The address bar is **Organization › Tellers**.
+
+## Cashiers
+
+The cashiers sidebar is only **who works the till**. Each cashier is a staff
+member, a from/to date, full day or hours, and an optional description,
+saved on its own.
+
+- **Add cashier** if you may allocate staff to a till. Staff options are
+  people at the same office as the teller.
+- **Edit** or **Remove** a cashier if you have those permissions. Removing
+  a cashier does not delete the staff member — they are just no longer on
+  this till.
+- **Cash details** opens that cashier’s cash page.
+
+## Cash details
+
+**Cash details** is a full page, not the sidebar — it has to hold a ledger
+of movements, not a handful of staff rows.
+
+The header keeps the cashier name, a compact **currency** picker (ISO codes
+such as `KES`), and **Allocate cash** / **Settle cash** when you have those
+permissions. Switching currency reloads the figures and the transaction list
+for that code.
+
+The page shows:
+
+- Assignment — office, teller, staff, period, and description.
+- **Allocated**, **cash in**, **cash out**, **settled**, and **net cash** for
+  the selected currency.
+- A **paginated** transaction list (date, type, amount, note). Use the
+  controls under the table; you can show 10, 25, 50, or 100 rows. The
+  address bar keeps currency, page, and size so you can bookmark or share
+  the view.
+
+If no currency is enabled under [Currencies](/help/organization#currencies),
+allocate and settle stay off until you enable one.
+
+The address bar is **Organization › Tellers › the till › Cashiers › the staff**.
+
+### Allocate and settle
+
+Both commands open a docked sidebar. Date, currency, amount, and a note are
+required. The amount field shows the currency **code**.
+
+- **Allocate cash** moves vault cash onto this cashier.
+- **Settle cash** moves cash from this cashier back to the vault. Fineract
+  refuses an amount greater than **net cash** in that currency — the reason
+  from the banking service is shown.
+
+If a button is missing, you do not have allocate-cash or settle-cash
+permission for tellers.

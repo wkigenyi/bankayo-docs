@@ -1,0 +1,35 @@
+---
+title: Loan product currency
+description: Currency code, decimal places, and amount multiples.
+---
+
+This is step 2 of the [create wizard](/help/products/loans/create).
+
+## Choosing a currency
+
+Currency is a searchable list of currencies your institution has **enabled**
+under [Organization → Currencies](/help/organization#currencies). Each option
+shows the name and the **code** (for example `KES`, not a symbol).
+
+Choosing a currency fills **decimal places** from that currency. You can still
+change decimal places on the product if Fineract allows it (0–6).
+
+If the currency you need is missing, enable it under Currencies first, then
+return here.
+
+## Multiples
+
+- **In multiples of** — optional. Principal and similar amounts round to this
+  step (for example 1, 10, or 100).
+- **Installment amount in multiples of** — optional. Used when the product
+  lets officers set an installment amount.
+
+## Amounts on later steps
+
+Fields such as principal stay **disabled** until a currency is chosen. From
+then on they show the currency **code** in the field — never `$`, `€`, or
+`KSh`.
+
+[Charges](/help/products/loans/charges) on the next-but-one step are filtered
+to this currency. Change currency after attaching charges and unmatched
+charges disappear from the list.

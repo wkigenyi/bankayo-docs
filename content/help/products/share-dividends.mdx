@@ -1,0 +1,38 @@
+---
+title: Share dividends
+description: Declare, approve, and delete share-product dividend payouts.
+---
+
+Open **Products → Share dividends** (or press **Ctrl+K** and type
+"dividend"). You need **READ_DIVIDEND_SHAREPRODUCT**. Declare needs
+**CREATE_DIVIDEND_SHAREPRODUCT**. Approve and delete need
+**APPROVE_DIVIDEND_SHAREPRODUCT** and **DELETE_DIVIDEND_SHAREPRODUCT**.
+
+This is Fineract `GET/POST /shareproduct/{productId}/dividend` and
+`GET/PUT?command=approve/DELETE /shareproduct/{productId}/dividend/{id}`.
+
+The [share product](/help/products/shares) wizard already has the
+minimum-active-period field. This screen is the payout list — not that
+setting.
+
+## What you can do
+
+- **Choose a share product.** The picker is `GET /products/share`. The
+  URL keeps `?productId=` so a product detail **Dividends** link lands
+  here.
+- **Browse** initiated and approved payouts for that product. Status
+  membership is Fineract `ShareProductDividendStatusType` (100
+  Initiated, 300 Approved). There is no template `*Options` array; those
+  two values are the enum (R8 fallback). Export CSV or Excel.
+- **New dividend** opens a docked sidebar. Period start, period end
+  (after start), and a positive amount are required
+  (`ShareProductDataSerializer.validateDividendDetails`). Fineract
+  refuses create when no eligible shares exist
+  (`eligible.shares.not.found`).
+- **Click a row** to see account allocations (`clientName`, account
+  number, amount, status).
+- **Approve** or **Delete** only while the payout is Initiated.
+  Fineract refuses both once Approved.
+
+Dates on the wire are `yyyy-MM-dd` with locale `en`. Amounts show the
+ISO currency code from the selected product.

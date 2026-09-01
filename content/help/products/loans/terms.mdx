@@ -1,0 +1,56 @@
+---
+title: Loan product terms
+description: Principal, repayments, and fixed or floating interest.
+---
+
+This is step 3 of the [create wizard](/help/products/loans/create). Related
+fields share a row: min / default / max principal, min / default / max
+repayments, and the same pattern for interest.
+
+## Principal
+
+Enter a **default** principal, and optionally a **minimum** and **maximum**.
+The default must sit inside that range. Officers who open a loan see this
+default and the allowed range; they can only change the amount if
+[settings](/help/products/loans/settings) allow the matching override.
+
+## Repayments
+
+- **Number of repayments** — default, with optional min and max.
+- **Repay every** — the interval and unit together, for example every
+  1 month, or every 2 weeks.
+- **Repayment start** — from disbursement or from the submitted date,
+  depending on the options Fineract offers.
+
+Grace periods on the settings step cannot be as long as (or longer than) the
+number of repayments.
+
+## Interest — fixed
+
+Leave **floating rate** off to set a nominal **interest rate per period**,
+with optional min/max, and an **interest rate frequency** (per month, year,
+and so on). Officers who open a loan see that rate and the allowed range.
+
+## Interest — floating
+
+Turn **floating rate** on when the product should track a published floating
+rate plus a differential.
+
+Fineract requires all of the following; Bankayo will not let you continue
+without them:
+
+- Interest type **declining balance** (set on [settings](/help/products/loans/settings)).
+- **Interest recalculation** enabled (also on settings).
+- A **floating rate** from
+  [Organization → Floating rates](/help/organization#floating-rates). The
+  field stays empty until at least one active rate exists.
+- A differential, plus min / default / max lending differentials that stay in
+  order.
+
+Equal amortization cannot be combined with a floating rate.
+
+On the client loan wizard, officers set the **differential** (inside the
+product min / default / max) instead of a nominal rate. If the product allows
+floating calculation, they can also choose whether this loan **tracks later
+published rate changes**. Create the published rate under
+[Organization → Floating rates](/help/organization#floating-rates) first.

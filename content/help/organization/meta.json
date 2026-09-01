@@ -1,0 +1,4 @@
+{
+  "title": "Organization",
+  "pages": ["index", "tellers", "funds", "loan-provisioning-criteria", "sms-campaigns", "bulk-import", "bulk-loan-reassignment", "password-preferences", "entity-data-table-checks", "adhoc-query", "fund-mapping", "investors", "loan-originators", "standing-instructions-history"]
+}

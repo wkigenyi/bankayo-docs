@@ -1,0 +1,52 @@
+---
+title: Import journal entries
+description: Bulk-post balanced manual journals from an Excel spreadsheet.
+---
+
+Open **Import journal entries** from **Accounting** (or press **Ctrl+K** and type
+"journal import"). You need journal-create permission to import. This is
+Bankayo’s preview importer — not Fineract’s Organization Excel bulk-import
+entity (`gljournalentries`).
+
+Each spreadsheet row posts one balanced journal — one debit line and one credit
+line at the same amount. Office, currency, and optional payment type come from
+the upload form and apply to every row.
+
+## Before you import
+
+- Download the Excel template from the import page.
+- Credit and debit GL codes must match **detail** accounts on the
+  [chart of accounts](/help/accounting/chart-of-accounts) that allow manual
+  journal entries.
+- Enable a currency under [Currencies](/help/organization#currencies) if the
+  currency picker is empty.
+
+## Spreadsheet columns
+
+1. **Reference Number** — optional
+2. **Date** — transaction date (see below)
+3. **Amount** — the same amount posts to debit and credit
+4. **Credit GL Code** — GL code of the credit account
+5. **Debit GL Code** — GL code of the debit account
+6. **Comments** — optional
+
+## Date formats
+
+The Date column accepts:
+
+- **Excel date cells** — format the column as Date in Excel (recommended).
+- **ISO text** — `yyyy-MM-dd` when you type dates as text (for example `2024-03-15`).
+- **Excel serial numbers** — numeric date values Excel stores internally.
+
+Avoid ambiguous slash dates such as `01/02/2024`. Day and month order varies by
+locale and may import as the wrong date. Rows with an unrecognised date are
+marked invalid in the preview.
+
+Preview the file before posting. Invalid rows can be exported, fixed, and
+uploaded again. Valid rows post one at a time; failed rows can be exported
+without undoing journals that already posted.
+
+After import, open [Journal entries](/help/accounting/journal-entries) to
+review the new postings.
+
+The address bar is **Accounting › Import journal entries**.

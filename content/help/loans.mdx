@@ -1,0 +1,110 @@
+---
+
+title: Loans
+description: Browse, search, and work a loan from its own workspace.
+youtubeId: mVNdnAFy6yE
+---
+
+
+Open **Institution → Loans** in the sidebar (or press **Ctrl+K** and type "loans").
+You need loan-viewing permission — if the menu item is missing, ask your administrator.
+
+## The loan list
+
+Loans from across the institution appear in a table showing account number, client,
+product, and status.
+
+- **Search** by account number or external ID with the box above the table.
+- **Sort** by account number when you are not searching.
+- **Pages** — use the controls under the table; you can show 10, 25, 50, or 100 rows.
+- **Open a loan** by clicking anywhere on its row.
+- The address bar always reflects your current view — **bookmark or share the URL**.
+
+Search uses Fineract’s loan search (account number or external ID). Opening a *new*
+loan still starts from an active [client](/help/clients#opening-an-account).
+
+## Exporting
+
+The **Export** button downloads the *entire* filtered list (not just the visible
+page) as a CSV or Excel file. Searching first narrows what's exported. Exports
+are recorded for auditing.
+
+## Loan details
+
+A loan has its own workspace — not the client header or section list. The top of
+the page keeps the account number, status, account type (with an icon), product,
+a link to the client or group this loan belongs to, and outstanding balance, then
+splits into sections:
+
+- **Overview** — product, balances, interest, and important dates. Amounts use
+  the currency **code**. A group loan also names the group and links to it.
+  When the loan uses a down payment, overview shows the percent of the
+  disbursed amount and whether Fineract auto-repays it on disbursement.
+- **Transactions** — postings on the loan, 25 to a page (you can choose 10, 50,
+  or 100). Filter by transaction date and type; the address bar keeps those
+  filters. Reversed postings are hidden until you turn on **Show reversed**.
+- **Schedule** — repayment installments and what has been paid. Each installment
+  is **Paid**, **Due** (due today), **Overdue**, or **Upcoming**. A down-payment
+  installment is tagged **Down payment**.
+- **Charges** — fees and penalties on this loan. Add a charge from templates
+  defined under [Charges](/help/products/charges). Specified due-date charges
+  need a due date. You cannot add charges on a closed, overpaid, or written-off
+  loan.
+
+**Actions** depend on status and your permissions. Commands that need a date,
+amount, or other details open a docked sidebar over the loan — the header stays
+visible. Undo and delete ask you to confirm. Fineract checks dates and amounts;
+if a command is not allowed, the reason from the core banking system is shown.
+
+Typical work from the loan header:
+
+- **Pending** — approve, reject, withdraw, or delete the application; assign
+  a loan officer.
+- **Approved** — disburse, or undo approval. If the loan has a linked savings
+  account and your role allows it, the disbursement form lets you send the
+  money there instead of cash.
+- **Active** — record a repayment (or a down payment if the product uses
+  one and it is not auto-repaid on disbursement), waive interest, close,
+  write off, charge off, or foreclose; undo
+  disbursal (or the last tranche on a multi-disburse loan). Repayment can
+  transfer from the customer’s active savings (the default when your role
+  allows it) or be recorded as cash. A transfer cannot exceed the savings
+  available balance or the loan outstanding. Cash repayments and other cash
+  loan payments list only institution payment types — not system-generated
+  ones. Add those types under
+  [Organization → Payment types](/help/organization#payment-types).
+- **Written off** — undo the write-off or post a recovery payment.
+- **Overpaid** — refund the credit balance.
+
+From a [client’s Loans section](/help/clients#client-details), clicking a row
+opens this same loan workspace.
+
+## Opening a loan
+
+Open a loan from an [active client](/help/clients#opening-an-account) (or a
+group / JLG member). The wizard collects what Fineract accepts on
+`POST /loans` for that product — fields the product cannot use stay hidden.
+
+- **Linked savings** (client loans only) — optional active savings of this
+  client. Group-only loans do not link a client savings account.
+- **Standing instruction at disbursement** — each installment is then
+  collected from the linked savings when it falls due, so repayments stay
+  on schedule without a cash visit.
+- **Account-transfer charges** also need that linked savings account.
+- **Product-gated terms** appear when the product allows them: a fixed
+  installment amount (EMI), equal amortization, monthly nth-day repayment,
+  partial-period interest, multi-disburse tranches, down payment, top-up,
+  progressive-schedule extras, and installment-level delinquency when the
+  product has a bucket.
+- **Schedule preview** does not persist. Recalculate after you change terms
+  or charges if you want updated figures. Fineract still calculates the
+  repayment schedule when you submit. Preview does not send linked-account,
+  standing-instruction, account number, or note fields.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No loans yet" or "No matching loans" | Open a loan from a client, or clear the search box. |
+| "Couldn't load loans" | Press Retry; if it persists, the core banking system may be unreachable — tell your administrator. |
+| Loans menu missing | Your role lacks loan-viewing permission. |

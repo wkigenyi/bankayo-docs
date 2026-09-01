@@ -1,0 +1,122 @@
+---
+title: Loan product settings
+description: Schedule, grace, and optional features such as multi-disburse, top-up, and interest recalculation.
+---
+
+This is step 4 of the [create wizard](/help/products/loans/create). It is the
+longest step: core schedule rules first, then toggles that reveal extra
+fields only when they are on.
+
+## Schedule and interest method
+
+- **Amortization** — equal installments or equal principal.
+- **Interest type** — declining balance or flat.
+- **Equal amortization** — a separate toggle. It cannot be combined with
+  interest recalculation, variable installments, or multi-disburse.
+- **Interest calculation period** — daily or same as repayment. Partial-period
+  interest is only valid when calculation is not daily.
+- **Transaction strategy** — how a payment is allocated. Names come from
+  Fineract; the list is whatever this tenant ships.
+- **Loan schedule type** — cumulative or progressive.
+- **Schedule processing** — horizontal or vertical. Vertical also needs the
+  advanced strategy.
+- **Days in year** and **days in month**.
+
+### Transaction strategy options
+
+- **Penalties, Fees, Interest, Principal order** — usual Mifos order:
+  charges first, then interest, then principal. The cash-accounting
+  walkthrough saves this on a normal product.
+- **Overdue/Due Fee/Int, Principal** — overdue fees and interest, then
+  amounts currently due, then principal.
+- **Principal, Interest, Penalties, Fees Order** — principal before
+  interest, so outstanding falls faster.
+- **Interest, Principal, Penalties, Fees Order** — interest before
+  principal.
+- **Early Repayment Strategy** — extra payments pay the loan down early
+  instead of walking the standard due-component order.
+- **Advanced payment allocation strategy** — required for **progressive**
+  schedules and **vertical** processing. You then edit **payment
+  allocation** (and optionally **credit allocation**) on this step. There
+  must be a default allocation; due types stay grouped on a horizontal
+  schedule.
+- Other named strategies (for example **HeavensFamily Unique**, **Creocore
+  Unique**, or due / in-advance variants) appear when the tenant has them.
+  Use those only when your institution chose them on purpose.
+
+The [cash-accounting walkthrough](/help/products/loans/accounting) stays
+cumulative and horizontal, so it does not need the advanced strategy.
+
+## Grace and arrears
+
+Optional grace on principal, interest payment, and interest charged — none of
+these can reach the full number of repayments. **In-arrears tolerance**,
+**grace on arrears ageing**, and **overdue days for NPA** follow. You can
+require the account to leave NPA only when arrears are cleared.
+
+## Multi-disburse
+
+Turn this on for tranche loans. You must set a **maximum tranche count**.
+You can also set a maximum outstanding balance, disallow expected
+disbursements, and allow approved amounts over the applied amount (percentage
+or flat, with a number). **Full term for tranche** is only valid on a
+progressive multi-disburse product.
+
+## Guarantees
+
+**Hold guarantee funds** requires a mandatory guarantee percentage. Own-funds
+and guarantor minimums cannot add up to more than that mandatory amount.
+
+## Down payment
+
+Enable down payment, then set the percentage of the disbursed amount
+(1–100). You can auto-repay the down payment on disbursement. Product
+review and the loan overview both show the percent and that auto-repay
+flag.
+
+## Variable installments
+
+Set a **minimum gap** and **maximum gap** (in days). The maximum must be
+greater than the minimum.
+
+## Other product flags
+
+- **Can define installment amount** — officers may set an EMI.
+- **Can be used for top-up** — this product may close an existing loan on
+  disbursement. Only these products appear when a loan officer starts a
+  top-up.
+- **Sync expected with disbursement date**.
+
+## Interest recalculation
+
+Enabling recalculation asks for compounding method, reschedule strategy, rest
+frequency (and a compounding frequency when compounding is not none),
+pre-closure interest, and whether arrears follow the original schedule.
+Progressive products that recalculate must use the progressive reschedule
+strategy. Compounding-on-EOD appears for daily compounding.
+
+A floating-rate product on the [terms](/help/products/loans/terms) step
+requires this toggle.
+
+## Delinquency
+
+**Installment-level delinquency** requires a **delinquency bucket**. Create
+ranges and buckets under
+[Organization → Delinquency buckets](/help/organization#delinquency-buckets).
+The field is hidden until at least one bucket exists.
+
+## Income capitalization and buy-down
+
+These apply only with the advanced payment strategy (typical for progressive
+schedules). Each toggle requires a calculation type, strategy, and income
+type. Buy-down can be marked as a merchant buy-down. Accrual accounting then
+needs the extra GL accounts on the [accounting](/help/products/loans/accounting)
+step.
+
+## Overrides
+
+Choose which terms a loan officer may change when [opening a loan](/help/clients#opening-an-account)
+on this product: amortization, interest type, payment strategy, interest
+calculation period, in-arrears tolerance, repay-every, grace on principal and
+interest, and grace on arrears ageing. Unchecked fields stay visible on the
+loan but locked.

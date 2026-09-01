@@ -1,0 +1,60 @@
+---
+title: Savings product charges
+description: Attach fees and penalties in the product currency.
+---
+
+This is step 5 of the [create wizard](/help/products/savings/create). Define
+the templates first under [Charges](/help/products/charges) — collection
+time and calculation are on the charge, not here. After save, attached fees
+and penalties show as tables on the product when any exist. Charge names
+link to that catalog.
+
+## What you can attach
+
+The table lists charges that apply to **savings** and match this product’s
+[currency](/help/products/savings/currency). Search and the **All / Fee /
+Penalty** tabs filter the list. Check a row to attach that charge; uncheck
+to remove it from the product.
+
+Product charges become the starting set when an officer
+[opens a savings account](/help/clients#opening-an-account) — they can still
+add or remove charges on that account, and manage them later from
+[Savings charges](/help/savings/charges) (pay, waive, stop recurring, or
+remove while pending).
+
+If the list is empty, either no savings charges exist in this currency, or
+you have not chosen a currency yet. Create the charge first under
+[Charges](/help/products/charges), in the same currency as the product.
+
+## Savings collection times
+
+A savings charge is collected at one of these times (set on the charge
+template):
+
+- **Specified due date** — you (or the officer) pick the due date.
+- **Savings activation** — when the account is activated.
+- **Savings closure** — when the account is closed.
+- **Withdrawal fee** — when the client withdraws. Pair with
+  [Apply withdrawal fee to transfers](/help/products/savings/settings) if
+  account-to-account transfers should pay it too.
+- **Annual fee** / **Monthly fee** / **Weekly fee** — recurring. Annual and
+  monthly need a due day; monthly and weekly need a repeat interval.
+- **Overdraft fee** — when the account is overdrawn.
+- **No-activity fee** — when the account has no qualifying activity.
+
+Calculation is **flat**, or **percent of amount** on withdrawal and
+no-activity fees.
+
+## Product annual fee versus a charge
+
+[Settings](/help/products/savings/settings) still accept a product-level
+annual fee amount and due day. That is separate from attaching an annual-fee
+**charge** here. Use charges when you want the fee on the account Charges
+section. Do not set both unless you intend two fees.
+
+## After save
+
+You can change the attached set later with **Edit**. When accounting is not
+None, you can send one fee or penalty to its own income account on
+[mappings](/help/products/savings/mappings); charges with no row keep the
+product default income accounts.

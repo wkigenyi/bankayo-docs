@@ -1,0 +1,37 @@
+---
+title: Income statement
+description: Period income and expenses with year-over-year columns and a printable PDF.
+---
+
+Open **Income statement** from the sidebar, press **Ctrl+K**, or click
+**Income Statement Table** in the [reports catalog](/help/reports). You need
+report-reading permission. The screen looks up the published table report named
+**Income Statement Table**. If that report is missing or not in use, the page
+stays empty instead of failing.
+
+## Parameters
+
+**Set parameters** opens a docked sidebar.
+
+- **Period type** — month, quarter, half year, year, year to date, month
+  (year-over-year), or custom dates.
+- **Period** — a preset window for that type, or start and end dates when you
+  choose custom.
+- **Office** (and any other stretchy fields the report defines) come from the
+  banking service, not a hard-coded list.
+
+**Run** sends those dates to Fineract. Comparison columns are **extra runs of
+the same report** for the same window one year earlier and two years earlier.
+If the report has no date parameters, Bankayo runs it once.
+
+Amounts are ledger figures with no currency code: grouped digits and
+parentheses for negatives. Dates on the parameter form use ISO `yyyy-MM-dd` on
+the wire (`en` locale).
+
+## Layout
+
+Rows are grouped as **Income** and **Expense**, with a section total for each
+and a **Surplus / (Deficit)** row (income minus expenses). **Download PDF**
+re-runs the report with the same parameters and prints the same columns.
+
+Trial Balance stays on the generic catalog runner. It has no dedicated screen.

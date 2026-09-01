@@ -1,0 +1,36 @@
+---
+title: Loan originators
+description: Parties that originate loans for revenue sharing and reporting.
+---
+
+Open **Loan originators** in Organization (or press **Ctrl+K** and type
+"loan originators"). You need **READ_LOAN_ORIGINATOR**. Create, update,
+and delete need the matching `*_LOAN_ORIGINATOR` permission.
+
+This is Fineract `GET/POST /loan-originators`, `GET /loan-originators/template`,
+and `GET/PUT/DELETE /loan-originators/{id}`. The resource is gated by
+`fineract.module.loan-origination.enabled` (on by default).
+
+This is **not** attaching an originator to a loan. That is
+`POST/DELETE /loans/{id}/originators` while the loan is still submitted
+and pending approval. Bankayo does not fake that command on this
+catalog.
+
+## What you can do
+
+- **Browse** originators by name, external ID, status, type, and
+  channel. Export CSV or Excel.
+- **New originator** / **click a row** opens a docked sidebar.
+  External ID is required (up to 100 characters). Name is optional
+  (up to 255). Status membership comes from
+  `GET /loan-originators/template` `statusOptions` (R8). Originator
+  type and channel type come from the template code-value lists
+  (`LoanOriginatorType`, `LoanOriginationChannelType`). Empty lists
+  mean those codes have no values yet — add them under
+  [System → Codes](/help/system/codes).
+- **Delete** is refused if the originator is still attached to a loan.
+
+Status labels are Bankayo copy for `ACTIVE`, `PENDING`, and
+`INACTIVE`. Unknown template values use the Fineract string.
+The template may suggest a generated external ID on create.
+Update cannot change the external ID.

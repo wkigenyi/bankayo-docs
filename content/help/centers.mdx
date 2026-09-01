@@ -1,0 +1,141 @@
+---
+title: Centers
+description: Browse, create, and manage centers that hold groups.
+---
+
+Open **Institution → Centers** in the sidebar (or press **Ctrl+K** and type "centers").
+You need center-viewing permission — if the menu item is missing, ask your administrator.
+
+## The center list
+
+Centers appear in a table showing name, account number, office, status, and staff.
+
+- **Search** by name with the box above the table — results update as you type.
+- **Sort** by clicking the Name or Office column headers.
+- **Pages** — use the controls under the table; you can show 10, 25, 50, or 100 rows.
+- **Open a center** by clicking anywhere on its row.
+- The address bar always reflects your current view — **bookmark or share the URL** and
+  it reopens exactly this filtered, sorted page.
+
+## Exporting
+
+The **Export** button downloads the *entire* filtered list (not just the visible page)
+as a CSV or Excel file. Searching first narrows what's exported. Exports are recorded
+for auditing.
+
+## Creating a center
+
+Press **New center** at the top of the center list (you need center-creation permission
+to see it). One form collects:
+
+- **Name** and **office** — required. Groups and staff must belong to this office.
+- **Staff** — optional. The list is limited to employees at the selected office.
+- **External ID** — optional reference from another system.
+- **Submitted on** — the registration date; it cannot be in the future.
+- **Activate now** — active centers can be used right away. If you leave this off,
+  the center stays pending until you activate it from **Actions**. Activating
+  now also needs an activation date (not in the future).
+- **Groups** — optional. Search for groups and add them before you save. A group
+  cannot already sit in another center.
+
+Required fields are marked with an asterisk (*). After you save, you land on the
+new center's page.
+
+## Center details
+
+Open a center from the list. The page keeps the name, account number, status,
+office, and staff at the top, then splits into sections:
+
+- **Overview** — office, staff, external ID, and important dates (submitted,
+  activated, closed) plus who recorded them when that is on file.
+- **Groups** — groups in the center. Click a name to open that group when you
+  can view groups.
+- **Meetings** — the collection calendar groups in this center inherit.
+- **Collection sheet** — attendance, repayments, and disbursements for a
+  meeting date across the center's groups.
+- **Accounts** — loans and savings on the center and on members of its groups
+  (read-only; open new accounts from a group).
+- **Notes** — staff notes on this center.
+- **Extra data** — custom fields your institution attached to centers.
+
+On a wide screen the sections sit in a left-hand list. On a tablet they become a
+row of tabs.
+
+## Groups
+
+Groups must belong to the **same office** as the center, and they cannot already
+belong to another center. **Add groups** searches for groups and adds them in a
+docked sidebar. Remove a group from the row — the group itself is not deleted.
+
+You can add or remove groups while the center is pending or active. Closed
+centers keep their group list but you cannot change it here.
+
+## Meetings
+
+A collection meeting is the repeating calendar this center uses for collection
+sheets. **Add meeting** collects a short title, start date, and optional
+repeat rule (weekly needs a weekday; monthly needs which week of the month).
+The meeting type is always a collection meeting.
+
+Groups in this center **inherit** this calendar. They cannot edit it on the
+group — change it here. Delete the meeting when you no longer need it. You
+cannot generate a collection sheet until another collection meeting exists.
+
+## Collection sheet
+
+The sheet table is empty until you generate. **Generate** opens a sidebar
+for the meeting date (usually the next eligible date). Submit to load
+clients, attendance, and amounts. Mark attendance, enter repayment amounts,
+and enter disbursements when a loan is ready to disburse. **Save collection
+sheet** on the results toolbar posts those amounts. You need permission to
+save the center collection sheet.
+
+If there is no collection meeting yet, add one from **Meetings** first.
+The institution-wide [collection sheet](/help/collection-sheet) finds every
+center meeting that day. Individual (non-JLG) loans use the
+[individual collection sheet](/help/individual-collection-sheet).
+
+## Accounts
+
+Loans and savings attached to this center, and loans and savings for members
+of its groups. Use **Include closed** to show closed accounts. Opening a new
+loan or savings happens on a **group**, not from this list.
+
+## Notes
+
+Staff notes on this center. Add, edit, or delete a note from this section.
+Fineract stores center notes with group notes (centers live on the same
+record as groups), so you need group-note permission to see this section.
+
+## Extra data
+
+Custom fields your institution attached to centers. Each table is listed
+separately. Add or edit in a docked sidebar; delete asks you to confirm. A
+table that allows more than one row lets you add another. Required fields are
+marked with an asterisk (*). This section is hidden when no extra tables are
+available to you.
+
+## Editing and status
+
+**Edit** changes the name, staff, or external ID in a docked sidebar. The office
+cannot be changed after create.
+
+**Actions** depend on status and your permissions. Commands that need a date or
+reason open a docked sidebar; delete asks you to confirm.
+
+- **Pending** — edit, activate, or delete when the center has no groups.
+- **Active** — edit, or close (date and reason). Closing is refused while the
+  center has open groups — the message explains why.
+- **Closed** — the center is read-only here.
+
+If a command is not allowed, the reason from the core banking system is shown.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| "No centers yet" or "No matching centers" | Create a center, or clear the search box. |
+| "Couldn't load centers" | Press Retry; if it persists, the core banking system may be unreachable — tell your administrator. |
+| Centers menu missing | Your role lacks center-viewing permission. |
+| Close refused | Close or move the center's open groups first, then try again. |
+| Group add refused | The group must belong to the same office and not already sit in a center. |

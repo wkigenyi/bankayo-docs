@@ -1,0 +1,46 @@
+---
+title: Account number preferences
+description: Choose how Fineract builds client, loan, savings, and other account numbers — prefix per entity.
+---
+
+Open **System → Account number preferences** (or **Ctrl+K** and type "account
+number"). You need **READ_ACCOUNTNUMBERFORMAT** to view the list.
+**CREATE_ACCOUNTNUMBERFORMAT**, **UPDATE_ACCOUNTNUMBERFORMAT**, and
+**DELETE_ACCOUNTNUMBERFORMAT** control the buttons. Superusers with
+**ALL_FUNCTIONS** see everything.
+
+Each preference is one **account type** (client, loan, savings, center, group,
+shares, or working capital loan — membership comes from
+`GET /accountnumberformats/template`). Fineract allows only one preference
+per type. New accounts of that type get a number built from the preference;
+numbers already issued do not change.
+
+## What you can do
+
+- **Browse** preferences by account type, with optional search.
+- **Create** a preference: pick an unused account type and an optional prefix.
+  Prefix choices come from the template for that type (office name, product
+  short name, client type, or a custom prefix). Shares have no prefix options.
+- **Edit** the prefix. The account type cannot change after create. Fineract
+  cannot clear a prefix back to none — delete and recreate if you need that.
+- **Delete** a preference from the row menu. Existing account numbers stay as
+  they are.
+- **Export** the filtered list as CSV or Excel.
+
+## Prefix and number body
+
+The prefix is prepended to a numeric body. The body is either a zero-padded
+generated id or a **random** number when **random-account-number** is on in
+[Configurations](/help/system/configurations). Length follows
+**custom-account-number-length** when that flag is enabled. This screen does
+not toggle those flags.
+
+A **custom prefix** (Fineract `PREFIX_SHORT_NAME`) also needs the prefix
+characters themselves (up to 50). Fineract trims prefixes to 10 characters
+when it builds the number.
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, preference changes may queue for
+approval in the [Checker Inbox](/checker-inbox-and-tasks) instead of applying
+immediately.

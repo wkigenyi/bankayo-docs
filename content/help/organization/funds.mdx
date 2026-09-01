@@ -1,0 +1,66 @@
+---
+title: Funds
+description: Source-of-capital names for loan products and for opening a loan.
+youtubeId: k40u99HHHb0
+---
+
+Open **Funds** from **Organization** (or press **Ctrl+K** and type
+"funds"). You need fund-viewing permission to see the list, create permission
+to add a fund, and update permission to edit one.
+
+A fund is a **source-of-funds name**: the donor, government programme, or
+internal pool that put up the money. It is a tag, not an account. It does
+not hold a balance and it does not post to the general ledger. You put it
+on a [loan product](/help/products/loans/details) and, separately, on a loan
+when [opening](/help/clients#opening-an-account). Fineract then stores whose
+capital that product or loan uses.
+
+The Fund field on those screens appears only after at least one fund exists
+here. If you never split the book by who financed it, you can leave this
+list empty.
+
+## Why they help
+
+Without funds, products and loans do not record who supplied the capital.
+With a short catalog you can:
+
+- Separate **own capital** from **donor** or **government** money — for
+  example Internal, World Bank SME 2026, or a youth programme.
+- Give a product a programme identity. After save, that name shows under
+  **General** on the [product](/help/products/loans).
+- Tag an individual loan when an officer opens it, even if several funds
+  share the same product terms.
+- Store an **external ID** that matches a donor project code or another
+  system, so the name here lines up with theirs.
+- **Export** the catalog for audit.
+
+Bankayo copies the product’s fund onto a new loan as the default.
+Officers can still pick a different fund, or **No fund** — a fund is not
+required on the application.
+
+## Not the same as a fund-source account
+
+**Fund source** on [loan product accounting](/help/products/loans/accounting)
+is a **GL account** — the cash or asset account disbursements and repayments
+post through. That is bookkeeping. An Organization fund is only the
+programme name. You can map many loans to one GL fund-source account and
+still tag them with different Organization funds.
+
+**Hold guarantee funds** on [loan product settings](/help/products/loans/settings)
+is a different feature (money held against a loan). It does not use this
+list.
+
+## The list and creating a fund
+
+- **Search** by name or external ID.
+- **Sort** by clicking a column heading.
+- **Export** downloads the list as CSV or Excel.
+- **New fund** opens a docked sidebar. Name is required (up to 100
+  characters). External ID is optional, for a reference from another system.
+- **Click a row** to edit that fund. The name updates everywhere the fund is
+  used.
+
+Fineract does not delete funds. If a name is no longer used, rename it or
+leave it unused.
+
+The address bar is **Organization › Funds**.

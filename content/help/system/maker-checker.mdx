@@ -1,0 +1,27 @@
+---
+title: Maker-checker
+description: Choose which commands need a checker before they take effect.
+---
+
+Open **System → Maker-checker** (or press **Ctrl+K** and type
+"maker-checker"). You need **READ_PERMISSION** to view the list and
+**UPDATE_PERMISSION** to change flags.
+
+These flags are **institution-wide**, not per role. They decide which
+commands wait in [Checker Inbox](/help/navigation) until a checker
+approves them. Granting a permission on a [role](/help/roles) is separate
+— a role can perform a command, and this screen can still require a
+second person to approve it.
+
+## What you can do
+
+- **Search** by everyday name, permission code, or grouping.
+- **Tick** a command so a maker's work waits for a checker. The group
+  checkbox selects or clears every command in that grouping.
+- **Save** writes only what changed.
+
+Read permissions, checker-only permissions (`*_CHECKER`), and the special
+grouping cannot use maker-checker — Fineract does not list them here.
+
+On a role's permissions page, commands that already require a checker
+show a **Needs checker** badge, with a link back to this screen.

@@ -1,0 +1,31 @@
+---
+title: Accounting rules
+description: Save a named debit and credit account pair for posting.
+---
+
+Open **Accounting rules** from **Accounting** (or press **Ctrl+K** and type
+"rule"). You need rule-viewing permission to see the list, create permission
+to add, update permission to edit, and delete permission to remove.
+
+A rule names one [GL account](/help/accounting/chart-of-accounts) to debit
+and one to credit, for an office. On [New journal](/help/accounting/journal-entries#posting-a-journal)
+you can pick the rule to fill those accounts, or choose the accounts yourself.
+Amounts still belong on the journal you post.
+
+## The list
+
+Search by name, office, or account. Export the catalog as CSV or Excel.
+
+- **New rule** opens a sidebar: name, office, debit account, and credit
+  account. Description is optional. Debit and credit must be different
+  detail accounts.
+- **Click a row** to edit. System rules stay visible but cannot change or
+  delete.
+- The row menu **Delete**s a rule that is not in use. Fineract’s reason is
+  shown if it refuses.
+
+If a rule was created with tags instead of fixed accounts, the list still
+shows the tags. Saving from Bankayo replaces those tags with the debit and
+credit accounts you pick.
+
+The address bar is **Accounting › Accounting rules**.

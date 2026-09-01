@@ -1,0 +1,37 @@
+---
+title: Collateral
+description: Product catalog of collateral types — not the loan-application collateral grid.
+---
+
+Open **Products → Collateral** (or press **Ctrl+K** and type "collateral").
+You need **READ_COLLATERAL_PRODUCT**. Create, update, and delete need the
+matching `*_COLLATERAL_PRODUCT` permission.
+
+This is Fineract `GET/POST /collateral-management`,
+`GET /collateral-management/template`, and
+`GET/PUT/DELETE /collateral-management/{id}`.
+
+This is **not** the collateral rows on a loan application and **not**
+registering quantity on a client. Officers pledge **client-registered**
+units of these types when they [open a loan](/help/clients#opening-an-account).
+
+## What you can do
+
+- **Browse** types by name, quality, unit, and currency. Export CSV or
+  Excel. Amounts show the ISO currency **code**, not a symbol.
+- **New collateral** / **click a row** opens a docked sidebar. Name,
+  quality, unit, base price, and percent to base are required. Create
+  also sends `locale` (`en`) so Fineract can parse the amounts.
+- **Currency** membership comes from
+  `GET /collateral-management/template` (platform currencies), kept to
+  currencies the institution has enabled under
+  [Organization → Currencies](/help/organization#currencies). A type
+  whose currency was later disabled stays selectable on edit so the
+  value is not lost.
+- **Delete** is refused if a client still holds a quantity of this type
+  (`COLLATERAL_IS_ALREADY_ATTACHED`).
+
+Name is at most 20 characters, quality 40, and unit 10 — the
+`m_collateral_management` column lengths. Base price and percent to
+base must be greater than zero (`@Positive`). Quality and unit are
+free text; Fineract does not ship an enum `*Options` list for them.

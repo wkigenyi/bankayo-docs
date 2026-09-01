@@ -1,0 +1,35 @@
+---
+title: Entity data-table checks
+description: Require an extra-data table when a client, group, loan, or savings account reaches a status.
+---
+
+Open **Entity data-table checks** in Organization (or press **Ctrl+K** and
+type "entity data table checks"). You need **READ_ENTITY_DATATABLE_CHECK**
+to open the list, **CREATE_ENTITY_DATATABLE_CHECK** to add a check, and
+**DELETE_ENTITY_DATATABLE_CHECK** to remove one.
+
+This is Fineract `GET /entityDatatableChecks`, `GET /entityDatatableChecks/template`,
+`POST /entityDatatableChecks`, and `DELETE /entityDatatableChecks/{id}`. There
+is no update API — change a rule by deleting it and creating another.
+
+This is not [System → Manage data tables](/help/system/datatables), which
+**defines** extra-data tables. This screen only says *when* a registered
+table must be filled.
+
+## What you can do
+
+- **Browse** checks by entity, status, table, and optional product. Filter
+  and export CSV or Excel.
+- **New check** opens a docked sidebar. Entity membership is
+  `GET /entityDatatableChecks/template` `entities` (R8). Statuses come from
+  the matching template list (`statusClient`, `statusGroup`, `statusLoans`,
+  `statusSavings`). Tables are the registered extra-data tables for that
+  entity. Loan and savings can optionally limit the rule to one product;
+  Fineract treats `productId` as optional.
+- Entities the template lists without check statuses (office, products, and
+  others) stay in the picker. Fineract cannot persist a check for them —
+  Bankayo leaves status empty instead of inventing one.
+- **Delete** removes the rule only. The extra-data table stays registered.
+
+Bankayo labels known entity keys (`m_client`, `m_loan`, …) and status names
+(`CREATE`, `DISBURSE`, …). Unknown ids use the Fineract value.

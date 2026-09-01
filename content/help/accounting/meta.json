@@ -1,0 +1,4 @@
+{
+  "title": "Accounting",
+  "pages": ["index", "chart-of-accounts", "journal-entries", "journal-import", "frequent-postings", "migrate-opening-balances", "accounting-rules", "financial-activities", "closures", "accruals", "loan-loss-provisioning", "provisioning-entries"]
+}

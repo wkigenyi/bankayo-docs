@@ -1,0 +1,100 @@
+---
+title: Savings product terms
+description: Nominal annual rate, compounding, posting, calculation, and days in year.
+---
+
+This is step 3 of the [create wizard](/help/products/savings/create). These
+four period fields plus the rate are required. Officers inherit them when they
+[open a savings account](/help/clients#opening-an-account), and can still
+change the rate on that account’s Optional tab.
+
+## Nominal annual interest rate
+
+The **advertised yearly rate** on this product, as a percent. Zero is
+allowed — use that for a pass-through or compulsory account that should not
+earn interest.
+
+This is a **nominal** rate: it is the face rate before compounding. How often
+interest is added to the balance (compounding) and how often that interest
+is actually credited to the account (posting) are separate fields below.
+
+On overdraft, a different rate can be set on
+[settings](/help/products/savings/settings). That rate is what you **charge**
+the client for using overdraft; this field is what you **pay** the client on
+a positive balance.
+
+## Compounding period
+
+How often earned interest is added into the balance that later interest is
+calculated on. More frequent compounding slightly increases the effective
+return for the same nominal rate.
+
+| Choice | Meaning |
+| --- | --- |
+| **Daily** | Interest compounds every day. Usual for true savings. |
+| **Monthly** | Once a month. |
+| **Quarterly** | Once a quarter. |
+| **Bi-annual** | Twice a year. |
+| **Annual** | Once a year. |
+
+Compounding without posting only affects the running calculation. The client
+does not see a credit until interest is **posted**.
+
+## Posting period
+
+How often calculated interest is credited (or, with accrual accounting,
+moved from interest payable onto the account). Posting creates a visible
+interest transaction on the [savings workspace](/help/savings).
+
+| Choice | Meaning |
+| --- | --- |
+| **Daily** | Credit interest every day. |
+| **Monthly** | Credit on the **calendar** month: January through 31 January, then the next period. Activation day does not change later posting dates after the first stub. |
+| **Quarterly** | Each calendar quarter. |
+| **Bi-annual** | Twice a year, on calendar halves. |
+| **Annual** | Once a year, on the calendar year. |
+| **Anniversary monthly** | Credit every month on the **same day of month the account opened** (or the last day of shorter months). An account opened on the 15th posts around the 15th, not month-end. |
+| **Anniversary quarterly** | Same idea every three months from the opening day. |
+| **Anniversary bi-annual** | Every six months from the opening day. |
+| **Anniversary annual** | Once a year on the opening anniversary. |
+
+**Daily compounding with monthly posting** is still a common pair: interest builds every day, then a monthly job credits it. Daily posting is available when you want a credit every day. Anniversary choices follow the account’s opening day instead of the calendar period.
+
+Officers can **calculate interest** (update the running figure without a
+credit) or **post interest** from the savings header. Posting as of a date
+is a separate action. See [Savings](/help/savings).
+
+## Interest calculation
+
+The balance the rate is applied to each day.
+
+- **Daily balance** — each day’s closing balance earns that day’s slice of
+  the annual rate. A large deposit yesterday earns tomorrow; a withdrawal
+  today stops earning on the amount withdrawn.
+- **Average daily balance** — the average of daily balances over the
+  calculation period earns interest. Short spikes have less effect than on
+  daily balance.
+
+## Days in year
+
+Used when converting the annual rate into a daily rate.
+
+- **365** — divide the annual rate by 365.
+- **360** — divide by 360 (a banking-year convention). The daily rate is
+  slightly higher than 365 for the same nominal rate.
+
+Savings products do not offer “actual” days in year (loan products do).
+
+## How the pieces work together
+
+1. Each day (or period), the system takes the chosen **balance** (daily or
+   average).
+2. It applies the **nominal annual rate** using **days in year** to get a
+   daily (or period) amount.
+3. **Compounding** decides when that amount is folded into the balance used
+   for the next calculation.
+4. **Posting** decides when the client’s account is actually credited.
+
+[Minimum balance for interest](/help/products/savings/settings) can skip
+calculation while the balance is below a floor. Withhold tax, if enabled on
+settings, is taken from posted interest — not from this rate field.

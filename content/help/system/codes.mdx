@@ -1,0 +1,35 @@
+---
+title: Codes
+description: Fineract lookup codes and dropdown values.
+---
+
+Open **System → Codes** (or **Ctrl+K** and type "codes"). You need
+**READ_CODE** to view the catalog and **CREATE_CODE**, **UPDATE_CODE**, or
+**DELETE_CODE** to manage user-defined codes. Code values need
+**READ_CODEVALUE** and the matching write permissions.
+
+## What you can do
+
+- **Browse** all Fineract codes (system and user-defined).
+- **Preview** values from the list without leaving the page — click the value count badge.
+- **Open** a code to manage its values on a dedicated screen (`/system/codes/{id}`).
+- **Create** user-defined codes from the list; after save you land on the new code’s values tab.
+- **Manage values** with name, description, position, and active flag.
+- **Export** the catalog or a code’s values as CSV or Excel.
+
+## Detail screen
+
+The detail page opens on the **Code values** tab. Use **General** to rename a
+user-defined code. System codes show a read-only name with a hint that values
+can still be edited.
+
+## System vs user-defined
+
+System codes ship with Fineract. You cannot rename or delete the code itself, but
+you can still add or edit its values. User-defined codes created through the API
+can be fully managed until Fineract reports they are in use.
+
+## Maker-checker
+
+When maker-checker is enabled on the tenant, code changes may queue for approval
+in the [Checker Inbox](/checker-inbox-and-tasks) instead of applying immediately.

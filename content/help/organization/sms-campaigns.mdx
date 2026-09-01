@@ -1,0 +1,39 @@
+---
+title: SMS campaigns
+description: Compose and send SMS or in-app notifications from a Fineract business-rule audience.
+---
+
+Open **SMS campaigns** in Organization (or press **Ctrl+K** and type
+"sms campaign"). You need **READ_SMSCAMPAIGN**. Create, edit, activate,
+close, reactivate, and delete need the matching `*_SMSCAMPAIGN`
+permissions. The message log on a campaign needs **READ_SMS**.
+
+This is the core Fineract campaign API (`/smscampaigns`). Messages leave only
+when an [SMS gateway](/help/system/external-services) is configured (or you
+send an in-app notification). If the gateway is missing or not running,
+Bankayo still lists and opens campaigns and shows a banner instead of failing
+the page. Create, preview, and send wait until the gateway is up.
+
+This is not [Templates](/help/templates) (Mustache document/SMS text) and
+not a one-off SMS from a client workspace.
+
+## What you can do
+
+**New campaign** is a four-step wizard: details, audience, message, review.
+
+- **Trigger** membership comes from the campaign template (Direct, Schedule,
+  or Triggered). Triggered rules are the SMS reports whose subtype is
+  Triggered; the others are Direct and Schedule.
+- **Business rule** is a SMS report. Audience parameters are that report's
+  stretchy parameters. Triggered campaigns do not require them.
+- **Schedule** campaigns collect frequency, interval, optional weekday, and
+  first-run date. Frequency and weekdays come from the template (R8).
+- **Message** is at most 480 characters. **Preview recipients** calls
+  `POST /smscampaigns/preview` when the trigger is not Triggered.
+
+A new campaign is **pending**. **Activate** (with a date) sends a Direct
+campaign immediately or starts a Schedule. **Close** stops it.
+**Reactivate** is only for a closed campaign. **Edit** and **Delete** are
+only while closed — Fineract refuses otherwise.
+
+**Export** downloads the campaign list as CSV or Excel.

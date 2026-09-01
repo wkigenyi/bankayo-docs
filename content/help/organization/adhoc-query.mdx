@@ -1,0 +1,40 @@
+---
+title: Ad-hoc query
+description: Saved SQL the Fineract schedule job inserts into a table.
+---
+
+Open **Ad-hoc query** in Organization (or press **Ctrl+K** and type
+"ad-hoc query"). Fineract has no **READ_ADHOC** permission. You need
+**CREATE_ADHOC**, **UPDATE_ADHOC**, or **DELETE_ADHOC** to open the list
+(or **ALL_FUNCTIONS** / **ALL_FUNCTIONS_READ**).
+
+This is Fineract `GET/POST /adhocquery`, `GET /adhocquery/template`,
+`GET/PUT/DELETE /adhocquery/{id}`. There is no run-now API.
+
+This is **not** [Reports](/help/reports). Reports are published table
+reports staff run with parameters. An ad-hoc query is a saved SQL
+statement. The **Generate AdhocClient Schedule** job (System → Jobs)
+builds `INSERT INTO {table} ({fields}) {query}` for each **active** row
+and writes the result into that table.
+
+## What you can do
+
+- **Browse** queries by name, destination table, frequency, email, and
+  last run. Filter and export CSV or Excel (export includes the SQL).
+- **New query** / **click a row** opens a docked sidebar. Name, SQL
+  (2,000 characters), destination table, and table fields are required.
+  Email is optional. Run frequency membership comes from
+  `GET /adhocquery/template` `reportRunFrequencies` (R8). Custom
+  frequency also needs an interval in days.
+- **Delete** removes the saved query only. The destination table stays.
+
+## Active flag
+
+Fineract create (`AdHoc.fromJson`) currently stores new queries as
+**inactive**, even if you turn Active on. The job only runs active rows.
+Core Fineract has no enable/disable path on `/adhocquery`. Bankayo still
+sends `isActive` as the request body defines it. After save, the list
+shows whatever Fineract persisted.
+
+Bankayo labels known frequency ids (Daily, Weekly, Monthly, Yearly,
+Custom). Unknown ids use the Fineract value.
