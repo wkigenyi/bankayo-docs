@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
+import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/notebook/page';
 
 import { HelpArticleFeedback } from '@/components/help-article-feedback';
 import { HelpFormatTabs } from '@/components/help-format-tabs';

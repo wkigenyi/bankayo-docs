@@ -6,6 +6,11 @@ export const docsNav = {
   url: '/',
 };
 
+export const helpNav = {
+  ...docsNav,
+  mode: 'top' as const,
+};
+
 export function docsCtaLinks() {
   return [
     {
