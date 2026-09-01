@@ -11,8 +11,8 @@ links to this page at [docs.bankayo.io](https://docs.bankayo.io/help/signing-in)
 
 ## Steps
 
-1. If you use more than one Fineract server, pick or add one at the **top of the
-   sign-in card** (see below). Otherwise skip to step 2.
+1. **Add server** at the top of the sign-in card (see below) unless you already
+   have one selected from this browser.
 2. Enter your **username**. It's not an email address.
 3. Enter your **password**. Use the eye button inside the field to check what you've
    typed.
@@ -31,11 +31,10 @@ If the list of methods is empty, your user record has no email (or no staff mobi
 
 Signing out tells the banking server to drop the two-factor token as well as ending your Bankayo session.
 
-## Signing in to a different server
+## Signing in to a Fineract server
 
-By default you sign in to the Fineract server Bankayo is configured with. If you
-work with more than one server, you can save others as named profiles right on
-the sign-in screen — no account needed first.
+Hosted Bankayo has no default banking server. You add the Fineract server you
+manage on the sign-in screen — no account needed first.
 
 1. At the top of the sign-in card, select **Add server**. A panel opens on the side.
 2. Give it a **name** (anything that helps you tell servers apart), its
@@ -47,10 +46,6 @@ the sign-in screen — no account needed first.
    same panel — it lists every server you've saved, with pencil and trash
    icons to edit or remove one, and an **Add server** button for another.
    Picking one closes the panel and gets you ready to sign in with it.
-
-Once you've saved a server, **Default server** also appears at the top of
-that list — it's the server Bankayo ships with, always there so you can
-switch back to it without deleting anything you've added.
 
 Your saved servers live only in this browser — they aren't shared with anyone
 else, and nobody else's servers show up for you. Only `https://` addresses
@@ -80,7 +75,8 @@ credentials again.
 | "Your sign-in timed out." | The two-factor step took too long. | Enter your username and password again. |
 | "Your password has expired." | Your password must be renewed. | Contact your administrator for a reset — self-service renewal is coming later. |
 | "The banking service is unreachable right now." | Bankayo couldn't reach the core banking system. | Wait a moment and retry; if it persists, tell your administrator. |
-| "This server's certificate isn't trusted." | You're signing in to a custom server (see below) whose certificate is self-signed, expired, or otherwise not CA-validated. | Ask whoever runs that server to install a valid certificate — self-signed certificates are never accepted. |
+| "Add a server before signing in." | No Fineract server is selected. | Select **Add server** and enter an https address and tenant ID. |
+| "This server's certificate isn't trusted." | The server's certificate is self-signed, expired, or otherwise not CA-validated. | Ask whoever runs that server to install a valid certificate — self-signed certificates are never accepted. |
 
 ## Security notes
 
