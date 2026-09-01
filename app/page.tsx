@@ -4,7 +4,6 @@ import { Card, Cards } from 'fumadocs-ui/components/card';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 
 import { docsCtaLinks, docsNav } from '@/lib/layout';
-import { Logo } from '@/components/logo';
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from '@/lib/seo';
 import { docsSiteUrl } from '@/lib/site';
 
@@ -25,7 +24,6 @@ export default function Home() {
   return (
     <HomeLayout nav={docsNav} links={docsCtaLinks()}>
       <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:py-24">
-        <Logo size="md" className="mb-8" />
         <p className="text-fd-muted-foreground mb-3 text-sm font-medium tracking-wide uppercase">
           Apache Fineract
         </p>
