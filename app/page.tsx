@@ -28,12 +28,13 @@ export default function Home() {
           Apache Fineract
         </p>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Fineract help for the UI you actually run
+          Fineract help for the workspace you actually run
         </h1>
         <p className="text-fd-muted-foreground mt-4 text-lg">
-          Bankayo is a <strong className="text-fd-foreground font-medium">custom Fineract UI</strong>{' '}
-          on Apache Fineract. These pages are operator help: what the API persists, which
-          permission you need, and where that work lives on screen.
+          Bankayo <strong className="text-fd-foreground font-medium">customizes Apache Fineract</strong>{' '}
+          for your institution: the operator UI, the backend around the core, integrations, and
+          compliance checks — not only a new front end. These pages are operator help: what the
+          API persists, which permission you need, and where that work lives on screen.
         </p>
         <p className="mt-6 flex flex-wrap gap-3">
           <Link
@@ -59,12 +60,12 @@ export default function Home() {
           <Card
             title="Fineract UI"
             href="/help/fineract#fineract-ui"
-            description="What a Fineract UI is, how Bankayo talks to the tenant, and how this site differs from Apache’s own platform docs."
+            description="The operator workspace — one part of the customization. How Bankayo talks to the tenant, and how this site differs from Apache’s platform docs."
           />
           <Card
             title="Fineract customization"
             href="/help/fineract#fineract-customization"
-            description="Tenant-level change: products, data tables, configurations, roles. Not a fork of Fineract itself."
+            description="UI, backend, integrations, and compliance checks, plus tenant-level products, data tables, and configuration. Not a fork of Fineract itself."
           />
         </Cards>
 

@@ -1,17 +1,22 @@
 # Bankayo docs
 
-Public, open-source documentation for **Bankayo** — a custom **Fineract UI** on
-Apache Fineract. The site is written so people searching for **Fineract help**,
-**Fineract UI**, and **Fineract customization** can land here, then follow the
-operator path (not a replacement for [Apache Fineract](https://fineract.apache.org/)
-platform docs).
+Public, open-source documentation for **Bankayo** — Apache Fineract customized
+for the institution (operator UI, backend around the core, integrations, and
+compliance checks). The site is written so people searching for **Fineract
+help**, **Fineract UI**, and **Fineract customization** can land here, then
+follow the operator path (not a replacement for
+[Apache Fineract](https://fineract.apache.org/) platform docs).
 
-This site is the canonical operator and feature guide. The Bankayo UI is closed-source; its **?** button opens the matching page here.
+This site is the canonical operator and feature guide. The Bankayo product is
+closed-source; its **?** button opens the matching page here.
 
 ## Bankayo vs Fineract
 
 - **Fineract** is the Apache core-banking API (permissions, templates, resources).
-- **Bankayo** is the product UI. Pages describe both: what Fineract does, then where that lives in Bankayo (sidebar, docked sheet, wizard).
+- **Bankayo** customizes that core for the institution: the operator workspace,
+  services around Fineract, integrations, and compliance checks. Pages describe
+  both: what Fineract does, then where that lives in Bankayo (sidebar, docked
+  sheet, wizard) and how the surrounding stack fits.
 
 Please keep that split in contributions. Do not paste private UI internals (`docs/status.md`, seed passwords, tenant URLs) into this repo.
 
@@ -30,4 +35,4 @@ Every live Bankayo UI screen must have a slug in the UI `lib/help/routes.ts` map
 
 ## License
 
-Documentation in this repository is intended for public contribution. Product source for the Bankayo UI is not included.
+Documentation in this repository is intended for public contribution. Product source for Bankayo is not included.

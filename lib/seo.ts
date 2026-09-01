@@ -1,10 +1,10 @@
 import { docsSiteUrl } from '@/lib/site';
 
 /** Visible in titles and meta — the queries we want to rank for, without pretending to be Apache. */
-export const SITE_TITLE = 'Bankayo docs · Fineract UI and operator help';
+export const SITE_TITLE = 'Bankayo docs · Fineract customization and operator help';
 
 export const SITE_DESCRIPTION =
-  'Fineract help for operators: Bankayo is a custom Fineract UI on Apache Fineract. Day-to-day screens, permissions, and how institutions customize Fineract — products, data tables, and configuration — without replacing the Apache API.';
+  'Fineract help for operators: Bankayo customizes Apache Fineract — operator UI, backend around the core, integrations, and compliance checks — not only a new front end. Day-to-day screens, permissions, and tenant configuration without replacing the Apache API.';
 
 export const SITE_KEYWORDS = [
   'Fineract help',
@@ -15,6 +15,8 @@ export const SITE_KEYWORDS = [
   'custom Fineract UI',
   'Bankayo',
   'core banking',
+  'Fineract integrations',
+  'Fineract compliance',
 ];
 
 export function websiteJsonLd() {
@@ -35,7 +37,7 @@ export function websiteJsonLd() {
         name: 'Bankayo',
         applicationCategory: 'FinanceApplication',
         description:
-          'A custom user interface for Apache Fineract. Operator help for Fineract resources lives on this site.',
+          'Apache Fineract customized for the institution: operator UI, backend around the core, integrations, and compliance checks. Operator help lives on this site.',
         url,
         isBasedOn: {
           '@type': 'SoftwareApplication',
