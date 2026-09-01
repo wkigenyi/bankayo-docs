@@ -4,6 +4,7 @@
     "fineract",
     "signing-in",
     "navigation",
+    "dashboard",
     "users",
     "roles",
     "templates",

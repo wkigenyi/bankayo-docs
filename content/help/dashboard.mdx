@@ -1,0 +1,95 @@
+---
+
+title: Dashboard
+description: Office-scoped portfolio figures — clients, outstanding, overdue, PAR, operations, and organization.
+youtubeId: 26Bs-19dtDc
+---
+
+
+Home is the **Dashboard**. Open it from **Quick access** in the sidebar, the
+**Home** control in the top bar, or **Ctrl+K** and type “dashboard”. The page
+is office-scoped: pick an **office** when you can see more than one, and every
+tile follows that office. The address bar keeps `?office=` so a bookmark reopens
+the same branch.
+
+Figures are computed on the server from the banking service. They use the
+organisation currency code and the business date when that feature is on
+(otherwise today’s calendar date). Tiles you are not allowed to see stay
+hidden. If a figure cannot be loaded it shows as **Unavailable** on that tile
+— the rest of the page stays up. The dashboard does not invent a number. If
+your role cannot read clients, loans, savings, collections, or the checker
+inbox, the page is empty.
+
+Each tile is a card. Click it to open the matching screen.
+
+## Clients
+
+You need client-viewing permission.
+
+- **All clients** — everyone in this office.
+- **Active clients** — status Active.
+- **Inactive clients** — not currently Active (pending, closed, and the rest).
+- **New this month** — activated in the current month.
+
+All four open **[Clients](/help/clients)**.
+
+## Loan outstanding
+
+You need loan-viewing permission. Amounts are on **active** loans.
+
+- **Principal outstanding**, **Interest outstanding**, **Charges outstanding**,
+  and **Total outstanding**.
+- The hint under each amount is how many accounts contribute.
+
+These tiles open **[Loans](/help/loans)**.
+
+## Overdue and risk
+
+Same loan permission. Overdue is money past due on active loans — that is not
+the same as portfolio-at-risk.
+
+- **Principal / interest / charges / total overdue** — arrears on active loans.
+- **PAR 30** — outstanding of active loans that are **30 or more** days past
+  due, as a percent of total outstanding. A loan that is one day late is overdue
+  but is not PAR 30. This tile opens **[Portfolio health](/help/portfolio-health)**
+  for PAR 60, PAR 90, product mix, and days-past-due bands.
+- **Overpaid loans** — count of loans in Overpaid status. Opens loans.
+
+## Operations
+
+Tiles appear only when your role can see that work.
+
+- **Pending approval** — submitted loan applications (amount and count).
+- **Pending disbursal** — approved, not yet disbursed.
+- **Disbursed today** — on the business date.
+- **Disbursed this month** — in the current month.
+- **Expected collections** — due on the as-of date from the individual
+  collection sheet. Opens **[Individual collection sheet](/help/individual-collection-sheet)**.
+- **Savings balances** — active savings accounts. Opens **[Savings](/help/savings)**.
+- **Checker inbox** — commands waiting for a checker. Opens the checker queue.
+
+Pending and disbursement tiles open loans.
+
+## Organization
+
+- **Offices** — count in your hierarchy. Opens **[Offices](/help/organization#offices)**.
+- **Staff** and **Loan officers** — active employees. Opens
+  **[Employees](/help/organization#employees)**.
+
+## Loan product mix
+
+When there are active loans, a chart groups outstanding by product (smaller
+products can roll into **Other**). The same mix, with PAR 60/90 and days-past-due
+bands, is on **[Portfolio health](/help/portfolio-health)**.
+
+## What stays hidden
+
+The Dashboard does not invent totals you cannot read. Without `READ_CLIENT`
+the client cards are gone; without `READ_LOAN` the loan, overdue, PAR, and mix
+blocks are gone; savings, collections, checker, offices, and staff follow their
+own permissions. Portfolio health itself requires loan-viewing permission.
+
+The footer repeats the office name, the as-of date, and that your session is
+held on the server.
+
+See [Finding your way around](/help/navigation) for the rest of the workspace.
