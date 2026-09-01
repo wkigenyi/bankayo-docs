@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Inter, Geist_Mono } from 'next/font/google';
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="flex min-h-screen flex-col">
         <WebsiteJsonLd />
         <DocsRoot>{children}</DocsRoot>
+        <Analytics />
       </body>
     </html>
   );

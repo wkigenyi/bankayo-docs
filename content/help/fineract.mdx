@@ -1,11 +1,11 @@
 ---
 title: Fineract help, Fineract UI, and Fineract customization
-description: How Bankayo customizes Apache Fineract — operator UI, backend around the core, integrations, and compliance checks — plus operator help for day-to-day screens and permissions.
+description: How Bankayo customizes Apache Fineract — operator UI, backend around the core, integrations, and compliance with internal controls and the bodies that regulate your institution — plus operator help for day-to-day screens and permissions.
 ---
 
 This site is **Fineract help** for people who run a core-banking tenant: officers, checkers, and administrators. The product you click is **Bankayo**. The engine underneath is [Apache Fineract](https://fineract.apache.org/).
 
-Bankayo **customizes Fineract** for the institution. That is not only a new screen layout. It is the operator workspace, the backend around the core, the integrations that connect Fineract to the rest of your stack, and the compliance checks your control environment needs — configured to fit.
+Bankayo **customizes Fineract** for the institution. That is not only a new screen layout. It is the operator workspace, the backend around the core, the integrations that connect Fineract to the rest of your stack, and compliance — both the controls you run internally and the rules the bodies that regulate your institution require — configured to fit.
 
 Apache already publishes platform and API documentation. Use that when you are changing Fineract itself or calling the REST API from your own code. Use **this** site when you need the operator path: which permission, which template `*Options`, which Bankayo screen, and how Bankayo sits on the core.
 
@@ -50,9 +50,13 @@ Services around the core: a server-side session, a typed boundary to Fineract (t
 
 Connections Fineract already exposes, wired for the institution: [hooks](/help/system/hooks), [external services](/help/system/external-services) (SMS, email, file storage, notifications), [external events](/help/system/external-events), [credit bureau](/help/credit-bureau), and [SMS campaigns](/help/organization/sms-campaigns). Customizing Fineract here means those links work in your environment, not that you paste REST calls into a page.
 
-### Compliance checks
+### Compliance
 
-Controls the institution has to show: [roles](/help/roles) and permissions, [maker-checker](/help/system/maker-checker) and the [checker inbox](/help/navigation), [audit trails](/help/system/audits), [entity data-table checks](/help/organization/entity-data-table-checks), [loan-loss provisioning](/help/accounting/loan-loss-provisioning), two-factor sign-in, and the session rules on [signing in](/help/signing-in). Customizing Fineract includes fitting those checks to how you operate — not leaving them as unconfigured API flags.
+Compliance in a Bankayo engagement covers **two layers**.
+
+**Internal control** is what your own policies require on every posting and approval: [roles](/help/roles) and permissions, [maker-checker](/help/system/maker-checker) and the [checker inbox](/help/navigation), [audit trails](/help/system/audits), [entity data-table checks](/help/organization/entity-data-table-checks), two-factor sign-in, and the session rules on [signing in](/help/signing-in). Those are Fineract capabilities; customizing Fineract includes turning them on and fitting them to how you operate — not leaving them as unconfigured API flags.
+
+**Supervisory and regulatory** is what the **bodies that regulate your institution** require of you — the central bank, microfinance authority, deposit insurer, or equivalent in your market. Customers come to Bankayo as licensed or supervised lenders, not as a generic IT shop. Customizing Fineract here means shaping products, the [chart of accounts](/help/accounting/chart-of-accounts), [loan-loss provisioning](/help/accounting/loan-loss-provisioning), [reports](/help/reports) (including [income statement](/help/reports/income-statement) and [balance sheet](/help/reports/balance-sheet)), [credit bureau](/help/credit-bureau) connections, and operating procedures so the tenant can produce what those supervisors expect. The exact circulars and returns differ by country; that fit is part of the engagement, not a one-size Apache install left for you to interpret alone.
 
 ### Tenant configuration
 
@@ -65,7 +69,7 @@ What you can change **in the tenant** through Fineract APIs, shown in Bankayo, w
 - **Access** — [users](/help/users) and [roles](/help/roles) (Fineract permission sets).
 - **Documents and messaging** — [templates](/help/templates) (Mustache) and SMS campaigns.
 
-That tenant layer is still Fineract. It is **not** a guide to patching Fineract Java modules, writing a new SPI, or replacing the API. For platform-level change of that kind, start at [Apache Fineract](https://fineract.apache.org/). Bankayo’s work on backend, integrations, and compliance is how we customize Fineract *for you* on top of that core.
+That tenant layer is still Fineract. It is **not** a guide to patching Fineract Java modules, writing a new SPI, or replacing the API. For platform-level change of that kind, start at [Apache Fineract](https://fineract.apache.org/). Bankayo’s work on backend, integrations, and compliance (internal and supervisory) is how we customize Fineract *for you* on top of that core.
 
 ## Related Apache documentation
 

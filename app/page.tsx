@@ -33,8 +33,9 @@ export default function Home() {
         <p className="text-fd-muted-foreground mt-4 text-lg">
           Bankayo <strong className="text-fd-foreground font-medium">customizes Apache Fineract</strong>{' '}
           for your institution: the operator UI, the backend around the core, integrations, and
-          compliance checks — not only a new front end. These pages are operator help: what the
-          API persists, which permission you need, and where that work lives on screen.
+          compliance — internal controls and the rules the bodies that regulate you require — not
+          only a new front end. These pages are operator help: what the API persists, which
+          permission you need, and where that work lives on screen.
         </p>
         <p className="mt-6 flex flex-wrap gap-3">
           <Link
@@ -65,7 +66,7 @@ export default function Home() {
           <Card
             title="Fineract customization"
             href="/help/fineract#fineract-customization"
-            description="UI, backend, integrations, and compliance checks, plus tenant-level products, data tables, and configuration. Not a fork of Fineract itself."
+            description="UI, backend, integrations, and compliance (internal controls and your regulators), plus tenant-level products, data tables, and configuration. Not a fork of Fineract itself."
           />
         </Cards>
 

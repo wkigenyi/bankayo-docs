@@ -4,7 +4,7 @@ import { docsSiteUrl } from '@/lib/site';
 export const SITE_TITLE = 'Bankayo docs · Fineract customization and operator help';
 
 export const SITE_DESCRIPTION =
-  'Fineract help for operators: Bankayo customizes Apache Fineract — operator UI, backend around the core, integrations, and compliance checks — not only a new front end. Day-to-day screens, permissions, and tenant configuration without replacing the Apache API.';
+  'Fineract help for operators: Bankayo customizes Apache Fineract — operator UI, backend around the core, integrations, and compliance with your internal controls and the bodies that regulate your institution — not only a new front end. Day-to-day screens, permissions, and tenant configuration without replacing the Apache API.';
 
 export const SITE_KEYWORDS = [
   'Fineract help',
@@ -37,7 +37,7 @@ export function websiteJsonLd() {
         name: 'Bankayo',
         applicationCategory: 'FinanceApplication',
         description:
-          'Apache Fineract customized for the institution: operator UI, backend around the core, integrations, and compliance checks. Operator help lives on this site.',
+          'Apache Fineract customized for the institution: operator UI, backend around the core, integrations, and compliance with internal controls and the bodies that regulate the customer. Operator help lives on this site.',
         url,
         isBasedOn: {
           '@type': 'SoftwareApplication',
