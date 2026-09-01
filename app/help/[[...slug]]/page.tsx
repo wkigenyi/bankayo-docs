@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 
-import { YouTubeEmbed } from '@/components/youtube-embed';
+import { HelpFormatTabs } from '@/components/help-format-tabs';
 import { isYouTubeId } from '@/lib/youtube';
 import { helpSource } from '@/lib/source';
 import { SITE_KEYWORDS } from '@/lib/seo';
@@ -30,14 +30,11 @@ export default async function HelpPage(props: HelpPageProps) {
     <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
-      {youtubeId ? (
-        <div className="mb-6">
-          <YouTubeEmbed id={youtubeId} title={page.data.title} />
-        </div>
-      ) : null}
-      <DocsBody>
-        <MDX components={getMDXComponents()} />
-      </DocsBody>
+      <HelpFormatTabs youtubeId={youtubeId} path={page.url} title={page.data.title}>
+        <DocsBody>
+          <MDX components={getMDXComponents()} />
+        </DocsBody>
+      </HelpFormatTabs>
     </DocsPage>
   );
 }
