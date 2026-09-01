@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 
+import { HelpArticleFeedback } from '@/components/help-article-feedback';
 import { HelpFormatTabs } from '@/components/help-format-tabs';
 import { isYouTubeId } from '@/lib/youtube';
 import { helpSource } from '@/lib/source';
@@ -35,6 +36,7 @@ export default async function HelpPage(props: HelpPageProps) {
           <MDX components={getMDXComponents()} />
         </DocsBody>
       </HelpFormatTabs>
+      <HelpArticleFeedback path={page.url} />
     </DocsPage>
   );
 }
