@@ -1,7 +1,9 @@
+import { Logo } from '@/components/logo';
 import { wwwSiteUrl } from '@/lib/site';
 
 export const docsNav = {
-  title: 'Bankayo docs',
+  title: <Logo size="sm" />,
+  url: '/',
 };
 
 export function docsCtaLinks() {
