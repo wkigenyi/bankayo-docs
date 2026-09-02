@@ -1,7 +1,7 @@
 ---
 
 title: Dashboard
-description: Office-scoped portfolio figures — clients, outstanding, overdue, PAR, operations, and organization.
+description: Office- and currency-scoped portfolio figures — clients, outstanding, overdue, PAR, operations, and organization.
 youtubeId: 26Bs-19dtDc
 ---
 
@@ -9,15 +9,20 @@ youtubeId: 26Bs-19dtDc
 Home is the **Dashboard**. Open it from **Quick access** in the sidebar, the
 **Home** control in the top bar, or **Ctrl+K** and type “dashboard”. The page
 is office-scoped: pick an **office** when you can see more than one, and every
-tile follows that office. The address bar keeps `?office=` so a bookmark reopens
-the same branch.
+tile follows that office. When the institution permits more than one currency,
+a **currency** picker sits next to it — money tiles (outstanding, overdue,
+PAR, pending amounts, disbursements, expected collections, savings, product
+mix) count only accounts in that currency. The default is the first currency
+the organisation has permitted. The address bar keeps `?office=` and
+`?currency=` so a bookmark reopens the same branch and book.
 
 Figures are computed on the server from the banking service. They use the
-organisation currency code and the business date when that feature is on
-(otherwise today’s calendar date). Tiles you are not allowed to see stay
-hidden. If a figure cannot be loaded it shows as **Unavailable** on that tile
-— the rest of the page stays up. The dashboard does not invent a number. If
-your role cannot read clients, loans, savings, collections, or the checker
+selected currency code and the business date when that feature is on
+(otherwise today’s calendar date). Client, staff, office, and checker counts
+stay office-scoped only — they are not money. Tiles you are not allowed to see
+stay hidden. If a figure cannot be loaded it shows as **Unavailable** on that
+tile — the rest of the page stays up. The dashboard does not invent a number.
+If your role cannot read clients, loans, savings, collections, or the checker
 inbox, the page is empty.
 
 Each tile is a card. Click it to open the matching screen.
@@ -35,7 +40,8 @@ All four open **[Clients](/help/clients)**.
 
 ## Loan outstanding
 
-You need loan-viewing permission. Amounts are on **active** loans.
+You need loan-viewing permission. Amounts are on **active** loans in the
+selected currency.
 
 - **Principal outstanding**, **Interest outstanding**, **Charges outstanding**,
   and **Total outstanding**.
@@ -89,7 +95,7 @@ the client cards are gone; without `READ_LOAN` the loan, overdue, PAR, and mix
 blocks are gone; savings, collections, checker, offices, and staff follow their
 own permissions. Portfolio health itself requires loan-viewing permission.
 
-The footer repeats the office name, the as-of date, and that your session is
-held on the server.
+The footer repeats the office name, the selected currency code, the as-of date,
+and that your session is held on the server.
 
 See [Finding your way around](/help/navigation) for the rest of the workspace.

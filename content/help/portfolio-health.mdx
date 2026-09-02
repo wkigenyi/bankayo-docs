@@ -1,12 +1,15 @@
 ---
 title: Portfolio health
-description: PAR, product mix, and overdue bands for the office you select.
+description: PAR, product mix, and overdue bands for the office and currency you select.
 ---
 
 **Portfolio health** is the analytics companion to the home
-[Dashboard](/help/dashboard). Pick an office (the same control as on the
+[Dashboard](/help/dashboard). Pick an office and, when the institution
+permits more than one currency, a currency (the same controls as on the
 Dashboard) to see portfolio-at-risk, outstanding by loan product, and how much
-outstanding sits in each days-past-due band.
+outstanding sits in each days-past-due band. Money figures count only accounts
+in that currency. The default is the first currency the organisation has
+permitted. The address bar keeps `?office=` and `?currency=`.
 
 ## What the figures mean
 
@@ -17,5 +20,5 @@ outstanding sits in each days-past-due band.
   the same overdue-since date against the business date when that feature is on.
 - **Product mix** — outstanding on active loans, grouped by product.
 
-Amounts use the organisation currency code. The page is hidden if your role
+Amounts use the selected currency code. The page is hidden if your role
 cannot read loans.
