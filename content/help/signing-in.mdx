@@ -1,68 +1,97 @@
 ---
+
 title: Signing in
-description: Access your Bankayo workspace with your credentials.
+description: Add your Fineract server, sign in with username and password, and understand the session.
+youtubeId: ZtnXCBPoSPs
 ---
 
-Open Bankayo in your browser and you'll land on the sign-in screen (if you're already
-signed in, you'll go straight to the dashboard). On a large screen the Bankayo letter
-mark sits on the left with a quiet grid behind it; on smaller screens you'll see the
+
+Open Bankayo in your browser and you land on the sign-in screen (if you are already
+signed in, you go straight to the dashboard). On a large screen the Bankayo letter
+mark sits on the left with a quiet grid behind it; on smaller screens you see the
 mark and a short tagline at the top, then the sign-in card below. The sign-in screen
-links to this page at [docs.bankayo.io](https://docs.bankayo.io/help/signing-in).
+always links to this page at [docs.bankayo.io](https://docs.bankayo.io/help/signing-in).
+The rest of the app uses the **?** button for the matching help page.
 
-## Steps
+Your browser never talks to Apache Fineract. Bankayo’s server signs in on your
+behalf, holds the session, and sets an HTTP-only cookie. Passwords are not stored
+in the browser.
 
-1. **Add server** at the top of the sign-in card (see below) unless you already
-   have one selected from this browser.
-2. Enter your **username**. It's not an email address.
-3. Enter your **password**. Use the eye button inside the field to check what you've
-   typed.
-4. Press **Sign in**. If your account requires two-factor authentication, Bankayo asks how to send a verification code (email or text, from the addresses on your user record), then for the code. After that you'll arrive at the dashboard.
+## Hosted Bankayo versus a local demo
 
-## Two-factor authentication
+**Hosted Bankayo** has no default banking server. You bring the Fineract you
+manage: **Add server**, then username and password appear only after that server
+is saved and selected.
 
-When the banking server has two-factor authentication on, most logins must confirm with a one-time code after the password. Bankayo never stores that code or the resulting token in your browser — both stay on the server.
-
-1. Sign in with your username and password as usual.
-2. Choose **Email** or **Text message** (only the methods Fineract can actually deliver for your login are listed).
-3. Open the message and enter the code. It expires after a few minutes; **Send a new code** requests another.
-4. **Verify** completes sign-in.
-
-If the list of methods is empty, your user record has no email (or no staff mobile number for SMS). An administrator must add one on **Admin → Users**. A role with the `BYPASS_TWOFACTOR` permission skips this step.
-
-Signing out tells the banking server to drop the two-factor token as well as ending your Bankayo session.
+A **local demo** (`pnpm dev` against Docker) is configured with a default
+server, so username and password are visible from the start. **Default server**
+in the picker is that configured core. Production never shows that row.
 
 ## Signing in to a Fineract server
 
-Hosted Bankayo has no default banking server. You add the Fineract server you
-manage on the sign-in screen — no account needed first.
-
-1. At the top of the sign-in card, select **Add server**. A panel opens on the side.
+1. Select **Add server** on the sign-in card (unless you already have a server
+   selected in this browser). A panel opens on the side.
 2. Give it a **name** (anything that helps you tell servers apart), its
    **address** (starting with `https://`), and its **tenant ID**. Just the
    domain is fine — if you leave off the rest of the path, Bankayo fills in
-   the standard Fineract API path for you.
-3. Save it. The sign-in form now shows it as your current server.
-4. To use a different saved server later, select **Change** to reopen that
-   same panel — it lists every server you've saved, with pencil and trash
-   icons to edit or remove one, and an **Add server** button for another.
-   Picking one closes the panel and gets you ready to sign in with it.
+   the standard Fineract API path. If your deployment already uses a custom
+   path, type the full URL and it is left as you entered it.
+3. Save it. On hosted Bankayo, username and password then appear, with that
+   server selected. On a local demo the fields were already visible; sign-in
+   still uses whichever server is selected.
+4. To use a different saved server later, select **Change**. The same panel
+   lists every server you have saved, with pencil and trash icons to edit or
+   remove one, and **Add server** for another. Picking a row closes the panel
+   and gets you ready to sign in with it.
 
-Your saved servers live only in this browser — they aren't shared with anyone
-else, and nobody else's servers show up for you. Only `https://` addresses
+Your saved servers live only in this browser — they are not shared with anyone
+else, and nobody else’s servers show up for you. Only `https://` addresses
 with a valid, CA-issued certificate are accepted; a self-signed certificate is
-rejected and you'll see a clear message explaining why.
+rejected and you will see a clear message explaining why. Plain `http://` is
+refused.
 
 Already signed in and want a different server? Sign out, then pick another
 saved server (or add a new one) from the sign-in screen before entering your
 credentials again.
 
+## Steps
+
+1. Select the server as above.
+2. Enter your **username**. It is not an email address.
+3. Enter your **password**. Use the eye button inside the field to check what you
+   have typed.
+4. Press **Sign in**. If your account requires two-factor authentication, Bankayo
+   asks how to send a verification code (email or text, from the addresses on
+   your user record), then for the code. After that you arrive at the dashboard.
+
+## Two-factor authentication
+
+When the banking server has two-factor authentication on, most logins must confirm
+with a one-time code after the password. Bankayo never stores that code or the
+resulting token in your browser — both stay on the server.
+
+1. Sign in with your username and password as usual.
+2. Choose **Email** or **Text message** (only the methods Fineract can actually
+   deliver for your login are listed).
+3. Open the message and enter the code. It expires after a few minutes; **Send a
+   new code** requests another.
+4. **Verify** completes sign-in.
+
+If the list of methods is empty, your user record has no email (or no staff mobile
+number for SMS). An administrator must add one on **Admin → Users**. A role with
+the `BYPASS_TWOFACTOR` permission skips this step.
+
+Signing out tells the banking server to drop the two-factor token as well as
+ending your Bankayo session.
+
 ## About your session
 
-- Your session ends automatically after **30 minutes of inactivity**, and in any case
-  after **12 hours** — you'll simply be asked to sign in again. This protects client
-  data if a workstation is left unattended.
-- Use **Sign out** (top-right corner) whenever you leave your desk.
-- Closing the browser also ends your access — reopening requires signing in again.
+- Your session ends automatically after **30 minutes of inactivity**, and in any
+  case after **12 hours** — you will simply be asked to sign in again. This
+  protects client data if a workstation is left unattended.
+- Use **Sign out** (top-right account menu) whenever you leave your desk.
+- Closing the browser also ends your access — reopening requires signing in
+  again.
 
 ## Trouble signing in?
 
@@ -82,3 +111,5 @@ credentials again.
 
 - Bankayo never stores your password (or anything derived from it) in your browser.
 - Nobody can retrieve your password — administrators can only reset it.
+- Saved server addresses live only in this browser’s storage. They are a convenience
+  for the next visit, not a Bankayo account.
