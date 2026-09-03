@@ -19,37 +19,51 @@ member at the same office. Create and edit [roles](/help/roles) under
 - **Sort** by clicking a column heading.
 - **Export** downloads the catalog as CSV or Excel. Passwords are never
   included.
-- **New user** opens a docked sidebar when you have create permission.
-- **Click a row** to edit that login when you have update permission.
+- **New user** opens a five-step wizard when you have create permission.
+- **Click a row** to edit that login in the same wizard when you have update
+  permission.
 - The row menu **Delete** is off for your own login and for the system user.
 
-The address bar is **Admin › Users**.
+The address bar is **Admin › Users**. Create is `/users/new`. Edit is
+`/users/{id}/edit`.
 
 ## Creating a user
 
-Username, first name, last name, email, office, and at least one **role**
-are required (each name field up to 100 characters).
+**New user** walks through profile, office, password, roles, then review.
 
-**Email the password** is on by default. The banking service sends a
-password to the email address. Turn it off to set the password (and repeat
-it) yourself. If email delivery fails, the reason from the banking service
-is shown on the form.
+**Profile.** Username, first name, and last name are required (each name
+field up to 100 characters). **Email** is optional. If you fill one, it must
+be a valid address (at most 100 characters). Email is required only when
+**Email the password** is on. The email (and a staff mobile number, when SMS
+two-factor is configured) is also how
+[two-factor authentication](/help/signing-in#two-factor-authentication)
+delivers a sign-in code.
 
-**Staff** is optional and lists only employees at the office you picked.
-Changing the office clears a staff link that does not belong to the new
-office.
+**Office.** Office is required. **Staff** is optional and lists only employees
+at the office you picked. Changing the office clears a staff link that does
+not belong to the new office.
 
-**Password never expires** skips scheduled password changes for this login.
+**Password.** **Email the password** is on by default and needs an email on
+Profile. The banking service sends a password to that address. Turn it off to
+set the password (and repeat it) yourself — that is how you create a login
+with no email. If email delivery fails, the reason from the banking service
+is shown on the form. **Password never expires** skips scheduled password
+changes for this login.
 
-The **email** (and a staff mobile number, when SMS two-factor is configured) is also how [two-factor authentication](/help/signing-in#two-factor-authentication) delivers a sign-in code.
+**Roles.** At least one role is required. Disabled roles cannot be newly
+assigned.
+
+**Review** shows the choices, then **Save**. Close returns to the list without
+saving.
 
 If **New user** is missing, you do not have create permission. If the roles
 list is empty, add a [role](/help/roles) first.
 
 ## Editing a user
 
-Click a row. Leave the password blank to keep the current one. If you fill
-a new password, repeat it to confirm.
+Click a row. The same wizard opens. Leave the password blank to keep the
+current one. If you fill a new password, repeat it to confirm. Email stays
+optional; leave it blank if this login has none.
 
 ## Deleting a user
 
