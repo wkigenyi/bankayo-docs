@@ -30,6 +30,15 @@ pnpm dev
 
 Docs run on **http://localhost:3001**. The UI (private) defaults to `:3000` and should set `NEXT_PUBLIC_DOCS_ORIGIN=http://localhost:3001`. Production is **https://docs.bankayo.io**.
 
+## Production checks
+
+`pnpm install` points Git at `.githooks`. **pre-commit** runs `pnpm check` (lint, TypeScript, help-page inventory). **pre-push** runs `pnpm build` — the same compile Vercel uses. Do not skip hooks with `--no-verify`; that is how type errors reach production.
+
+```bash
+pnpm check    # lint + tsc + page inventory
+pnpm verify   # check, then a production build
+```
+
 ## Visits (Vercel Analytics)
 
 Page views, visitors, and referrers for the public docs site are collected with [Vercel Web Analytics](https://vercel.com/docs/analytics) (`@vercel/analytics` in the root layout). After deploy:

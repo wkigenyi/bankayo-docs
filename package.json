@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start -p 3001",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "check:pages": "node scripts/check-pages.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm check:pages",
+    "verify": "pnpm check && pnpm build",
+    "prepare": "node scripts/install-git-hooks.mjs",
     "postinstall": "fumadocs-mdx"
   },
   "engines": {

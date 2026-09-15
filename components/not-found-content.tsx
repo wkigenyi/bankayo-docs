@@ -1,5 +1,8 @@
 'use client';
 
+/* Hard navigation: Next.js Link does not leave the not-found state. */
+/* eslint-disable @next/next/no-html-link-for-pages */
+
 import { useSearchContext } from 'fumadocs-ui/contexts/search';
 
 import { cn } from '@/lib/cn';

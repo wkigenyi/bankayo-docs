@@ -89,11 +89,11 @@ export function DocsSearchDialog({
     return () => window.clearTimeout(id);
   }, [delayMs, search]);
 
-  const apiMatchesInput =
-    query.data !== 'empty' &&
-    !query.isLoading &&
-    settledSearch.trim() === search.trim();
-  const listItems = apiMatchesInput ? query.data : typedItems;
+  const apiResults = query.data !== 'empty' ? query.data : undefined;
+  const listItems =
+    apiResults && !query.isLoading && settledSearch.trim() === search.trim()
+      ? apiResults
+      : typedItems;
 
   return (
     <SearchDialog
