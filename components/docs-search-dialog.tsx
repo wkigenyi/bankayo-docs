@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FileTextIcon } from 'lucide-react';
 import { fetchClient } from 'fumadocs-core/search/client/fetch';
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -64,6 +64,37 @@ export function DocsSearchDialog({
       }));
   }, [links, pages, tag]);
 
+  const typedItems = useMemo(() => {
+    const needle = search.trim().toLowerCase();
+    if (!needle) return browseItems;
+    if (pages.length > 0) {
+      return pages
+        .filter(
+          (page) =>
+            (!tag || page.tag === tag) && page.title.toLowerCase().includes(needle),
+        )
+        .map((page) => ({
+          type: 'page' as const,
+          id: page.url,
+          content: page.title,
+          url: page.url,
+        }));
+    }
+    return browseItems.filter((item) => item.content.toLowerCase().includes(needle));
+  }, [browseItems, pages, search, tag]);
+
+  const [settledSearch, setSettledSearch] = useState(search);
+  useEffect(() => {
+    const id = window.setTimeout(() => setSettledSearch(search), delayMs);
+    return () => window.clearTimeout(id);
+  }, [delayMs, search]);
+
+  const apiMatchesInput =
+    query.data !== 'empty' &&
+    !query.isLoading &&
+    settledSearch.trim() === search.trim();
+  const listItems = apiMatchesInput ? query.data : typedItems;
+
   return (
     <SearchDialog
       search={search}
@@ -90,7 +121,7 @@ export function DocsSearchDialog({
           <SearchDialogClose />
         </SearchDialogHeader>
         <SearchDialogList
-          items={query.data !== 'empty' ? query.data : browseItems}
+          items={listItems}
           Item={({ item, onClick }) =>
             query.data === 'empty' && item.type === 'page' ? (
               <SearchDialogListItem

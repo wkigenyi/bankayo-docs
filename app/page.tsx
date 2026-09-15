@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <HomeLayout nav={docsNav} links={docsCtaLinks()}>
-      <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:py-24">
+      <div className="mx-auto w-full max-w-5xl px-4 py-16 sm:py-24">
         <p className="text-fd-muted-foreground mb-3 text-sm font-medium tracking-wide uppercase">
           Apache Fineract
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-nowrap">
           Fineract help for the workspace you actually run
         </h1>
         <p className="text-fd-muted-foreground mt-4 text-lg">

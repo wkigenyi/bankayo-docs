@@ -2,7 +2,8 @@
 
 import { useCallback, useState, useSyncExternalStore, type ReactNode } from 'react';
 import { track } from '@vercel/analytics';
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { BookOpenIcon, PlayIcon } from 'lucide-react';
+import { Tab, Tabs, TabsList, TabsTrigger } from 'fumadocs-ui/components/tabs';
 
 import { YouTubeEmbed } from '@/components/youtube-embed';
 
@@ -21,16 +22,31 @@ export function HelpFormatTabs({
 }) {
   return (
     <Tabs
-      items={['Read', 'Watch']}
-      defaultIndex={0}
+      defaultValue="read"
       groupId="help-format"
       persist
       className="my-6 overflow-visible rounded-none border-0 bg-transparent"
     >
-      <Tab value="Read" forceMount className="p-0">
+      <TabsList className="px-0">
+        <TabsTrigger value="read">
+          <BookOpenIcon aria-hidden="true" />
+          Read
+        </TabsTrigger>
+        <TabsTrigger value="watch">
+          <PlayIcon aria-hidden="true" />
+          Watch
+          {youtubeId ? (
+            <>
+              <span className="bg-fd-primary size-1.5 rounded-full" aria-hidden="true" />
+              <span className="sr-only">(video available)</span>
+            </>
+          ) : null}
+        </TabsTrigger>
+      </TabsList>
+      <Tab value="read" forceMount className="p-0">
         {children}
       </Tab>
-      <Tab value="Watch" forceMount className="p-0 pt-4">
+      <Tab value="watch" forceMount className="p-0 pt-4">
         {youtubeId ? (
           <div className="flex flex-col gap-3">
             <YouTubeEmbed id={youtubeId} title={title} />
