@@ -11,8 +11,9 @@ You need loan-viewing permission — if the menu item is missing, ask your admin
 
 ## The loan list
 
-Loans from across the institution appear in a table showing account number, client,
-product, and status.
+Loans from across the institution appear in a table showing account number, client
+or group, product, and status. A group-only loan names the group in the Client
+column.
 
 - **Search** by account number or external ID with the box above the table.
 - **Sort** by account number when you are not searching.
@@ -43,9 +44,10 @@ splits into sections:
 - **Transactions** — postings on the loan, 25 to a page (you can choose 10, 50,
   or 100). Filter by transaction date and type; the address bar keeps those
   filters. Reversed postings are hidden until you turn on **Show reversed**.
-- **Schedule** — repayment installments and what has been paid. Each installment
-  is **Paid**, **Due** (due today), **Overdue**, or **Upcoming**. A down-payment
-  installment is tagged **Down payment**.
+- **Schedule** — the disbursement (amount paid out, tagged **Disbursement**)
+  and repayment installments. Each repayment is **Paid**, **Due** (due today),
+  **Overdue**, or **Upcoming**. A period with nothing to collect is **Nothing
+  due**, not Paid. A down-payment installment is tagged **Down payment**.
 - **Charges** — fees and penalties on this loan. Add a charge from templates
   defined under [Charges](/help/products/charges). Specified due-date charges
   need a due date. You cannot add charges on a closed, overpaid, or written-off
@@ -59,13 +61,15 @@ if a command is not allowed, the reason from the core banking system is shown.
 Typical work from the loan header:
 
 - **Pending** — approve, reject, withdraw, or delete the application; assign
-  a loan officer.
+  a loan officer; [edit the repayment schedule](#editing-the-repayment-schedule)
+  when the product allows variable installments.
 - **Approved** — disburse, or undo approval. If the loan has a linked savings
   account and your role allows it, the disbursement form lets you send the
   money there instead of cash.
 - **Active** — record a repayment (or a down payment if the product uses
   one and it is not auto-repaid on disbursement), waive interest, close,
-  write off, charge off, or foreclose; undo
+  write off, charge off, or foreclose; [reschedule remaining
+  installments](#rescheduling-remaining-installments); undo
   disbursal (or the last tranche on a multi-disburse loan). Repayment can
   transfer from the customer’s active savings (the default when your role
   allows it) or be recorded as cash. A transfer cannot exceed the savings
@@ -78,6 +82,58 @@ Typical work from the loan header:
 
 From a [client’s Loans section](/help/clients#client-details), clicking a row
 opens this same loan workspace.
+
+## Editing the repayment schedule
+
+**Edit repayment schedule** is for a loan that is still pending approval, on a
+product that allows variable installments. It is not the same as
+[rescheduling remaining installments](#rescheduling-remaining-installments) on
+an active loan.
+
+You need **CREATESCHEDULEEXCEPTIONS_LOAN** to save, **READ_LOAN** to validate,
+and **DELETESCHEDULEEXCEPTIONS_LOAN** to recover the original schedule.
+
+From the loan header:
+
+1. Change an installment amount or due date, or delete an installment you do
+   not want. Deleted rows can be restored before you save.
+2. Optionally apply the same amount to a range of remaining installments.
+3. **Validate** so Fineract can rebuild interest and outstanding principal.
+4. **Save schedule** to keep the variations on this application.
+
+Due dates stay between neighbouring remaining installments (deleted neighbours
+are skipped) and after the expected disbursement date. If remaining principal
+no longer covers the loan amount, validate or restore a deleted installment.
+
+**Recover original** removes previously saved variations and restores the
+schedule Fineract built when the loan was submitted.
+
+## Rescheduling remaining installments
+
+**Reschedule** rebuilds unpaid installments on an active loan. It is not the
+same as **Close as rescheduled**, which closes the account.
+
+You need **CREATE_RESCHEDULELOAN** to submit a request, **READ_RESCHEDULELOAN** to
+preview it, and **APPROVE_RESCHEDULELOAN** / **REJECT_RESCHEDULELOAN** to decide.
+The reason list comes from Fineract’s `LoanRescheduleReason` code (the
+reschedule template).
+
+From the loan header:
+
+1. Choose the unpaid installment to start from (its due date).
+2. Pick a reason and the submitted-on date.
+3. Turn on at least one change: a new due date, mid-term grace, extra
+   repayments, or a new interest rate. You can also ask Fineract to
+   recalculate interest.
+4. Submit. The loan schedule does not change until the request is approved.
+
+A pending request shows **Review reschedule**. That sidebar previews the
+rebuilt schedule. Approve or reject with a date; Fineract will not apply a
+decision dated before the request was submitted.
+
+Fineract rejects a start date that is not an unpaid installment, charged-off
+loans, and some multi-disburse tranche products. Progressive-schedule loans
+may allow only one kind of change at a time.
 
 ## Opening a loan
 
@@ -108,3 +164,6 @@ group / JLG member). The wizard collects what Fineract accepts on
 | "No loans yet" or "No matching loans" | Open a loan from a client, or clear the search box. |
 | "Couldn't load loans" | Press Retry; if it persists, the core banking system may be unreachable — tell your administrator. |
 | Loans menu missing | Your role lacks loan-viewing permission. |
+| Edit repayment schedule missing on a pending loan | The product must allow variable installments, and your role needs **CREATESCHEDULEEXCEPTIONS_LOAN**. |
+| Reschedule missing on an active loan | Your role lacks **CREATE_RESCHEDULELOAN**, or a request is already pending. |
+| "Repayment schedule installment does not exist" | The start date must be an unpaid installment due date. |

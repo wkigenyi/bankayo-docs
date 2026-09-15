@@ -17,6 +17,18 @@ Your browser never talks to Apache Fineract. Bankayo’s server signs in on your
 behalf, holds the session, and sets an HTTP-only cookie. Passwords are not stored
 in the browser.
 
+## Install Bankayo
+
+On Chrome, Edge, or another Chromium browser, Bankayo can be installed as an
+app. A prompt appears after a few seconds (or choose **Install** from the
+account menu after you sign in). **Not now** hides it for a week.
+
+On iPhone or iPad, tap **Share**, then **Add to Home Screen**. Installed
+Bankayo opens full-screen, without the browser chrome.
+
+The service worker does not keep banking data offline. You still need a
+network connection, and your session still ends on idle or sign-out.
+
 ## Hosted Bankayo versus a local demo
 
 **Hosted Bankayo** has no default banking server. You bring the Fineract you
@@ -31,11 +43,16 @@ in the picker is that configured core. Production never shows that row.
 
 1. Select **Add server** on the sign-in card (unless you already have a server
    selected in this browser). A panel opens on the side.
-2. Give it a **name** (anything that helps you tell servers apart), its
-   **address** (starting with `https://`), and its **tenant ID**. Just the
-   domain is fine — if you leave off the rest of the path, Bankayo fills in
-   the standard Fineract API path. If your deployment already uses a custom
-   path, type the full URL and it is left as you entered it.
+2. Choose **Address** or **Application code**.
+   - **Address** — give it a **name**, its **address** (starting with `https://`),
+     and its **tenant ID**. Just the domain is fine — if you leave off the rest
+     of the path, Bankayo fills in the standard Fineract API path. If your
+     deployment already uses a custom path, type the full URL and it is left as
+     you entered it.
+   - **Application code** — paste the code from [Register your server](#register-server)
+     (or your confirmation email). Bankayo looks up the address and tenant on
+     its registry. Identity keys for Self Help stay on Bankayo's server; they
+     never land in this browser.
 3. Save it. On hosted Bankayo, username and password then appear, with that
    server selected. On a local demo the fields were already visible; sign-in
    still uses whichever server is selected.
@@ -53,6 +70,16 @@ refused.
 Already signed in and want a different server? Sign out, then pick another
 saved server (or add a new one) from the sign-in screen before entering your
 credentials again.
+
+## Register your server {#register-server}
+
+If you don't have an application code yet, open **Register your server** from
+the Add server panel (or go to `/register-server`). Enter contact details,
+organization name, country, Fineract tenant ID, and API URL. Bankayo stores
+that record on the registry and returns an application code. Paste the code
+on the sign-in screen. A registered server can also carry Self Help identity
+(Keycloak or the customer platform) so staff can create a mobile-app login
+from a client's **Actions** menu.
 
 ## Steps
 
