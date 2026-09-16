@@ -11,4 +11,12 @@
   font-variant-caps: small-caps;
   font-weight: 600;
   letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+#nd-sidebar .brand-name,
+#nd-toc .brand-name {
+  font-variant-caps: normal;
+  font-weight: inherit;
+  letter-spacing: normal;
 }
