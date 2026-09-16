@@ -1,3 +1,4 @@
+import { BrandText } from '@/components/brand-name';
 import { Logo } from '@/components/logo';
 import { wwwSiteUrl } from '@/lib/site';
 
@@ -15,7 +16,7 @@ export function docsCtaLinks() {
   return [
     {
       type: 'button' as const,
-      text: 'Use Bankayo',
+      text: <BrandText>Use Bankayo</BrandText>,
       url: wwwSiteUrl(),
       external: true,
     },

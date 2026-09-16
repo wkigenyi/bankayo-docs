@@ -1,6 +1,8 @@
 import { defineConfig, defineDocs, frontmatterSchema } from 'fumadocs-mdx/config';
 import { z } from 'zod';
 
+import { remarkBrandNames } from '@/lib/remark-brand-names';
+
 export const docs = defineDocs({
   dir: 'content/help',
   docs: {
@@ -10,4 +12,8 @@ export const docs = defineDocs({
   },
 });
 
-export default defineConfig();
+export default defineConfig({
+  mdxOptions: {
+    remarkPlugins: [remarkBrandNames],
+  },
+});

@@ -17,6 +17,10 @@ Your browser never talks to Apache Fineract. Bankayo’s server signs in on your
 behalf, holds the session, and sets an HTTP-only cookie. Passwords are not stored
 in the browser.
 
+Bankayo does not include a banking server. You add the Apache Fineract your
+institution runs; username and password appear only after that server is saved
+and selected.
+
 ## Install Bankayo
 
 On Chrome, Edge, or another Chromium browser, Bankayo can be installed as an
@@ -29,17 +33,7 @@ Bankayo opens full-screen, without the browser chrome.
 The service worker does not keep banking data offline. You still need a
 network connection, and your session still ends on idle or sign-out.
 
-## Hosted Bankayo versus a local demo
-
-**Hosted Bankayo** has no default banking server. You bring the Fineract you
-manage: **Add server**, then username and password appear only after that server
-is saved and selected.
-
-A **local demo** (`pnpm dev` against Docker) is configured with a default
-server, so username and password are visible from the start. **Default server**
-in the picker is that configured core. Production never shows that row.
-
-## Signing in to a Fineract server
+## Add a server
 
 1. Select **Add server** on the sign-in card (unless you already have a server
    selected in this browser). A panel opens on the side.
@@ -53,9 +47,7 @@ in the picker is that configured core. Production never shows that row.
      (or your confirmation email). Bankayo looks up the address and tenant on
      its registry. Identity keys for Self Help stay on Bankayo's server; they
      never land in this browser.
-3. Save it. On hosted Bankayo, username and password then appear, with that
-   server selected. On a local demo the fields were already visible; sign-in
-   still uses whichever server is selected.
+3. Save it. Username and password then appear, with that server selected.
 4. To use a different saved server later, select **Change**. The same panel
    lists every server you have saved, with pencil and trash icons to edit or
    remove one, and **Add server** for another. Picking a row closes the panel
@@ -81,7 +73,7 @@ on the sign-in screen. A registered server can also carry Self Help identity
 (Keycloak or the customer platform) so staff can create a mobile-app login
 from a client's **Actions** menu.
 
-## Steps
+## Sign in
 
 1. Select the server as above.
 2. Enter your **username**. It is not an email address.

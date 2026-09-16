@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/notebook/page';
 
+import { BrandText } from '@/components/brand-name';
 import { HelpArticleFeedback } from '@/components/help-article-feedback';
 import { HelpFormatTabs } from '@/components/help-format-tabs';
 import { isYouTubeId } from '@/lib/youtube';
@@ -29,8 +30,12 @@ export default async function HelpPage(props: HelpPageProps) {
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <DocsTitle>
+        <BrandText>{page.data.title}</BrandText>
+      </DocsTitle>
+      <DocsDescription>
+        <BrandText>{page.data.description}</BrandText>
+      </DocsDescription>
       <HelpFormatTabs youtubeId={youtubeId} path={page.url} title={page.data.title}>
         <DocsBody>
           <MDX components={getMDXComponents()} />

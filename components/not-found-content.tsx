@@ -5,6 +5,7 @@
 
 import { useSearchContext } from 'fumadocs-ui/contexts/search';
 
+import { BrandText } from '@/components/brand-name';
 import { cn } from '@/lib/cn';
 
 const DESTINATIONS = [
@@ -35,12 +36,12 @@ export function NotFoundContent({ inset = false }: { inset?: boolean }) {
         404
       </p>
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-        This page isn’t in Bankayo help
+        <BrandText>This page isn’t in Bankayo help</BrandText>
       </h1>
       <p className="text-fd-muted-foreground mt-4 max-w-2xl text-lg">
         That address is not a help page. It may have been renamed, or the{' '}
-        <strong className="text-fd-foreground font-medium">?</strong> button in Bankayo may
-        point at a topic we have not published yet.
+        <strong className="text-fd-foreground font-medium">?</strong> button in{' '}
+        <BrandText>Bankayo</BrandText> may point at a topic we have not published yet.
       </p>
       <p className="mt-6 flex flex-wrap gap-3">
         <a
@@ -65,8 +66,12 @@ export function NotFoundContent({ inset = false }: { inset?: boolean }) {
             href={item.href}
             className="bg-fd-card text-fd-card-foreground hover:bg-fd-accent/80 @max-lg:col-span-full block rounded-xl border p-4 transition-colors"
           >
-            <h2 className="mb-1 text-sm font-medium">{item.title}</h2>
-            <p className="text-fd-muted-foreground text-sm">{item.description}</p>
+            <h2 className="mb-1 text-sm font-medium">
+              <BrandText>{item.title}</BrandText>
+            </h2>
+            <p className="text-fd-muted-foreground text-sm">
+              <BrandText>{item.description}</BrandText>
+            </p>
           </a>
         ))}
       </div>

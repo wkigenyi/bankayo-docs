@@ -20,6 +20,7 @@ import {
 import type { DefaultSearchDialogProps } from 'fumadocs-ui/components/dialog/search-default';
 import { useI18n } from 'fumadocs-ui/contexts/i18n';
 
+import { BrandText } from '@/components/brand-name';
 import { helpSearchTag, type HelpSearchPage } from '@/lib/docs-search';
 
 export type DocsSearchDialogProps = DefaultSearchDialogProps & {
@@ -130,7 +131,9 @@ export function DocsSearchDialog({
                 className="flex items-center gap-2"
               >
                 <FileTextIcon className="size-4 shrink-0 text-fd-muted-foreground" />
-                <span className="min-w-0 flex-1 truncate">{item.content}</span>
+                <span className="min-w-0 flex-1 truncate">
+                  <BrandText>{item.content}</BrandText>
+                </span>
               </SearchDialogListItem>
             ) : (
               <SearchDialogListItem item={item} onClick={onClick} />
